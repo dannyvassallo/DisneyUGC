@@ -20,7 +20,9 @@
 		</div>	
 		<div class="row">
 			<div class="input-field col s12">	
-				<%= f.submit 'Create' , class: 'btn red darken-4' %>
+				<%= button_tag(type: 'submit', class: 'btn red darken-4 waves-effect waves-light') do %>
+					<i class="material-icons left">add</i>Create
+				<% end %>
 			</div>
 		</div>
 	<% end %>
