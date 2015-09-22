@@ -1,7 +1,7 @@
 <ul class="collection">
 	<% @campaigns.each do |campaign| %>
 		<li class="collection-item avatar">
-	      <img src="http://placehold.it/640x640" alt="" class="circle">
+	      <%= image_tag campaign.feature.tiny.url, class: 'circle' %>
 	      <span class="title"><b><%= link_to campaign.title, campaign_path(campaign) %></b></span>
 	      <p><%= campaign.description %></p>
 	      <a class="secondary-content"><i class="material-icons">grade</i></a>
