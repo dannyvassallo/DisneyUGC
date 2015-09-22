@@ -1,6 +1,22 @@
 <main>
-<%= @campaign.title %><br>
-<%= @campaign.description %><br>
-<%= @campaign.call_to_action %><br>
-<%= link_to "Edit", edit_campaign_path(@campaign) %><br>
+	<div class="container">
+		<div class="row">
+			<div class="col l8 offset-l2">
+				<h3><%= @campaign.title %></h3><%= link_to "Edit", edit_campaign_path(@campaign) %><br>
+				<div class="card large">
+					<div class="card-image">
+						<img src="http://placehold.it/640x640">
+						<span class="card-title"><%= @campaign.title %></span>
+					</div>
+					<div class="card-content">
+			          <p><%= @campaign.description %></p>
+			        </div>
+			        <div class="card-action center-align">
+						<%= @campaign.call_to_action %><br>
+						<a href="#" class="btn wave-effect wave-light red darken-4">This is a link</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </main>
