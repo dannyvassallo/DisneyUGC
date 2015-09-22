@@ -36,6 +36,9 @@ class FeatureUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
+  version :tiny do
+    process resize_to_fill: [45, 45]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
