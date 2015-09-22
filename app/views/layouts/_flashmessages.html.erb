@@ -1,0 +1,18 @@
+<% if flash[:notice] %>
+    <script>
+      var noticeMsg = '<%= "#{flash[:notice]}" %>';      
+      Materialize.toast(noticeMsg, 5000);
+    </script>
+<% elsif flash[:error] %>
+  <div class="alert alert-danger">    
+    <script>
+      var errorMsg = '<%= "#{flash[:error]}" %>';        
+      Materialize.toast(errorMsg, 5000);
+    </script>
+  </div>
+<% elsif flash[:alert] %>    
+    <script>
+      var alertMsg = '<%= "#{flash[:alert]}" %>';        
+      Materialize.toast(alertMsg, 5000);
+    </script>
+<% end %>
