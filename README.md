@@ -16,3 +16,9 @@ Content must be between 2 main tags for sticky footer to work:
 ```html
 <main></main>
 ```
+
+###Video Processing
+```shell
+brew install ffmpeg
+brew install ffmpegthumbnailer
+```

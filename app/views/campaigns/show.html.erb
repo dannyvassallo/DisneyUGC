@@ -5,7 +5,13 @@
 				<h3><%= @campaign.title %></h3><%= link_to "Edit", edit_campaign_path(@campaign) %><br>
 				<div class="card large">
 					<div class="card-image">
-						<%= image_tag( @campaign.feature.url ) %>
+						<% if @campaign.feature? %>
+							<%= image_tag( @campaign.feature.url ) %>
+						<% elsif @campaign.video? %>
+							<video class="responsive-video">
+								<source src="<%= @campaign.video.url %>" type="video/mp4">
+							</video>
+						<% end %>
 						<span class="card-title"><%= @campaign.title %></span>
 					</div>
 					<div class="card-content">
