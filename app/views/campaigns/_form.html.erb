@@ -1,0 +1,27 @@
+<div class="row">
+	<%= simple_form_for @campaign ,:url => {:action => :create, :controller => :campaigns}, :class => "col s12" do |f| %>
+		<div class="row">
+			<div class="input-field col s12">
+				<%= f.input :title, label: false, :class => "validate", :wrapper => false %>
+				<label for="campaign_title">Enter a Title</label>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<%= f.input :description, label: false, :class => "validate", :wrapper => false %>
+				<label for="campaign_description">Enter a Description</label>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<%= f.input :call_to_action, label: false, :class => "validate", :wrapper => false %>
+				<label for="campaign_call_to_action">Enter a Call To Action</label>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="input-field col s12">	
+				<%= f.submit 'Create' , class: 'btn red darken-4' %>
+			</div>
+		</div>
+	<% end %>
+</div>

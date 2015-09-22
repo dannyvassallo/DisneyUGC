@@ -14,7 +14,7 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = current_user.lists.build(list_params)
+    @campaign = Campaign.new(campaign_params)
     title = @campaign.title
 
     if @campaign.save
@@ -31,7 +31,7 @@ class CampaignsController < ApplicationController
   end
 
   def update
-    @campaign = current_user.lists.find(params[:id])
+    @campaign = Campaign.find(params[:id])
     title = @campaign.title
 
     if @campaign.update_attributes(campaign_params)
