@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
   end
 
   def show
-    @campaign = Campaign.find(params[:id])
+    @campaign = Campaign.friendly.find(params[:id])
   end
 
   def new
@@ -27,11 +27,11 @@ class CampaignsController < ApplicationController
   end
 
   def edit
-    @campaign = Campaign.find(params[:id])
+    @campaign = Campaign.friendly.find(params[:id])
   end
 
   def update
-    @campaign = Campaign.find(params[:id])
+    @campaign = Campaign.friendly.find(params[:id])
     title = @campaign.title
 
     if @campaign.update_attributes(campaign_params)
@@ -44,7 +44,7 @@ class CampaignsController < ApplicationController
   end
 
   def destroy
-    @campaign = Campaign.find(params[:id])
+    @campaign = Campaign.friendly.find(params[:id])
     title = @campaign.title
 
     if @list.destroy
