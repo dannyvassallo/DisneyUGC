@@ -1,0 +1,4 @@
+@import "materialize/components/color";
+$primary-color: color("red", "darken-4") !default;
+@import "materialize";
+@import "sticky-footer";
