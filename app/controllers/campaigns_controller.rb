@@ -18,7 +18,7 @@ class CampaignsController < ApplicationController
     title = @campaign.title
 
     if @campaign.save
-      flash[:notice] = "Your new campaign \"#{title}\" was created!"
+      flash[:notice] = "Your new campaign '#{title}' was created!"
       redirect_to campaigns_path
     else
       flash[:error] = "There was an error creating the campaign. Please try again."
@@ -35,7 +35,7 @@ class CampaignsController < ApplicationController
     title = @campaign.title
 
     if @campaign.update_attributes(campaign_params)
-      flash[:notice] = "The campaign \"#{title}\" was updated!"
+      flash[:notice] = "The campaign '#{title}' was updated!"
       redirect_to campaigns_path
     else
       flash[:error] = "There was an error updating the campaign. Please try again."
@@ -48,10 +48,10 @@ class CampaignsController < ApplicationController
     title = @campaign.title
 
     if @list.destroy
-      flash[:notice] = "The campaign \"#{title}\" was deleted successfully."
+      flash[:notice] = "The campaign '#{title}' was deleted successfully."
       redirect_to @campaign
     else
-      flash[:error] = "There was an error deleting the campaign \"#{title}\". Please try again."
+      flash[:error] = "There was an error deleting the campaign '#{title}'. Please try again."
       render :show
     end    
   end

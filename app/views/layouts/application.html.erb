@@ -4,14 +4,13 @@
   <title>DisneyUGC</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 <%= render partial: 'layouts/navbar' %>
 <%= yield %>
 <%= render partial: 'layouts/footer' %>
-
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= render partial: 'layouts/flashmessages' %>
 </body>
 </html>
