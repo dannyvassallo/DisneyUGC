@@ -77,6 +77,8 @@ GEM
     carrierwave-video (0.5.6)
       carrierwave
       streamio-ffmpeg
+    carrierwave_backgrounder (0.4.1)
+      carrierwave (~> 0.5)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
@@ -90,6 +92,11 @@ GEM
     coffee-script-source (1.9.1.1)
     database_cleaner (1.5.0)
     debug_inspector (0.0.2)
+    delayed_job (4.0.6)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.0.3)
+      activerecord (>= 3.0, < 5.0)
+      delayed_job (>= 3.0, < 4.1)
     devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -373,8 +380,10 @@ DEPENDENCIES
   carrierwave
   carrierwave-video
   carrierwave-video-thumbnailer!
+  carrierwave_backgrounder
   coffee-rails (~> 4.1.0)
   database_cleaner
+  delayed_job_active_record
   devise
   email_spec
   factory_girl_rails
