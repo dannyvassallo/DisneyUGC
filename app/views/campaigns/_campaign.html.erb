@@ -1,10 +1,18 @@
 <ul class="collection">
 	<% @campaigns.each do |campaign| %>
-		<li class="collection-item avatar">
+		<li class="collection-item avatar">						
 			<% if campaign.video? %>
-				<%= image_tag campaign.video.thumb.url, class: 'circle' %>
+				<% if campaign.video_processing? %>
+					<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle' %>				
+				<% else %>
+					<%= image_tag campaign.video.thumb.url, class: 'circle' %>					
+				<% end %>
 			<% elsif campaign.feature? %>
-				<%= image_tag campaign.feature.tiny.url, class: 'circle' %>
+				<% if campaign.feature_processing? %>
+					<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle' %>				
+				<% else %>
+					<%= image_tag campaign.feature.tiny.url, class: 'circle' %>
+				<% end %>				
 			<% else %>			
 				<%= image_tag "missing-thumb.png", :alt => "missing thumbnail", class: 'circle' %>
 			<% end %>
