@@ -7,21 +7,21 @@
 			</div>
 		</div>
 		<div class="row">
-				<% if @campaign.feature? %>					
-					<div class="col l12">
-					<p>Current Feature</p>
-					</div>
-					<div class="col l6 offset-l3">
-						<%= image_tag( @campaign.feature.url, :class => 'responsive-img') %>					
-					</div>
-				<% else %>
-					<div class="col l12">
-						<p>Feature</p>
-					</div>
-				<% end %>			
+			<% if @campaign.feature? %>					
+				<div class="col l12">
+				<p>Current Feature</p>
+				</div>
+				<div class="col l6 offset-l3">
+					<%= image_tag( @campaign.feature.url, :class => 'responsive-img') %>					
+				</div>
+			<% else %>
+				<div class="col l12">
+					<p>Feature</p>
+				</div>
+			<% end %>			
 			<div class="file-field input-field col s12">
 				<div class="btn red darken-4">
-					<span>UPLOAD</span>
+					<span>IMAGE</span>
 					<%= f.file_field :feature %>
 				</div>
 				<div class="file-path-wrapper">				

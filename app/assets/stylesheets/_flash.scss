@@ -1,0 +1,11 @@
+.notice {
+    @extend .green, .accent-4;
+}
+
+.error {
+    @extend .red, .darken-4;
+}
+
+.alert {
+    @extend .yellow;
+}
