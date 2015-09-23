@@ -8,7 +8,7 @@
 						<% if @campaign.feature? %>
 							<%= image_tag( @campaign.feature.url ) %>
 						<% elsif @campaign.video? %>
-							<video class="responsive-video">
+							<video class="responsive-video" controls>
 								<source src="<%= @campaign.video.url %>" type="video/mp4">
 							</video>
 						<% end %>
