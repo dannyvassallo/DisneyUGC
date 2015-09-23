@@ -8,7 +8,7 @@ git clone https://github.com/dannyvassallo/DisneyUGC.git
 cd DisneyUGC
 bundle install
 rake db:migrate
-rails s
+foreman s
 ```
 
 ###Sticky Footer
