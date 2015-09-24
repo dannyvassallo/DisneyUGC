@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'posts/index'
+	resources :campaigns, except: [:show]
 
-  get 'posts/show'
+	resources :campaigns, only: [:show] do
+		resources :posts, only: [:create, :destroy]
+	end
 
-  get 'posts/create'
+	resources :posts, only: [:show]
 
-  get 'posts/destroy'
-
-  get 'posts/edit'
-
-  get 'posts/update'
-
-  resources :campaigns
-  root to: 'welcome#index'
+	root to: 'welcome#index'
 end
