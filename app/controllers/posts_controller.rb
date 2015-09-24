@@ -14,8 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    title = @post.title
+    @post = Post.new(post_params)    
 
     if @post.save
       flash[:notice] = "Your new post was created!"
@@ -31,8 +30,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
-    title = @post.title
+    @post = Post.find(params[:id])    
 
     if @post.update_attributes(post_params)
       flash[:notice] = "The post was updated!"
@@ -44,8 +42,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    title = @post.title
+    @post = Post.find(params[:id])    
 
     if @post.destroy
       flash[:notice] = "The post was deleted successfully."
