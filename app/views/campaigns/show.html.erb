@@ -21,5 +21,12 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="">
+				<% @campaign.posts.each do |post| %>
+					<%= post.video_url %>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </main>
