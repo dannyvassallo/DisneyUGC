@@ -9,15 +9,14 @@
 							<%= image_tag( @campaign.feature.url ) %>
 						<% elsif @campaign.video? %>
 							<%= videojs_rails sources: { mp4: "#{@campaign.video.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", class: 'vjs-big-play-centered' %>						
-						<% end %>
-						<span class="card-title"><%= @campaign.title %></span>
+						<% end %>						
 					</div>
 					<div class="card-content">
 			          <p><%= @campaign.description %></p>
 			        </div>
 			        <div class="card-action center-align">
 						<%= @campaign.call_to_action %><br>
-						<a href="#" class="btn wave-effect wave-light red darken-4">This is a link</a>
+						<a href="#" class="btn wave-effect wave-light red darken-4">Enter Here</a>
 					</div>
 				</div>
 			</div>
