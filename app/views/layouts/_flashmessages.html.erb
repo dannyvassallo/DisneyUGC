@@ -6,7 +6,7 @@
 <% elsif flash[:error] %>
     <script>
       var errorMsg = '<%= "#{flash[:error]}" %>';        
-      Materialize.toast(errorMsg, 5000, 'error');
+      Materialize.toast(errorMsg, 5000, 'error-msg');
     </script>
 <% elsif flash[:alert] %>    
     <script>
