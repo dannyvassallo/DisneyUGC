@@ -26,6 +26,10 @@
 				<% @campaign.posts.each do |post| %>
 					<%= post.video_url %>
 				<% end %>
+				<%= simple_form_for [@campaign, @campaign.posts.build] do |f| %>
+				  <%= f.input :video_url, label: 'Video URL' %>
+				  <%= f.submit 'Submit' , class: 'btn btn-success' %>
+				<% end %>				
 			</div>
 		</div>
 	</div>

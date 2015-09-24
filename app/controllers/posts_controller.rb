@@ -14,14 +14,16 @@ class PostsController < ApplicationController
   end
 
   def create
+    @campaign = Campaign.friendly.find(params[:campaign_id])
     @post = Post.new(post_params)    
+    @post.campaign = @campaign
 
     if @post.save
       flash[:notice] = "Your new post was created!"
-      redirect_to posts_path
+      redirect_to @campaign
     else
       flash[:error] = "There was an error creating the post. Please try again."
-      render :new
+      redirect_to @campaign
     end 
   end
 
