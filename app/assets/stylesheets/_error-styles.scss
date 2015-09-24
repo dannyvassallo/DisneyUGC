@@ -1,0 +1,10 @@
+.error{
+	color: #B71C1C;
+	text-transform: capitalize;
+	&::before{
+		margin-top: -2px;
+		content: '\f062 ';
+		font-family: FontAwesome;
+		padding-right: 5px;
+	}
+}

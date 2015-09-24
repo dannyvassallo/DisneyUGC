@@ -11,19 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922191036) do
+ActiveRecord::Schema.define(version: 20150923170616) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
     t.string   "call_to_action"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "slug"
     t.string   "feature"
+    t.string   "video"
+    t.boolean  "feature_processing", default: false, null: false
+    t.boolean  "video_processing",   default: false, null: false
   end
 
   add_index "campaigns", ["slug"], name: "index_campaigns_on_slug", unique: true
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false

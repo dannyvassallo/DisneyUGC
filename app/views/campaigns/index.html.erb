@@ -1,8 +1,12 @@
 <main>
 	<div class="container">		
-		<%= render partial: 'campaign' %>
-		<%= link_to new_campaign_path, class: 'btn-floating btn-large waves-effect waves-light red darken-4' do %>
-			<i class="material-icons">add</i>
-		<% end %>
+		<div class="row">
+			<%= render partial: 'campaign' %>
+			<div class="col l12 right-align">
+				<%= link_to new_campaign_path, class: 'btn-floating btn-large waves-effect waves-light red darken-4' do %>
+					<i class="material-icons">add</i>
+				<% end %>				
+			</div>
+		</div>
 	</div>
 </main>

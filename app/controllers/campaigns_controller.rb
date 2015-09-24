@@ -47,7 +47,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.friendly.find(params[:id])
     title = @campaign.title
 
-    if @list.destroy
+    if @campaign.destroy
       flash[:notice] = "The campaign '#{title}' was deleted successfully."
       redirect_to @campaign
     else
@@ -59,7 +59,7 @@ class CampaignsController < ApplicationController
   private
 
   def campaign_params
-    params.require(:campaign).permit(:title, :description, :call_to_action, :feature)
+    params.require(:campaign).permit(:title, :description, :call_to_action, :feature,:feature_cache, :video, :video_cache)
   end
 
 end

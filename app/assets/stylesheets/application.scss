@@ -2,3 +2,8 @@
 $primary-color: color("red", "darken-4") !default;
 @import "materialize";
 @import "sticky-footer";
+@import "flash";
+@import "font-awesome";
+@import "video-js";
+@import "custom-vjs";
+@import "error-styles";

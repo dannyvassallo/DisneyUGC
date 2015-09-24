@@ -1,10 +1,30 @@
-<ul class="collection">
-	<% @campaigns.each do |campaign| %>
-		<li class="collection-item avatar">
-	      <%= image_tag campaign.feature.tiny.url, class: 'circle' %>
-	      <span class="title"><b><%= link_to campaign.title, campaign_path(campaign) %></b></span>
-	      <p><%= campaign.description %></p>
-	      <a class="secondary-content"><i class="material-icons">grade</i></a>
-	    </li>
-	<% end %>
-</ul>
+<div class="col l12">
+	<ul class="collection">
+		<% @campaigns.each do |campaign| %>
+			<li class="collection-item avatar">						
+				<%= link_to campaign_path(campaign) do %>
+					<% if campaign.video? %>
+						<% if campaign.video_processing? %>
+							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle' %>				
+						<% else %>
+							<%= image_tag campaign.video.thumb.url, class: 'circle' %>					
+						<% end %>
+					<% elsif campaign.feature? %>
+						<% if campaign.feature_processing? %>
+							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle' %>				
+						<% else %>
+							<%= image_tag campaign.feature.tiny.url, class: 'circle' %>
+						<% end %>				
+					<% else %>			
+						<%= image_tag "missing-thumb.png", :alt => "missing thumbnail", class: 'circle' %>
+					<% end %>
+					<span class="title"><b><%= campaign.title  %></b></span>
+					<p><%= campaign.description %></p>
+					<%= link_to campaign_path(campaign), data: {confirm: 'Are you sure?'}, method: :delete, class: 'secondary-content' do %>
+						<i class="fa fa-trash"></i>
+					<% end %>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+</div>

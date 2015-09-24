@@ -8,11 +8,18 @@ git clone https://github.com/dannyvassallo/DisneyUGC.git
 cd DisneyUGC
 bundle install
 rake db:migrate
-rails s
+foreman s
 ```
 
 ###Sticky Footer
 Content must be between 2 main tags for sticky footer to work:
 ```html
 <main></main>
+```
+
+###Video Processing
+```shell
+brew install ffmpeg
+brew install ffmpegthumbnailer
+gem install streamio-ffmpeg
 ```
