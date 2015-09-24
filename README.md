@@ -21,4 +21,5 @@ Content must be between 2 main tags for sticky footer to work:
 ```shell
 brew install ffmpeg
 brew install ffmpegthumbnailer
+gem install streamio-ffmpeg
 ```
