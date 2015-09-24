@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'streamio-ffmpeg'
+
 class VideoUploader < CarrierWave::Uploader::Base
   
 	include CarrierWave::Video	
@@ -6,7 +9,7 @@ class VideoUploader < CarrierWave::Uploader::Base
 
 	storage :fog
 
-	process encode_video: [:mp4]
+	process :encode_video=> [:mp4, audio_codec: "aac",:custom => "-strict experimental -q:v 5 -preset slow -g 30"]
 
 	version :thumb do
 		process thumbnail: [{format: 'png', quality: 10, size: 192, strip: false, logger: Rails.logger}]
