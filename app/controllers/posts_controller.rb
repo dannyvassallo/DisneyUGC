@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.friendly.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -27,11 +27,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.friendly.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.friendly.find(params[:id])
+    @post = Post.find(params[:id])
     title = @post.title
 
     if @post.update_attributes(post_params)
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.friendly.find(params[:id])
+    @post = Post.find(params[:id])
     title = @post.title
 
     if @post.destroy
