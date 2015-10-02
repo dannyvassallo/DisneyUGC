@@ -211,16 +211,16 @@ e.g. <video class="video-js my-skin-name">
 The control icons are from a custom font. Each icon corresponds to a character
 (e.g. "\e001"). Font icons allow for easy scaling and coloring of icons.
 */
-@font-face{
-  font-family: 'VideoJS';
-  src: url('font/vjs.eot');
-  src: url('font/vjs.eot?#iefix') format('embedded-opentype'),
-  url('font/vjs.woff') format('woff'),
-  url('font/vjs.ttf') format('truetype');
+// @font-face{
+//   font-family: 'VideoJS';
+//   src: url('font/vjs.eot');
+//   src: url('font/vjs.eot?#iefix') format('embedded-opentype'),
+//   url('font/vjs.woff') format('woff'),
+//   url('font/vjs.ttf') format('truetype');
 
-  font-weight: normal;
-  font-style: normal;
-}
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 // Icon font character values
 $play-icon: "\e001";
