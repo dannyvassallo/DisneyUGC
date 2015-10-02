@@ -24,7 +24,11 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<% @campaign.posts.each do |post| %>
-					<%= post.video_url %>
+					<% if post.image_url? %>
+						<img src="<%= post.image_url.thumb.url %>">
+					<% elsif post.video_url? %>
+						<img src="<%= post.video_url.thumb.url %>">
+					<% end %>
 				<% end %>			
 			</div>
 		</div>
@@ -32,15 +36,4 @@
 </main>
 
 
-<!-- Modal Structure -->
-<div id="entryform" class="modal">
-	<div class="modal-content">
-		<h4>Modal Header</h4>
-		<%= simple_form_for [@campaign, @campaign.posts.build] do |f| %>
-		  <%= f.input :video_url, label: 'Video URL' %>
-	</div>
-	<div class="modal-footer">		
-		  <%= f.submit 'Submit' , class: 'btn wave-effect wave-light grey add-content darken-4' %>
-		<% end %>	
-	</div>
-</div>
+<%= render 'campaigns/entryform' %>
