@@ -1,7 +1,7 @@
 <main>
 	<div class="container">
 		<div class="row">
-			<div class="col l8 offset-l2 m10 offset-m1 s12">
+			<div class="col l10 offset-l1 m10 offset-m1 s12">
 				<h3><%= @campaign.title %></h3><%= link_to "Edit", edit_campaign_path(@campaign) %><br>
 				<div class="card large">
 					<div class="card-image">
@@ -22,14 +22,26 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col l10 offset-l1">			
 				<% @campaign.posts.each do |post| %>
 					<% if post.image_url? %>
-						<img src="<%= post.image_url.thumb.url %>">
+						<div class="col l3">
+							<div class="card hoverable">
+								<div class="card-image">
+									<img src="<%= post.image_url.thumb.url %>">
+								</div>
+							</div>
+						</div>
 					<% elsif post.video_url? %>
-						<img src="<%= post.video_url.thumb.url %>">
+						<div class="col l3">
+							<div class="card hoverable">
+								<div class="card-image vid-card">
+									<img class="vid-thumb" src="<%= post.video_url.thumb.url %>">
+								</div>
+							</div>
+						</div>
 					<% end %>
-				<% end %>			
+				<% end %>																		
 			</div>
 		</div>
 	</div>
@@ -37,3 +49,9 @@
 
 
 <%= render 'campaigns/entryform' %>
+
+
+
+
+
+
