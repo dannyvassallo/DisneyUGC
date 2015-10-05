@@ -1,6 +1,23 @@
 .add-content{
 	color: white !important;
 }
+// parallax
+.parallax-container {
+    position: absolute;
+    overflow: hidden;
+    height: 507px;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
 // Modal Video Queries
 @media(min-width: 640px){
 	.modal-video{
