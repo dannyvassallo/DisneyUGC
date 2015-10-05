@@ -38,8 +38,12 @@ gem install streamio-ffmpeg
 The set the buildpack:
 ```shell
 heroku buildpacks:set https://github.com/heroku/heroku-buildpack-ruby --app APPNAME
-heroku buildpacks:add https://github.com/shunjikonishi/heroku-buildpack-ffmpeg --app APPNAME
-heroku buildpacks:add https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer --app APPNAME
+heroku buildpacks:add --index 1 https://github.com/Litterfeldt/heroku-buildpack-ffmpeg-x264-fdk_aac --app APPNAME
+heroku buildpacks:add --index 2 https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer --app APPNAME
+```
+run the workers:
+```
+heroku run rake jobs:work --app disneyugc-staging
 ```
 
 if you mess up do this:
@@ -47,8 +51,7 @@ if you mess up do this:
 heroku buildpacks:clear --app APPNAME
 ```
 
-if deployment is failing:
+if app doesnt run, scale up:
 ```
-rake rails:update:bin
+heroku ps:scale web=1
 ```
-and then repush.
