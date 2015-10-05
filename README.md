@@ -46,12 +46,12 @@ run the workers:
 heroku run rake jobs:work --app disneyugc-staging
 ```
 
-if you mess up do this:
-```shell
-heroku buildpacks:clear --app APPNAME
-```
-
 if app doesnt run, scale up:
 ```
 heroku ps:scale web=1
+```
+
+if you mess up do this:
+```shell
+heroku buildpacks:clear --app APPNAME
 ```
