@@ -31,7 +31,9 @@
 						<div class="col l3">
 							<div class="card hoverable">
 								<div class="card-image">
-									<img src="<%= post.image_url.thumb.url %>">
+									<a class="modal-trigger" href="<%= "#post-#{post.id}" %>">
+										<img src="<%= post.image_url.thumb.url %>">
+									</a>
 								</div>
 							</div>
 						</div>
@@ -39,7 +41,9 @@
 						<div class="col l3">
 							<div class="card hoverable">
 								<div class="card-image vid-card">
-									<img class="vid-thumb" src="<%= post.video_url.thumb.url %>">
+									<a class="modal-trigger" href="<%= "#post-#{post.id}" %>">
+										<img class="vid-thumb" src="<%= post.video_url.thumb.url %>">
+									</a>
 								</div>
 							</div>
 						</div>
@@ -49,13 +53,12 @@
 		</div>
 		<div class="row">
 			<div class="col l10 offset-l1 center-align">
+				<%= render 'campaigns/postmodals' %>
 				<%= will_paginate @posts %>		
 			</div>															
 		</div>
 	</div>
 </main>
-
-
 <%= render 'campaigns/entryform' %>
 
 

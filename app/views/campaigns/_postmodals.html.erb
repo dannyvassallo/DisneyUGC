@@ -1,0 +1,12 @@
+<!-- Modal Structure -->
+<% @posts.each do |post| %>
+	<div id="<%= "post-#{post.id}" %>" class="modal">
+		<div class="modal-content">
+			<% if post.image_url? %>
+				<img src="<%= post.image_url.url %>">
+			<% elsif post.video_url? %>
+				<%= videojs_rails sources: { mp4: "#{post.video_url.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", class: 'vjs-big-play-centered' %>				
+			<% end %>		
+		</div>
+	</div>
+<% end %>
