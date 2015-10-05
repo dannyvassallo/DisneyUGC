@@ -37,14 +37,9 @@ gem install streamio-ffmpeg
 ###Buildpacks with FFMpeg and Thumbnailer
 The set the buildpack:
 ```shell
-heroku buildpacks:set https://github.com/ddollar/heroku-buildpack-multi.git
-``` 
-
-create a ".buildpacks" file in the root of your app with this listing:
-```shell
-https://github.com/shunjikonishi/heroku-buildpack-ffmpeg
-https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer
-https://github.com/heroku/heroku-buildpack-ruby
+heroku buildpacks:set https://github.com/heroku/heroku-buildpack-ruby --app APPNAME
+heroku buildpacks:add https://github.com/shunjikonishi/heroku-buildpack-ffmpeg --app APPNAME
+heroku buildpacks:add https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer --app APPNAME
 ```
 
 if you mess up do this:
@@ -56,3 +51,4 @@ if deployment is failing:
 ```
 rake rails:update:bin
 ```
+and then repush.
