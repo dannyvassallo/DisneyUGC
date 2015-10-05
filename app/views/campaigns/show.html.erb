@@ -23,7 +23,7 @@
 		</div>
 		<div class="row">
 			<div class="col l10 offset-l1">			
-				<% @campaign.posts.each do |post| %>
+				<% @posts.each do |post| %>
 					<% if post.image_url? %>
 						<div class="col l3">
 							<div class="card hoverable">
@@ -41,8 +41,13 @@
 							</div>
 						</div>
 					<% end %>
-				<% end %>																		
+				<% end %>
 			</div>
+		</div>
+		<div class="row">
+			<div class="col l10 offset-l1 center-align">
+				<%= will_paginate @posts %>		
+			</div>															
 		</div>
 	</div>
 </main>
