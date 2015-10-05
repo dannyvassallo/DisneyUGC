@@ -24,7 +24,7 @@ figaro heroku:set -e production
 ```
 Staging:
 ```shell
-figaro heroku:set -e production
+figaro heroku:set -e staging --app APPNAME
 ```
 
 ###Local Video Processing
@@ -35,17 +35,24 @@ gem install streamio-ffmpeg
 ```
 ###Production/Staging Video Processing
 ###Buildpacks with FFMpeg and Thumbnailer
-Push the master branch:
+The set the buildpack:
 ```shell
-git push heroku master
-```
-The set the buildpacks in this order:
-```shell
-heroku buildpacks:set https://github.com/heroku/heroku-buildpack-ruby --app APPNAME
-heroku buildpacks:add https://github.com/shunjikonishi/heroku-buildpack-ffmpeg --app APPNAME
-heroku buildpacks:add https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer --app APPNAME
+heroku buildpacks:set https://github.com/ddollar/heroku-buildpack-multi.git
 ``` 
+
+create a ".buildpacks" file in the root of your app with this listing:
+```shell
+https://github.com/shunjikonishi/heroku-buildpack-ffmpeg
+https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer
+https://github.com/heroku/heroku-buildpack-ruby
+```
+
 if you mess up do this:
 ```shell
 heroku buildpacks:clear --app APPNAME
+```
+
+if deployment is failing:
+```
+rake rails:update:bin
 ```
