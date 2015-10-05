@@ -2,14 +2,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col l10 offset-l1 m10 offset-m1 s12">
-				<h3><%= @campaign.title %></h3><%= link_to "Edit", edit_campaign_path(@campaign) %><br>
-				<div class="card large hoverable">
+				<div id="campaign-feature" class="card large hoverable">
 					<div class="card-image">
 						<% if @campaign.feature? %>
 							<%= image_tag( @campaign.feature.url ) %>
 						<% elsif @campaign.video? %>
 							<%= videojs_rails sources: { mp4: "#{@campaign.video.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", class: 'vjs-big-play-centered' %>						
-						<% end %>						
+						<% end %>	
+						<span class="card-title campaign-title"><%= @campaign.title %></span>					
 					</div>
 					<div class="card-content">
 			          <p><%= @campaign.description %></p>
@@ -23,7 +23,7 @@
 		</div>
 		<div class="row">
 			<div class="col l10 offset-l1">			
-				<h4>Recent Entries</h4>
+				<h5>Recent Entries</h5>
 			</div>
 			<div class="col l10 offset-l1">			
 				<%= render 'campaigns/posts' %>
