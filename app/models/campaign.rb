@@ -1,5 +1,5 @@
 class Campaign < ActiveRecord::Base
-
+	has_many :posts
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 	mount_uploader :feature, FeatureUploader

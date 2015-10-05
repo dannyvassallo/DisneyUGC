@@ -1,0 +1,30 @@
+<!-- Modal Structure -->
+<div id="entryform" class="modal">
+	<div class="modal-content">
+		<h4>Modal Header</h4>
+		<%= simple_form_for [@campaign, @campaign.posts.build] do |f| %>		  
+			<div class="file-field input-field col s12">
+				<div class="btn grey darken-4">
+					<span>IMAGE</span>
+					<%= f.file_field :image_url %>
+					<%= f.hidden_field :image_url_cache %>
+				</div>
+				<div class="file-path-wrapper">				
+			        <input class="file-path validate" type="text">
+				</div>				
+			</div>
+			<div class="file-field input-field col s12">
+				<div class="btn grey darken-4">
+					<span>VIDEO</span>
+					<%= f.file_field :video_url %>
+				</div>
+				<div class="file-path-wrapper">				
+			        <input class="file-path validate" type="text">
+				</div>				
+			</div>			  
+	</div>
+	<div class="modal-footer">		
+		  <%= f.submit 'Submit' , class: 'btn wave-effect wave-light grey add-content darken-4' %>
+		<% end %>	
+	</div>
+</div>

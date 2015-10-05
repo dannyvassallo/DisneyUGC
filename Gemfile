@@ -53,3 +53,4 @@ gem 'carrierwave-video-thumbnailer', :github => 'dannyvassallo/carrierwave-video
 gem 'delayed_job_active_record'
 gem 'carrierwave_backgrounder'
 gem 'videojs_rails'
+gem 'will_paginate-materialize', '~> 0.1.0'
