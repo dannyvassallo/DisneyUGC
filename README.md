@@ -43,7 +43,7 @@ heroku buildpacks:add --index 2 https://github.com/johnklawlor/heroku-buildpack-
 ```
 run the workers:
 ```
-heroku run rake jobs:work --app disneyugc-staging
+heroku run rake jobs:work --app APPNAME
 ```
 
 if app doesnt run, scale up:
