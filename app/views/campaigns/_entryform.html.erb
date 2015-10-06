@@ -6,7 +6,7 @@
 			<div class="file-field input-field col s12">
 				<div class="btn grey darken-4">
 					<span>IMAGE</span>
-					<%= f.file_field :image_url %>
+					<%= f.file_field :image_url, :accept => "image/*", :capture => "camera" %>
 					<%= f.hidden_field :image_url_cache %>
 				</div>
 				<div class="file-path-wrapper">				
@@ -16,7 +16,7 @@
 			<div class="file-field input-field col s12">
 				<div class="btn grey darken-4">
 					<span>VIDEO</span>
-					<%= f.file_field :video_url %>
+					<%= f.file_field :video_url, :accept => "video/*", :capture => "camera" %>
 				</div>
 				<div class="file-path-wrapper">				
 			        <input class="file-path validate" type="text">

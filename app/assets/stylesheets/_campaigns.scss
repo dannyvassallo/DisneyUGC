@@ -67,3 +67,8 @@
 	background-color: transparent !important;
 	box-shadow: none !important;
 }
+// Fullscreen disable in modals
+.modal-content .vjs-fullscreen-control{
+	visibility: hidden;
+	width: 30px;
+}
