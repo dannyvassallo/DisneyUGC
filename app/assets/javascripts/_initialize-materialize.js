@@ -3,8 +3,13 @@ $(function(){
 	$('.slider').slider({full_width: true});
 	$('.parallax').parallax();
 	$('.modal-trigger').leanModal({
+		ready: function() { 
+			// pause featured video on modal open
+			$('.primary-player video')[0].player.pause();
+		 },
 		complete: function() {
-		    $('video').each(function(){ 
+			// Pause this video on modal close
+		    $('.feed-vid').each(function(){ 
 		      this.player.pause(); 
 		    });
 		} 
