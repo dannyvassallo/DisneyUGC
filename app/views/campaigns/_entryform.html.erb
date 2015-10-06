@@ -1,8 +1,17 @@
 <!-- Modal Structure -->
 <div id="entryform" class="modal">
 	<div class="modal-content">
-		<h4>Modal Header</h4>
-		<%= simple_form_for [@campaign, @campaign.posts.build] do |f| %>		  
+		<h4>Submit Your Entry</h4>
+		<%= simple_form_for [@campaign, @campaign.posts.build] do |f| %>
+	        <div class="input-field col s12">				
+				<%= f.input :full_name %>				
+	        </div>	
+	        <div class="input-field col s12">				
+				<%= f.input :email_address %>				
+	        </div>		  
+	        <div class="input-field col s12">
+			<%= f.input :dob, input_html: { class: 'datepicker' }, :label => 'Date of Birth' %>				
+	        </div>
 			<div class="file-field input-field col s12">
 				<div class="btn grey darken-4">
 					<span>IMAGE</span>
