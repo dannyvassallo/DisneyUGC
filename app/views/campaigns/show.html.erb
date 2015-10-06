@@ -26,13 +26,10 @@
 				<h5>Recent Entries</h5>
 			</div>
 			<div class="col l10 offset-l1">			
-				<%= render 'campaigns/posts' %>
+				<div class = "sort_paginate_ajax">
+					<%= render 'campaigns/posts' %>												
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col l10 offset-l1 center-align">				
-				<%= will_paginate @posts %>		
-			</div>															
 		</div>
 	</div>	
 	<div class="parallax-container">
@@ -42,8 +39,6 @@
 	</div>	
 </main>
 <%= render 'campaigns/entryform' %>
-<%= render 'campaigns/postmodals' %>
-
 
 
 

@@ -7,7 +7,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.friendly.find(params[:id])
-    @posts = @campaign.posts.paginate(:page => params[:page], :per_page => 16).order('created_at DESC')
+    @posts = @campaign.posts.paginate(:page => params[:page], :per_page => 12).order('created_at DESC')
   end
 
   def new

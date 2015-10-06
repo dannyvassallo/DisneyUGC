@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require video
+//= require _pagination
 //= require_tree .
