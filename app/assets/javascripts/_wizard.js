@@ -1,3 +1,6 @@
+// email regex
+var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;		
+
 // Add wave to btns
 function addWave(el){
 	$(el).addClass('waves-effect');
@@ -23,8 +26,6 @@ $('.the-wizard').stepy({
 		fieldLabel = field.prev('label').html().toLowerCase(),
 		fieldValue = field.val(),
 		errorMsg = '';		
-		// email variables
-		emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;		
 		// Validation on next
 	    if (fieldValue.length <= 2){
 	    	// field length validation	    	
@@ -50,3 +51,54 @@ $('.the-wizard').stepy({
 	}
 });					
 
+
+
+$('.the-wizard').submit(function(e){
+	var name = $('#post_full_name').val(),
+	email = $('#post_email_address').val(),
+	birthday = $('#post_dob').val(),
+	image = $('#post_image_url').val(),
+	video = $('#post_video_url').val(),
+	bDate = birthday,
+	bDay = +new Date(bDate),
+    age = (Date.now() - bDay) / (31557600000);
+	// name
+	if (name.length <= 2){
+		errorMsg = 'Your name must be longer than that.';
+		Materialize.toast(errorMsg, 5000, 'red darken-4');
+    	return false;
+    	e.preventDefault();
+	// email
+	} else if (!emailRegex.test(email)) {
+		errorMsg = 'Your email address must be valid.';
+		Materialize.toast(errorMsg, 5000, 'red darken-4');
+    	return false;
+    	e.preventDefault();
+	} else if (email.length <= 2){
+		errorMsg = 'Your email address must be longer than that.';
+		Materialize.toast(errorMsg, 5000, 'red darken-4');
+    	return false;
+    	e.preventDefault();
+	// birthday
+	} else if (birthday.length <= 2){
+		errorMsg = 'Your date of birth must be longer than that.';
+		Materialize.toast(errorMsg, 5000, 'red darken-4');
+    	return false;
+    	e.preventDefault();
+	} else if (age <13){
+        errorMsg = 'Sorry, but you are not eligible for this sweepstakes.';
+		Materialize.toast(errorMsg, 5000, 'red darken-4');
+        return false;	
+        e.preventDefault();	
+	} else if(video.length <= 2){
+		errorMsg = 'Your video upload must be longer than that.';
+		Materialize.toast(errorMsg, 5000, 'red darken-4');
+    	return false;
+    	e.preventDefault();		
+	} else if(image.length <= 2){
+		errorMsg = 'Your image upload must be longer than that.';
+		Materialize.toast(errorMsg, 5000, 'red darken-4');
+    	return false;
+    	e.preventDefault();	
+	}
+});
