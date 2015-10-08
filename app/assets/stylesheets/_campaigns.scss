@@ -45,6 +45,10 @@
 	margin-top: 7%;
 }
 // Modal Video Queries
+.feed-vid{
+	width: 100% !important;
+	height: auto !important;
+}
 @media(min-width: 640px){
 	.modal-video{
 		min-height: 480px;
@@ -71,4 +75,8 @@
 .modal-content .vjs-fullscreen-control{
 	visibility: hidden;
 	width: 30px;
+}
+// Hide tabs on wizard
+ul[role="tablist"] {
+    display: none;
 }

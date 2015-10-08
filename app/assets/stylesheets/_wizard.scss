@@ -1,0 +1,20 @@
+.hidden-label{
+	display: none;
+}
+fieldset{
+	border: transparent;
+}
+.wizard-desc{
+	margin-bottom: 40px;
+}
+.stepy-header{
+	display: none;
+}
+.stepy-step { 
+	clear: left;		
+}
+.button-back {
+	float: left
+}
+.button-next,
+.stepy-navigator input[type="submit"] { float: right }

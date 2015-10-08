@@ -1,19 +1,19 @@
 <% @posts.each do |post| %>
 	<% if post.image_url? %>
-		<div class="col l3">
+		<div class="col l3 m3 s4 xs4">
 			<div class="card hoverable">
 				<div class="card-image">
-					<a class="modal-trigger" href="<%= "#post-#{post.id}" %>">
+					<a class="feed-modal-trigger" href="<%= "#post-#{post.id}" %>">
 						<img src="<%= post.image_url.thumb.url %>">
 					</a>
 				</div>
 			</div>
 		</div>
 	<% elsif post.video_url? %>
-		<div class="col l3">
+		<div class="col l3 m3 s4 xs4">
 			<div class="card hoverable">
 				<div class="card-image vid-card">
-					<a class="modal-trigger" href="<%= "#post-#{post.id}" %>">
+					<a class="feed-modal-trigger" href="<%= "#post-#{post.id}" %>">
 						<img class="vid-thumb" src="<%= post.video_url.thumb.url %>">
 					</a>
 				</div>
@@ -21,7 +21,7 @@
 		</div>
 	<% end %>
 <% end %>
-<div class="col l12 center-align">
+<div class="col l12 m12 s12 xs12 center-align">
 	<%= will_paginate @posts %>
 </div>
 <%= render 'campaigns/postmodals' %>
