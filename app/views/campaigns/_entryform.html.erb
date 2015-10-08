@@ -28,8 +28,9 @@
 	        	<h5>Upload A Photo Or Video</h5>
 	        	<p class="wizard-desc">Use your camera to upload a photo or a video!</p>
 				<div class="file-field input-field col s12">
-					<div class="btn grey darken-4">
+					<div class="btn grey darken-4">						
 						<span>IMAGE</span>
+						<label class="hidden-label">image upload</label>
 						<%= f.file_field :image_url, :accept => "image/*", :capture => "camera" %>
 						<%= f.hidden_field :image_url_cache %>
 					</div>
@@ -38,8 +39,9 @@
 					</div>				
 				</div>
 				<div class="file-field input-field col s12">
-					<div class="btn grey darken-4">
+					<div class="btn grey darken-4">						
 						<span>VIDEO</span>
+						<label class="hidden-label">image upload</label>
 						<%= f.file_field :video_url, :accept => "video/*", :capture => "camera" %>
 					</div>
 					<div class="file-path-wrapper">				

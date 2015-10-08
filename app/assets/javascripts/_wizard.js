@@ -24,9 +24,9 @@ $('.the-wizard').stepy({
 		// email variables
 		emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;		
 		// Validation on next
-	    if (fieldValue.length <= 1){
+	    if (fieldValue.length <= 2){
 	    	// field length validation
-	    	alert('Your '+fieldLabel+' must be longer than that.');
+	    	alert('Your '+fieldLabel+'\'s must be longer than that.');
 	    	return false;
     	// Email validation
 	    } else if (fieldLabel == 'email address' && !emailRegex.test(fieldValue)){
