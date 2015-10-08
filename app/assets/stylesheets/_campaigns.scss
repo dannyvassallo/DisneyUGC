@@ -76,3 +76,7 @@
 	visibility: hidden;
 	width: 30px;
 }
+// Hide tabs on wizard
+ul[role="tablist"] {
+    display: none;
+}

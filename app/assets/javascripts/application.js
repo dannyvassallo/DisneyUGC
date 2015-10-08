@@ -15,4 +15,6 @@
 //= require materialize-sprockets
 //= require video
 //= require _pagination
+//= require _jquery.stepy
+//= require _wizard
 //= require_tree .
