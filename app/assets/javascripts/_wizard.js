@@ -12,5 +12,17 @@ $(function(){
 });
 
 // init wizard
-$('.the-wizard').stepy({ description: false });					
+$('.the-wizard').stepy({ 
+	description: false,
+	transition: 'fade',
+	next: function(index) {	
+		var field = $(this).find('input[type=file],input[type=email],input[type=text],textarea,select').filter(':visible:first'),
+		fieldId = field.attr('id'),
+		fieldValue = field.val();			
+	    if (fieldValue.length <= 1){
+	    	alert('NO WAY');
+	    	return false;
+	    } 
+	}
+});					
 
