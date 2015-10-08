@@ -22,10 +22,14 @@ class Post < ActiveRecord::Base
 	end
 
 	# age
-	def age
-	  user_age = (Time.now.to_s(:number).to_i - dob.to_time.to_s(:number).to_i)/10e9.to_i
-	  if user_age < 13
-	  	errors.add(:dob, "Sorry, you aren't old enough to use this site.")
-	  end
+	def age				
+		if dob.blank?
+			errors.add(:dob, "Can't be blank.")		
+		else
+			user_age = (Time.now.to_s(:number).to_i - dob.to_time.to_s(:number).to_i)/10e9.to_i
+			if user_age < 13				
+				errors.add(:dob, "Sorry, you aren't old enough to use this site.")		
+			end
+		end
 	end
 end
