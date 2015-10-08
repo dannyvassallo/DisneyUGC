@@ -29,9 +29,27 @@ $('.the-wizard').stepy({
 		// Validation on next
 	    if (fieldValue.length <= 2){
 	    	// field length validation	    	
-			errorMsg = 'Your '+fieldLabel+' must be longer than that.';
-			Materialize.toast(errorMsg, 5000, 'red darken-4');
-	    	return false;
+	    	if(fieldId == 'post_image_url'){
+	    		if($('#post_video_url').val().length >= 2){
+	    			return true;
+	    		} else {
+					errorMsg = 'Your filename must be longer than that.';
+					Materialize.toast(errorMsg, 5000, 'red darken-4');
+			    	return false;
+	    		}
+	    	} else if(fieldId == 'post_video_url'){
+	    		if($('#post_image_url').val().length >= 2){
+	    			return true;
+	    		} else {
+					errorMsg = 'Your filename must be longer than that.';
+					Materialize.toast(errorMsg, 5000, 'red darken-4');
+			    	return false;
+	    		}
+	    	} else {
+		    	errorMsg = 'Your '+fieldLabel+' must be longer than that.';
+				Materialize.toast(errorMsg, 5000, 'red darken-4');
+		    	return false;	
+	    	} 	
     	// Email validation
 	    } else if (fieldLabel == 'email address' && !emailRegex.test(fieldValue)){
 	    	errorMsg = 'Your '+fieldLabel+' must be valid.';
@@ -52,7 +70,7 @@ $('.the-wizard').stepy({
 });					
 
 
-
+// VALIDATION FOR ON SUBMIT
 $('.the-wizard').submit(function(e){
 	var name = $('#post_full_name').val(),
 	email = $('#post_email_address').val(),
@@ -91,14 +109,23 @@ $('.the-wizard').submit(function(e){
         return false;	
         e.preventDefault();	
 	} else if(video.length <= 2){
-		errorMsg = 'Your video upload must be longer than that.';
-		Materialize.toast(errorMsg, 5000, 'red darken-4');
-    	return false;
-    	e.preventDefault();		
+		if(image.length >= 2){
+			return true
+		} else {
+			errorMsg = 'Your filename must be longer than that.';
+			Materialize.toast(errorMsg, 5000, 'red darken-4');
+	    	return false;
+	    	e.preventDefault();	
+		}
+
 	} else if(image.length <= 2){
-		errorMsg = 'Your image upload must be longer than that.';
-		Materialize.toast(errorMsg, 5000, 'red darken-4');
-    	return false;
-    	e.preventDefault();	
+		if(video.length >= 2){
+			return true
+		} else {
+			errorMsg = 'Your filename must be longer than that.';
+			Materialize.toast(errorMsg, 5000, 'red darken-4');
+	    	return false;
+	    	e.preventDefault();	
+		}
 	}
 });
