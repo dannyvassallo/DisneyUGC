@@ -17,4 +17,5 @@
 //= require _pagination
 //= require _jquery.stepy
 //= require _wizard
+//= require _imgloader
 //= require_tree .
