@@ -10,7 +10,13 @@ function callAjax(img, postId, processing, url){
         if (data.image_url_processing){
           theSpinner(img, postClass);            
           setTimeout(callAjax(img, postId, processing, url), my_delay);
-        } else {                                     
+        } else if (data.video_url_processing){
+          theSpinner(img, postClass);            
+          setTimeout(callAjax(img, postId, processing, url), my_delay);
+        } else if (data.video_url.url != null && data.video_url.url.length > 0){
+          console.log(data.video_url);                                     
+          $('.'+postClass).attr('src', data.video_url.thumb.url);          
+        } else {
           $('.'+postClass).attr('src', data.image_url.thumb.url);          
         }
       },
