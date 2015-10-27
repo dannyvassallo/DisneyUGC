@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
 	resources :campaigns, except: [:show]
 
 	resources :campaigns, only: [:show] do
