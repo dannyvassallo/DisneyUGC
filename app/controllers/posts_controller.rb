@@ -44,15 +44,20 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])    
+    @user = current_user    
+    if user_admin(@user)     
+      @post = Post.find(params[:id])    
 
-    if @post.destroy
-      flash[:notice] = "The post was deleted successfully."
-      redirect_to @post
+      if @post.destroy
+        flash[:notice] = "The post was deleted successfully."
+        redirect_to @post
+      else
+        flash[:error] = "There was an error deleting the post. Please try again."
+        render :show
+      end    
     else
-      flash[:error] = "There was an error deleting the post. Please try again."
-      render :show
-    end    
+      not_found
+    end
   end
 
   private
