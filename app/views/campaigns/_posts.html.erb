@@ -4,7 +4,7 @@
 			<div class="card hoverable">
 				<div class="card-image">
 					<a class="feed-modal-trigger" href="<%= "#post-#{post.id}" %>">
-						<img class="<%= "post-#{post.id}" %>" data-processing="<%= post.image_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.title %>" src="<%= post.image_url.thumb.url %>">
+						<img class="<%= "post-#{post.id}" %>" data-processing="<%= post.image_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.friendly_id %>" src="<%= post.image_url.thumb.url %>">
 					</a>
 				</div>
 			</div>
@@ -14,7 +14,7 @@
 			<div class="card hoverable">
 				<div class="card-image vid-card">
 					<a class="feed-modal-trigger" href="<%= "#post-#{post.id}" %>">
-						<img data-processing="<%= post.video_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.title %>" class="vid-thumb <%= "post-#{post.id}" %>" src="<%= post.video_url.thumb.url %>">
+						<img data-processing="<%= post.video_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.friendly_id %>" class="vid-thumb <%= "post-#{post.id}" %>" src="<%= post.video_url.thumb.url %>">
 					</a>
 				</div>
 			</div>
