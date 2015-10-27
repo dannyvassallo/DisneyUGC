@@ -1,6 +1,9 @@
 <% @posts.each do |post| %>
 	<% if post.image_url? %>
 		<div class="col l3 m3 s4 xs4">
+			<% if user_admin(current_user) %>
+				<%= link_to 'Destroy',  campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete %>
+			<% end %>
 			<div class="card hoverable">
 				<div class="card-image">
 					<a class="feed-modal-trigger" href="<%= "#post-#{post.id}" %>">
@@ -11,6 +14,9 @@
 		</div>
 	<% elsif post.video_url? %>
 		<div class="col l3 m3 s4 xs4">
+			<% if user_admin(current_user) %>
+				<%= link_to 'Destroy',  campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete %>		
+			<% end %>
 			<div class="card hoverable">
 				<div class="card-image vid-card">
 					<a class="feed-modal-trigger" href="<%= "#post-#{post.id}" %>">

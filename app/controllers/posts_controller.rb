@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   respond_to :html, :js
+  include ApplicationHelper
 
   def index
     @posts = Post.all
@@ -47,17 +48,19 @@ class PostsController < ApplicationController
     @user = current_user    
     if user_admin(@user)     
       @post = Post.find(params[:id])    
+      @campaign = @post.campaign
 
       if @post.destroy
         flash[:notice] = "The post was deleted successfully."
-        redirect_to @post
+        redirect_to @campaign
       else
         flash[:error] = "There was an error deleting the post. Please try again."
-        render :show
+        redirect_to @campaign
       end    
     else
       not_found
     end
+
   end
 
   private
