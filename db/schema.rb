@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006161527) do
+ActiveRecord::Schema.define(version: 20151026164906) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "title"
@@ -60,12 +60,14 @@ ActiveRecord::Schema.define(version: 20151006161527) do
   create_table "posts", force: :cascade do |t|
     t.string   "image_url"
     t.string   "video_url"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "campaign_id"
     t.string   "dob"
     t.string   "full_name"
     t.string   "email_address"
+    t.boolean  "video_url_processing", default: false, null: false
+    t.boolean  "image_url_processing", default: false, null: false
   end
 
 end

@@ -6,6 +6,7 @@ $(function() {
     $.getScript(this.href).done(function(){     
 		$('.feed-vid').each(function(){						
 			videojs(this);
+      imgloader();
 		});
     });
     return false;

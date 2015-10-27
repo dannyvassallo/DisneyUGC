@@ -3,12 +3,13 @@
 		<div class="row">
 			<div class="col l10 offset-l1 m12 s12">
 				<div id="campaign-feature" class="card large hoverable">
-					<div class="card-image">
-						<% if @campaign.feature? %>
-							<%= image_tag( @campaign.feature.url ) %>
-						<% elsif @campaign.video? %>
-							<%= videojs_rails sources: { mp4: "#{@campaign.video.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", class: 'vjs-big-play-centered primary-player' %>						
-						<% end %>	
+					<% if @campaign.feature? %>
+					<div id="feature" class="card-image center-card-image">
+						<%= image_tag( @campaign.feature.url ) %>
+					<% elsif @campaign.video? %>
+					<div id="feature" class="card-image">
+						<%= videojs_rails sources: { mp4: "#{@campaign.video.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", class: 'vjs-big-play-centered primary-player' %>						
+					<% end %>	
 						<span class="card-title campaign-title"><%= @campaign.title %></span>					
 					</div>
 					<div class="card-content">
@@ -37,5 +38,6 @@
 			<img src="https://s3.amazonaws.com/rdugc/assets/purpleabstract.jpg">
 		</div>
 	</div>		
+	
 </main>
 <%= render 'campaigns/entryform' %>
