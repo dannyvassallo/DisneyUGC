@@ -2,7 +2,12 @@
 	<% if post.image_url? %>
 		<div class="col l3 m3 s4 xs4">
 			<% if user_admin(current_user) %>
-				<%= link_to 'Destroy',  campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete %>
+				<%= link_to campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete, class: 'post-delete' do %>
+					<span class="fa-stack fa-lg circle hoverable z-depth-1">
+					  <i class="fa fa-circle fa-stack-2x red-text"></i>
+					  <i class="fa fa-times fa-stack-1x white-text"></i>
+					</span>					
+				<% end %>
 			<% end %>
 			<div class="card hoverable">
 				<div class="card-image">
@@ -15,7 +20,12 @@
 	<% elsif post.video_url? %>
 		<div class="col l3 m3 s4 xs4">
 			<% if user_admin(current_user) %>
-				<%= link_to 'Destroy',  campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete %>		
+				<%= link_to campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete, class: 'post-delete' do %>
+					<span class="fa-stack fa-lg circle hoverable z-depth-1">
+					  <i class="fa fa-circle fa-stack-2x red-text"></i>
+					  <i class="fa fa-times fa-stack-1x white-text"></i>
+					</span>					
+				<% end %>
 			<% end %>
 			<div class="card hoverable">
 				<div class="card-image vid-card">
