@@ -49,18 +49,16 @@ class PostsController < ApplicationController
     if user_admin(@user)     
       @post = Post.find(params[:id])    
       @campaign = @post.campaign
-
-      if @post.destroy
-        flash[:notice] = "The post was deleted successfully."
-        redirect_to @campaign
-      else
-        flash[:error] = "There was an error deleting the post. Please try again."
-        redirect_to @campaign
-      end    
+      @post.destroy
+      respond_to do |format|
+        format.html { redirect_to campaign_path(@campaign) }
+        format.json { head :no_content }
+        format.js   { render :layout => false }
+      end
     else
       not_found
     end
-    
+
   end
 
   private
