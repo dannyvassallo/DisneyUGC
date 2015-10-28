@@ -1,6 +1,6 @@
 <% @posts.each do |post| %>
 	<% if post.image_url? %>
-		<div class="col l3 m3 s4 xs4">
+		<div class="col l3 m3 s4 xs4 entry-thumb">
 			<% if user_admin(current_user) %>
 				<%= link_to campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete, class: 'post-delete' do %>
 					<span class="fa-stack fa-lg circle hoverable z-depth-1">
@@ -18,7 +18,7 @@
 			</div>
 		</div>
 	<% elsif post.video_url? %>
-		<div class="col l3 m3 s4 xs4">
+		<div class="col l3 m3 s4 xs4 entry-thumb">
 			<% if user_admin(current_user) %>
 				<%= link_to campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete, class: 'post-delete' do %>
 					<span class="fa-stack fa-lg circle hoverable z-depth-1">

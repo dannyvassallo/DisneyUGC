@@ -1,8 +1,17 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.post-delete{
+// Entries
+
+.entry-thumb{
+  position: relative;
   span{
-    border-color: black;
+    border: 4px solid #8B1A1A;
+    i{
+      margin-top: -3.8px;
+      margin-left: -0.8px;
+    }
+  }
+  .post-delete{    
+    position: absolute;
+    right: 0;
+    z-index: 1001;
   }
 }

@@ -60,7 +60,7 @@ class PostsController < ApplicationController
     else
       not_found
     end
-
+    
   end
 
   private
