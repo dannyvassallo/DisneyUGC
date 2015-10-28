@@ -4,7 +4,7 @@
 			<% if user_admin(current_user) %>
 				<%= link_to campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete, class: 'post-delete' do %>
 					<span class="fa-stack fa-lg circle hoverable z-depth-1">
-					  <i class="fa fa-circle fa-stack-2x red-text"></i>
+					  <i class="fa fa-circle fa-stack-2x red-text text-darken-4"></i>
 					  <i class="fa fa-times fa-stack-1x white-text"></i>
 					</span>					
 				<% end %>
@@ -22,7 +22,7 @@
 			<% if user_admin(current_user) %>
 				<%= link_to campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete, class: 'post-delete' do %>
 					<span class="fa-stack fa-lg circle hoverable z-depth-1">
-					  <i class="fa fa-circle fa-stack-2x red-text"></i>
+					  <i class="fa fa-circle fa-stack-2x red-text text-darken-4"></i>
 					  <i class="fa fa-times fa-stack-1x white-text"></i>
 					</span>					
 				<% end %>
