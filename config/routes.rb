@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end  
   # END CUSTOM DEVISE ROUTES #
   scope "/admin" do
-    resources :users
+    resources :users, except: [:show]
   end
   
   resources :campaigns, except: [:show]
