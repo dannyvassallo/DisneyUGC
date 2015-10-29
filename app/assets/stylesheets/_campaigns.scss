@@ -111,8 +111,8 @@ ul[role="tablist"] {
 }
 
 video {
-  width: 100%    !important;
-  height: auto   !important;
+  width: 100% !important;
+  height: auto !important;
   max-height: 720px;
 }
 
@@ -130,4 +130,23 @@ video {
 
 .secondary-content.edit{
   right: 55px !important;
+}
+
+.secondary-content{
+  .fa-stack-2x{
+    @extend .grey-text;
+    @extend .text-darken-4;
+  }
+}
+
+li.collection-item.avatar{
+  a{
+    @extend .grey-text;
+    @extend .text-darken-4;
+  }
+  p{
+    max-width: 75%;
+    @extend .grey-text;
+    @extend .text-darken-4;
+  }
 }
