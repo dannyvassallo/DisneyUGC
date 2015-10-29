@@ -1,6 +1,6 @@
 $(function() {
   $(".sort_paginate_ajax").on("click", ".pagination a", function(){    
-  	imgloader().delay(1000);
+  	imgloader();
     $('.feed-vid').each(function(){			
   		videojs(this).dispose();
   	});
