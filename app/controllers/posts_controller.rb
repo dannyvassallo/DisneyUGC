@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   respond_to :html, :js
+  include ApplicationHelper
 
   def index
     @posts = Post.all
@@ -44,15 +45,20 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])    
-
-    if @post.destroy
-      flash[:notice] = "The post was deleted successfully."
-      redirect_to @post
+    @user = current_user    
+    if user_admin(@user)     
+      @post = Post.find(params[:id])    
+      @campaign = @post.campaign
+      @post.destroy
+      respond_to do |format|
+        format.html { redirect_to campaign_path(@campaign) }
+        format.json { head :no_content }
+        format.js   { render :layout => false }
+      end
     else
-      flash[:error] = "There was an error deleting the post. Please try again."
-      render :show
-    end    
+      not_found
+    end
+
   end
 
   private

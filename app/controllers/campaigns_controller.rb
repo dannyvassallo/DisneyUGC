@@ -1,8 +1,14 @@
 class CampaignsController < ApplicationController
   respond_to :html, :js
+  include ApplicationHelper
 
   def index
-    @campaigns = Campaign.all
+    @user = current_user    
+    if user_admin(@user)
+      @campaigns = Campaign.all
+    else
+      not_found
+    end
   end
 
   def show
@@ -11,50 +17,73 @@ class CampaignsController < ApplicationController
   end
 
   def new
-    @campaign = Campaign.new
+    @user = current_user    
+    if user_admin(@user)
+      @campaign = Campaign.new
+    else
+      not_found
+    end
   end
 
   def create
-    @campaign = Campaign.new(campaign_params)
-    title = @campaign.title
+    @user = current_user    
+    if user_admin(@user)    
+      @campaign = Campaign.new(campaign_params)
+      title = @campaign.title
 
-    if @campaign.save
-      flash[:notice] = "Your new campaign '#{title}' was created!"
-      redirect_to campaigns_path
+      if @campaign.save
+        flash[:notice] = "Your new campaign '#{title}' was created!"
+        redirect_to campaigns_path
+      else
+        flash[:error] = "There was an error creating the campaign. Please try again."
+        render :new
+      end 
     else
-      flash[:error] = "There was an error creating the campaign. Please try again."
-      render :new
-    end 
+      not_found
+    end      
   end
 
   def edit
-    @campaign = Campaign.friendly.find(params[:id])
+    @user = current_user    
+    if user_admin(@user)      
+      @campaign = Campaign.friendly.find(params[:id])
+    else
+      not_found
+    end       
   end
 
   def update
-    @campaign = Campaign.friendly.find(params[:id])
-    title = @campaign.title
+    @user = current_user    
+    if user_admin(@user)        
+      @campaign = Campaign.friendly.find(params[:id])
+      title = @campaign.title
 
-    if @campaign.update_attributes(campaign_params)
-      flash[:notice] = "The campaign '#{title}' was updated!"
-      redirect_to campaigns_path
+      if @campaign.update_attributes(campaign_params)
+        flash[:notice] = "The campaign '#{title}' was updated!"
+        redirect_to campaigns_path
+      else
+        flash[:error] = "There was an error updating the campaign. Please try again."
+        render :edit
+      end 
     else
-      flash[:error] = "There was an error updating the campaign. Please try again."
-      render :edit
-    end    
+      not_found
+    end           
   end
 
   def destroy
-    @campaign = Campaign.friendly.find(params[:id])
-    title = @campaign.title
+    @user = current_user    
+    if user_admin(@user)    
+      @campaign = Campaign.friendly.find(params[:id])
+      title = @campaign.title
 
-    if @campaign.destroy
-      flash[:notice] = "The campaign '#{title}' was deleted successfully."
-      redirect_to @campaign
-    else
-      flash[:error] = "There was an error deleting the campaign '#{title}'. Please try again."
-      render :show
-    end    
+      if @campaign.destroy
+        flash[:notice] = "The campaign '#{title}' was deleted successfully."
+        redirect_to @campaign
+      else
+        flash[:error] = "There was an error deleting the campaign '#{title}'. Please try again."
+        render :show
+      end    
+    end
   end
 
   private
