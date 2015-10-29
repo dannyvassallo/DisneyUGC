@@ -3,7 +3,12 @@ class AdminController < ApplicationController
   include ApplicationHelper
 
   def index
-    @users = User.all
+    @user = current_user    
+    if user_admin(@user)
+      @users = User.all
+    else
+      not_found
+    end        
   end
 
 end

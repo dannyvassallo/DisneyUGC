@@ -5,8 +5,12 @@ Rails.application.routes.draw do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
     get "register", to: "devise/registrations#new"
-  end
+  end  
   # END CUSTOM DEVISE ROUTES #
+  scope "/admin" do
+    resources :users
+  end
+  
   resources :campaigns, except: [:show]
 
   resources :campaigns, only: [:show] do
