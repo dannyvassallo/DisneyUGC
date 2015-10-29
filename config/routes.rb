@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:show]
+  resources :admin, only: [:index]
 
   namespace :api do
     namespace :v1 do
