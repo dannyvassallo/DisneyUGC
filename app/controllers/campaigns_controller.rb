@@ -13,6 +13,12 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.friendly.find(params[:id])
+    @user = current_user    
+    unless @campaign.live
+      unless user_admin(@user)
+        not_found
+      end
+    end
     @posts = @campaign.posts.paginate(:page => params[:page], :per_page => 12).order('created_at DESC')
   end
 
@@ -89,7 +95,7 @@ class CampaignsController < ApplicationController
   private
 
   def campaign_params
-    params.require(:campaign).permit(:title, :description, :call_to_action, :feature,:feature_cache, :video, :video_cache)
+    params.require(:campaign).permit(:title, :description, :call_to_action, :feature,:feature_cache, :video, :video_cache, :live, :slug)
   end
 
 end

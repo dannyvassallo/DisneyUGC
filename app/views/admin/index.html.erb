@@ -4,9 +4,15 @@
       <div class="col l12">
         <h1>Create an Administrator</h1>
       </div>
+    </div>      
+    <%= render 'search' %>      
+    <div class="row">
       <div class="col l12">
         <%= render 'usertable' %>
       </div>
     </div>
+    <div class="col l12 m12 s12 xs12 center-align">
+      <%= will_paginate @users %>
+    </div>    
   </div>
 </main>

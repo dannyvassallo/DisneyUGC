@@ -19,10 +19,19 @@
 						<%= image_tag "missing-thumb.png", :alt => "missing thumbnail", class: 'circle' %>
 					<% end %>
 					<span class="title"><b><%= campaign.title  %></b></span>
-					<p><%= campaign.description %></p>
+					<p><%= "#{root_url.chomp('/')}#{url_for campaign}" %></p>
 					<%= link_to campaign_path(campaign), data: {confirm: 'Are you sure?'}, method: :delete, class: 'secondary-content' do %>
-						<i class="fa fa-trash"></i>
+						<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-trash fa-stack-1x fa-inverse"></i>
+						</span>
 					<% end %>
+					<%= link_to edit_campaign_path(campaign), class: 'secondary-content edit' do %>
+						<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+						</span>
+					<% end %>					
 				<% end %>
 			</li>
 		<% end %>

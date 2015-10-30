@@ -98,7 +98,7 @@ ul[role="tablist"] {
 }
 
 
-// feature card image
+// feature card image, Edit card
 .center-card-image{
   position: absolute;
   top: 0;
@@ -110,9 +110,9 @@ ul[role="tablist"] {
   align-items: center; /* add to align vertical */  
 }
 
-video {
-  width: 100%    !important;
-  height: auto   !important;
+#feature video{
+  width: 100% !important;
+  height: auto !important;
   max-height: 720px;
 }
 
@@ -124,4 +124,29 @@ video {
     .parallax-container{
       height: 320px;
     }
+}
+
+// edit campaign
+
+.secondary-content.edit{
+  right: 55px !important;
+}
+
+.secondary-content{
+  .fa-stack-2x{
+    @extend .grey-text;
+    @extend .text-darken-4;
+  }
+}
+
+li.collection-item.avatar{
+  a{
+    @extend .grey-text;
+    @extend .text-darken-4;
+  }
+  p{
+    max-width: 75%;
+    @extend .grey-text;
+    @extend .text-darken-4;
+  }
 }
