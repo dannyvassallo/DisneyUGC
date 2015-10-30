@@ -23,8 +23,14 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col l10 offset-l1">			
-				<h5>Recent Entries</h5>
+			<div class="col l10 offset-l1">
+				<% if user_admin(@user) && !@campaign.live %>
+					<h5>Recent Entries (NOT ACCEPTING ENTRIES!)</h5>
+				<% elsif user_admin(@user) && @campaign.live %>			
+					<h5>Recent Entries (LIVE!)</h5>
+				<% else %>
+					<h5>Recent Entries</h5>
+				<% end %>
 			</div>
 			<div class="col l10 offset-l1">			
 				<div class = "sort_paginate_ajax">
