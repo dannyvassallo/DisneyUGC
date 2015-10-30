@@ -13,7 +13,7 @@
 						<%= image_tag( @campaign.feature.url ) %>
 					<% elsif @campaign.video? %>
 					<div id="feature" class="card-image">
-						<%= videojs_rails sources: { mp4: "#{@campaign.video.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", class: 'vjs-big-play-centered primary-player' %>						
+						<%= videojs_rails sources: { mp4: "#{@campaign.video.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", poster: "#{@campaign.video.poster.url}", class: 'vjs-big-play-centered primary-player' %>					
 					<% end %>	
 						<span class="card-title campaign-title"><%= @campaign.title %></span>					
 					</div>

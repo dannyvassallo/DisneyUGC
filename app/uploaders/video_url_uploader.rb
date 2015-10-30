@@ -6,13 +6,15 @@ class Video_urlUploader < CarrierWave::Uploader::Base
 	include CarrierWave::Video	
 	include CarrierWave::Video::Thumbnailer
 	include ::CarrierWave::Backgrounder::Delay
+	include CarrierWave::MiniMagick
 
 	storage :fog
 
 	process :encode_video=> [:mp4, audio_codec: "aac",:custom => "-strict experimental -q:v 5 -preset slow -g 30"]
 
 	version :thumb do
-		process thumbnail: [{format: 'png', quality: 10, size: 320, strip: false, square: true, logger: Rails.logger}]
+		process thumbnail: [{format: 'png', quality: 10, size: 320, strip: false, logger: Rails.logger}]
+		process :resize_to_fill => [320, 320]
 		def full_filename for_file
 			png_name for_file, version_name
 		end
