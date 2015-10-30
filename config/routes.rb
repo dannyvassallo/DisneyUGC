@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :users, except: [:show]
   end
 
-  resources :campaigns, path: ""
+  resources :campaigns, path: "", only: [:show]
   resources :campaigns, except: [:show]
   resources :campaigns, only: [:show] do
     resources :posts, only: [:create, :destroy]
