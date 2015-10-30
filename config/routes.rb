@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'welcome#index'
   # BEGIN CUSTOM DEVISE ROUTES #
   devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" } 
   devise_scope :user do
@@ -11,12 +12,6 @@ Rails.application.routes.draw do
     resources :users, except: [:show]
   end
 
-  resources :campaigns, path: "", only: [:show]
-  resources :campaigns, except: [:show]
-  resources :campaigns, only: [:show] do
-    resources :posts, only: [:create, :destroy]
-  end
-
   resources :posts, only: [:show]
   resources :admin, only: [:index]
 
@@ -27,6 +22,10 @@ Rails.application.routes.draw do
       end
     end
   end
+  
+  resources :campaigns, only: [:index]
+  resources :campaigns, path: '', except: [:index] do
+    resources :posts, only: [:create, :destroy]
+  end
 
-  root to: 'welcome#index'
 end
