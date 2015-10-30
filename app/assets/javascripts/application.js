@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require zeroclipboard
 //= require materialize-sprockets
 //= require video
 //= require _pagination
@@ -19,4 +20,5 @@
 //= require _wizard
 //= require _imgloader
 //= require _video-resizer
+//= require _copy-url
 //= require_tree .

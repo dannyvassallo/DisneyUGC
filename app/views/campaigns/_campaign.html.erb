@@ -18,8 +18,9 @@
 					<% else %>			
 						<%= image_tag "missing-thumb.png", :alt => "missing thumbnail", class: 'circle' %>
 					<% end %>
-					<span class="title"><b><%= campaign.title  %></b></span>
-					<p><%= "#{root_url.chomp('/')}#{url_for campaign}" %></p>
+					<span class="title"><b>Title:</b> <%= campaign.title  %></span>
+					<p><b>URL:</b> <%= "#{root_url.chomp('/')}#{url_for campaign}" %><p>
+					<p><b>Entries:</b> <%= campaign.posts.count %><p>
 					<%= link_to campaign_path(campaign), data: {confirm: 'Are you sure?'}, method: :delete, class: 'secondary-content' do %>
 						<span class="fa-stack fa-lg">
 							<i class="fa fa-circle fa-stack-2x"></i>
@@ -31,7 +32,13 @@
 							<i class="fa fa-circle fa-stack-2x"></i>
 							<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 						</span>
-					<% end %>					
+					<% end %>
+					<a class="copy secondary-content" data-clipboard-text="<%= "#{root_url.chomp('/')}#{url_for campaign}" %>">
+						<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-clipboard fa-stack-1x fa-inverse"></i>
+						</span>
+					</a>
 				<% end %>
 			</li>
 		<% end %>

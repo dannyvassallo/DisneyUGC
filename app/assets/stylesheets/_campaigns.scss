@@ -150,3 +150,9 @@ li.collection-item.avatar{
     @extend .text-darken-4;
   }
 }
+
+//copy link
+.copy{
+  right: 94px !important;
+  cursor: pointer;
+}
