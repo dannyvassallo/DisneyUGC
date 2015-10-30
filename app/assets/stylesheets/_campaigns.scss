@@ -98,7 +98,7 @@ ul[role="tablist"] {
 }
 
 
-// feature card image
+// feature card image, Edit card
 .center-card-image{
   position: absolute;
   top: 0;
@@ -110,7 +110,7 @@ ul[role="tablist"] {
   align-items: center; /* add to align vertical */  
 }
 
-video {
+#feature video{
   width: 100% !important;
   height: auto !important;
   max-height: 720px;
