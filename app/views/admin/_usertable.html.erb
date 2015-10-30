@@ -1,34 +1,43 @@
   <table class="striped">
     <thead>
       <tr>
-          <th data-field="id">Email Address</th>
-          <th data-field="name">Is Admin?</th>
-          <th data-field="name">Change Status</th>          
+        <th data-field="id">Email Address</th>
+        <th data-field="name">Is Admin?</th>
+        <th data-field="name">Change Status</th>          
       </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.email %></td>
-          <% if user.role == 'admin' %>
-            <td>Yes</td>
-          <% else %>
-            <td>No</td>
-          <% end %>
-          <td>
+      <% if @users.present? %>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
             <% if user.role == 'admin' %>
-              <%= simple_form_for(user) do |f| %>
-                <%= f.input :role, :as => :hidden, :input_html => { :value => "" } %>
-                <%= f.submit 'Revoke Admin', :class => 'btn' %>
-              <% end %> 
+              <td>Yes</td>
             <% else %>
-              <%= simple_form_for(user) do |f| %>
-                <%= f.input :role, :as => :hidden, :input_html => { :value => "admin" } %>
-                <%= f.submit 'Make Admin', :class => 'btn' %>
+              <td>No</td>
+            <% end %>
+            <td>
+              <% if user.role == 'admin' %>
+                <%= simple_form_for(user) do |f| %>
+                  <%= f.input :role, :as => :hidden, :input_html => { :value => "" } %>
+                  <%= f.submit 'Revoke Admin', :class => 'btn' %>
+                <% end %> 
+              <% else %>
+                <%= simple_form_for(user) do |f| %>
+                  <%= f.input :role, :as => :hidden, :input_html => { :value => "admin" } %>
+                  <%= f.submit 'Make Admin', :class => 'btn' %>
+                <% end %>  
               <% end %>  
-            <% end %>  
-          </td>
-        </tr>
-      <% end %>      
+            </td>
+          </tr>
+        <% end %>     
+      <% else %>     
+        <script>   
+            window.onload = function () {
+              var msg = "No user email address found containing the search terms \'<%= params[:search]%>\'";
+              Materialize.toast(msg, 5000, 'red darken-4');
+            }               
+        </script>
+      <% end %>     
     </tbody>
   </table>
