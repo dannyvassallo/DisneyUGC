@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   scope "/admin" do
     resources :users, except: [:show]
   end
-  
-  resources :campaigns, except: [:show]
 
+  resources :campaigns, path: ""
+  resources :campaigns, except: [:show]
   resources :campaigns, only: [:show] do
     resources :posts, only: [:create, :destroy]
   end

@@ -9,4 +9,8 @@ class Campaign < ActiveRecord::Base
 	validates_presence_of :title
 	validates_presence_of :description
 	validates_presence_of :call_to_action
+
+	def should_generate_new_friendly_id?
+	  title_changed?
+	end
 end
