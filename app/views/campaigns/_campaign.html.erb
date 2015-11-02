@@ -7,13 +7,21 @@
 						<% if campaign.video_processing? %>
 							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle' %>				
 						<% else %>
-							<%= image_tag campaign.video.thumb.url, class: 'circle' %>					
+							<% if campaign.live %>
+								<%= image_tag campaign.video.thumb.url, class: 'circle live-campaign' %>	
+							<% else %>
+								<%= image_tag campaign.video.thumb.url, class: 'circle dead-campaign' %>
+							<% end %>	
 						<% end %>
 					<% elsif campaign.feature? %>
 						<% if campaign.feature_processing? %>
 							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle' %>				
 						<% else %>
-							<%= image_tag campaign.feature.tiny.url, class: 'circle' %>
+							<% if campaign.live %>
+								<%= image_tag campaign.feature.tiny.url, class: 'circle live-campaign' %>	
+							<% else %>
+								<%= image_tag campaign.feature.tiny.url, class: 'circle dead-campaign' %>
+							<% end %>	
 						<% end %>				
 					<% else %>			
 						<%= image_tag "missing-thumb.png", :alt => "missing thumbnail", class: 'circle' %>

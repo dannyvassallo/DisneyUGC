@@ -66,7 +66,11 @@ class CampaignsController < ApplicationController
 
       if @campaign.update_attributes(campaign_params)
         flash[:notice] = "The campaign '#{title}' was updated!"
-        redirect_to campaigns_path
+        if @campaign.live_changed?
+          redirect_to campaign_path(@campaign)
+        else
+          redirect_to campaigns_path
+        end
       else
         flash[:error] = "There was an error updating the campaign. Please try again."
         render :edit

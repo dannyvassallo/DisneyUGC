@@ -1,5 +1,5 @@
 .notice {
-    @extend .green, .accent-4;
+    @extend .green, .darken-4;
 }
 
 .error-msg {
@@ -7,5 +7,5 @@
 }
 
 .alert {
-    @extend .yellow;
+    @extend .yellow, .darken-4;
 }

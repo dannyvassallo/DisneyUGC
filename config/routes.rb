@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :posts, only: [:show]
   resources :admin, only: [:index]
 
+  get 'get_posts' => 'posts#get_posts', :as => :get_posts
+  get 'slideshow' => 'posts#slideshow', :as => :slideshow
+  get 'random_winner' => 'posts#random_winner', :as => :random_winner
+
   namespace :api do
     namespace :v1 do
       resources :campaigns do
@@ -25,7 +29,7 @@ Rails.application.routes.draw do
   
   resources :campaigns, only: [:index]
   resources :campaigns, path: '', except: [:index] do
-    resources :posts, only: [:create, :destroy]
+    resources :posts, only: [:create, :destroy]    
   end
 
 end

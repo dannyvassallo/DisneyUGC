@@ -2,9 +2,44 @@ class PostsController < ApplicationController
   respond_to :html, :js
   include ApplicationHelper
 
-  def index
-    @posts = Post.all
+  def get_posts
+    @user = current_user    
+    if user_admin(@user)    
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      @posts = @campaign.posts.order('created_at DESC')
+      title = @campaign.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+      respond_to do |format|
+        format.html
+        format.csv { 
+          send_data @posts.to_csv,
+          :filename => "#{title}-entries-#{Date.today.to_s}"
+        }
+      end
+    else
+      not_found
+    end
   end
+
+  def random_winner  
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    @posts = @campaign.posts
+    random_winner = @posts.order_by_rand.first
+    random_winner_name = random_winner.full_name
+    random_winner_email = random_winner.email_address
+    flash[:notice] = "And the winner is... #{random_winner_name} | #{random_winner_email}!"            
+    redirect_to @campaign
+  end
+
+  def slideshow
+    @user = current_user    
+    if user_admin(@user)    
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      @posts = @campaign.posts.order_by_rand
+      render layout: "fullscreen-layout"
+    else
+      not_found
+    end
+  end  
 
   def show
     @post = Post.find(params[:id])
@@ -58,7 +93,6 @@ class PostsController < ApplicationController
     else
       not_found
     end
-
   end
 
   private

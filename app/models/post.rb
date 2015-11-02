@@ -32,4 +32,26 @@ class Post < ActiveRecord::Base
 			end
 		end
 	end
+
+	# to csv
+  def self.to_csv
+    attributes = %w{created_at full_name email_address image_path video_path}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |post|
+        csv << attributes.map{ |attr| post.send(attr) }
+      end
+    end
+  end
+
+  def image_path  	
+		self.image_url.url
+  end
+
+  def video_path
+		self.video_url.url
+  end  
+
 end
