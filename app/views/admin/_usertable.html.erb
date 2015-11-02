@@ -20,12 +20,12 @@
               <% if user.role == 'admin' %>
                 <%= simple_form_for(user) do |f| %>
                   <%= f.input :role, :as => :hidden, :input_html => { :value => "" } %>
-                  <%= f.submit 'Revoke Admin', :class => 'btn' %>
+                  <%= f.submit 'Revoke Admin', :class => 'btn red darken-4' %>
                 <% end %> 
               <% else %>
                 <%= simple_form_for(user) do |f| %>
                   <%= f.input :role, :as => :hidden, :input_html => { :value => "admin" } %>
-                  <%= f.submit 'Make Admin', :class => 'btn' %>
+                  <%= f.submit 'Make Admin', :class => 'btn green darken-4' %>
                 <% end %>  
               <% end %>  
             </td>
