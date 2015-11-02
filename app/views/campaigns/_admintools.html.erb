@@ -26,6 +26,9 @@
     <% end %>
     <%= link_to slideshow_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light orange darken-4' do %>
       <i class="fa fa-photo"></i> SLIDESHOW
-    <% end %>  
+    <% end %> 
+    <%= link_to random_winner_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light green darken-4' do %>
+      <i class="fa fa-trophy"></i> CHOOSE WINNER
+    <% end %>     
   </div>
 </div>

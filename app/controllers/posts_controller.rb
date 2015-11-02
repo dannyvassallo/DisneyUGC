@@ -20,6 +20,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def random_winner  
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    @posts = @campaign.posts
+    random_winner = @posts.order_by_rand.first
+    random_winner_name = random_winner.full_name
+    random_winner_email = random_winner.email_address
+    flash[:notice] = "And the winner is... #{random_winner_name} | #{random_winner_email}!"            
+    redirect_to @campaign
+  end
+
   def slideshow
     @user = current_user    
     if user_admin(@user)    
