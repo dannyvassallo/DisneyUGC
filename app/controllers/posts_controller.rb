@@ -2,18 +2,34 @@ class PostsController < ApplicationController
   respond_to :html, :js
   include ApplicationHelper
 
-  def get_posts  
-    @campaign = Campaign.friendly.find(params[:campaign_id])
-    @posts = @campaign.posts.order('created_at DESC')
-    title = @campaign.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
-    respond_to do |format|
-      format.html
-      format.csv { 
-        send_data @posts.to_csv,
-        :filename => "#{title}-entries-#{Date.today.to_s}"
-      }
+  def get_posts
+    @user = current_user    
+    if user_admin(@user)    
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      @posts = @campaign.posts.order('created_at DESC')
+      title = @campaign.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+      respond_to do |format|
+        format.html
+        format.csv { 
+          send_data @posts.to_csv,
+          :filename => "#{title}-entries-#{Date.today.to_s}"
+        }
+      end
+    else
+      not_found
     end
   end
+
+  def slideshow
+    @user = current_user    
+    if user_admin(@user)    
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      @posts = @campaign.posts
+      render layout: "fullscreen-layout"
+    else
+      not_found
+    end
+  end  
 
   def show
     @post = Post.find(params[:id])

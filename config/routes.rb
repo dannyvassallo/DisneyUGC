@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :admin, only: [:index]
 
   get 'get_posts' => 'posts#get_posts', :as => :get_posts
+  get 'slideshow' => 'posts#slideshow', :as => :slideshow
 
 
   namespace :api do
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
   
   resources :campaigns, only: [:index]
   resources :campaigns, path: '', except: [:index] do
-    resources :posts, only: [:create, :destroy]
+    resources :posts, only: [:create, :destroy]    
   end
 
 end

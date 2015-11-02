@@ -21,4 +21,5 @@
 //= require _imgloader
 //= require _video-resizer
 //= require _copy-url
+//= require _slideshowresize
 //= require_tree .

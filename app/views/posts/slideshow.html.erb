@@ -1,0 +1,17 @@
+<main>
+  <div id="slideshow" class="slider">
+    <ul class="slides">  
+      <% @posts.each do |post| %>
+        <% if post.image_url != nil %>
+          <li>
+            <img src="<%= post.image_url.url %>">
+            <div class="caption center-align">
+              <h3><%= post.campaign.title %></h3>
+              <h5>Submitted by: <%= post.full_name %></h5>                
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>          
+</main>

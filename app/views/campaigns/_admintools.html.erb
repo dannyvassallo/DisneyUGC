@@ -24,8 +24,8 @@
         <% end %>
       <% end %>     
     <% end %>
-    <%= link_to edit_campaign_path(@campaign), class: 'btn waves-effect waves-light orange darken-4' do %>
-      <i class="fa fa-picture-o"></i> <%= "#{@campaign.title} SLIDESHOW" %>
-    <% end %>    
+    <%= link_to slideshow_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light orange darken-4' do %>
+      <i class="fa fa-photo"></i> SLIDESHOW
+    <% end %>  
   </div>
 </div>
