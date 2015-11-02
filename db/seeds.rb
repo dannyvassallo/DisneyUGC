@@ -16,7 +16,7 @@ campaigns = Campaign.all
   post = Post.new(
       full_name: Faker::Name.name,
       email_address: Faker::Internet.email,
-      dob: Faker::Date.backward(900000),
+      dob: Faker::Date.backward(90000000000),
       image_url: File.open(Dir['app/assets/images/faker/*.jpg'].sample),
       campaign_id: @campaign.id
     )
