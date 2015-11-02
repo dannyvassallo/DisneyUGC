@@ -4,10 +4,14 @@ class PostsController < ApplicationController
 
   def get_posts  
     @campaign = Campaign.friendly.find(params[:campaign_id])
-    @posts = @campaign.posts.all
+    @posts = @campaign.posts.order('created_at DESC')
+    title = @campaign.title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
     respond_to do |format|
       format.html
-      format.csv { render text: @posts.to_csv }
+      format.csv { 
+        send_data @posts.to_csv,
+        :filename => "#{title}-entriess-#{Date.today.to_s}"
+      }
     end
   end
 
