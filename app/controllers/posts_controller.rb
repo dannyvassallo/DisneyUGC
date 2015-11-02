@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     @user = current_user    
     if user_admin(@user)    
       @campaign = Campaign.friendly.find(params[:campaign_id])
-      @posts = @campaign.posts
+      @posts = @campaign.posts.order_by_rand
       render layout: "fullscreen-layout"
     else
       not_found
