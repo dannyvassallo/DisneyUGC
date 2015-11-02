@@ -2,8 +2,13 @@ class PostsController < ApplicationController
   respond_to :html, :js
   include ApplicationHelper
 
-  def index
-    @posts = Post.all
+  def get_posts  
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    @posts = @campaign.posts.all
+    respond_to do |format|
+      format.html
+      format.csv { render text: @posts.to_csv }
+    end
   end
 
   def show
@@ -58,7 +63,6 @@ class PostsController < ApplicationController
     else
       not_found
     end
-
   end
 
   private

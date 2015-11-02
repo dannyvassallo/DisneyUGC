@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :posts, only: [:show]
   resources :admin, only: [:index]
 
+  get 'get_posts' => 'posts#get_posts', :as => :get_posts
+
+
   namespace :api do
     namespace :v1 do
       resources :campaigns do
