@@ -24,17 +24,7 @@
 		</div>
 		<% if user_admin(@user) %>
 			<!-- BEGIN ADMIN PANEL -->
-			<div class="row">
-				<div class="col l10 offset-l1 m12 s12">
-				  <%= link_to "DOWNLOAD ENTRIES", get_posts_path(campaign_id: @campaign.id, format: "csv"), class: 'btn waves-effect waves-light grey darken-4' %>
-					<a class="btn waves-effect waves-light grey darken-4">Edit Campaign</a>
-					<% if @campaign.live %>
-						<a class="btn waves-effect waves-light grey darken-4">End Campaign</a>
-					<% else %>					
-						<a class="btn waves-effect waves-light grey darken-4">Set Live</a>
-					<% end %>
-				</div>
-			</div>
+				<%= render 'admintools' %>
 			<!-- END ADMIN PANEL -->
 		<% end %>		
 		<div class="row">

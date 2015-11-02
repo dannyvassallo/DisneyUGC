@@ -10,7 +10,7 @@ class PostsController < ApplicationController
       format.html
       format.csv { 
         send_data @posts.to_csv,
-        :filename => "#{title}-entriess-#{Date.today.to_s}"
+        :filename => "#{title}-entries-#{Date.today.to_s}"
       }
     end
   end
