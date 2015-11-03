@@ -22,4 +22,5 @@
 //= require _video-resizer
 //= require _copy-url
 //= require _slideshowresize
+//= require _helpers
 //= require_tree .
