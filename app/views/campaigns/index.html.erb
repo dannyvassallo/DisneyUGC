@@ -1,12 +1,26 @@
 <main>
 	<div class="container">
-		<div class="col l12">
-			<h1>Campaigns</h1>
-		</div>		
+		<div class="row">
+			<div class="col l8">
+				<h1>Campaigns</h1>
+			</div>
+			<div class="col l4">			  
+			  <h1>
+					<div class="switch">
+					  <label>
+					    Help Off
+					    <input id="helpers" type="checkbox">
+					    <span id="helper-lever" class="lever"></span>
+					    Help On
+					  </label>
+					</div>			  
+			  </h1>				
+			</div>		
+		</div>
 		<div class="row">
 			<%= render partial: 'campaign' %>
 			<div class="col l12 m12 s12 xs 12 right-align">
-				<%= link_to new_campaign_path, class: 'btn-floating btn-large waves-effect waves-light grey darken-4' do %>
+				<%= link_to new_campaign_path, class: 'btn-floating btn-large waves-effect waves-light grey darken-4', :data => { :position => "bottom", :delay => "50", :tooltip => "Create a new Campaign" } do %>
 					<i class="material-icons">add</i>
 				<% end %>				
 			</div>

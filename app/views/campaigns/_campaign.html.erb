@@ -5,43 +5,43 @@
 				<%= link_to campaign_path(campaign) do %>
 					<% if campaign.video? %>
 						<% if campaign.video_processing? %>
-							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle' %>				
+							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle', :data => { :position => "bottom", :delay => "50", :tooltip => "Thumbnail is processing..." } %>				
 						<% else %>
 							<% if campaign.live %>
-								<%= image_tag campaign.video.thumb.url, class: 'circle live-campaign' %>	
+								<%= image_tag campaign.video.thumb.url, class: 'circle live-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign is LIVE!" } %>	
 							<% else %>
-								<%= image_tag campaign.video.thumb.url, class: 'circle dead-campaign' %>
+								<%= image_tag campaign.video.thumb.url, class: 'circle dead-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign is NOT live!" } %>
 							<% end %>	
 						<% end %>
 					<% elsif campaign.feature? %>
 						<% if campaign.feature_processing? %>
-							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle' %>				
+							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle', :data => { :position => "bottom", :delay => "50", :tooltip => "Thumbnail is processing..." } %>				
 						<% else %>
 							<% if campaign.live %>
-								<%= image_tag campaign.feature.tiny.url, class: 'circle live-campaign' %>	
+								<%= image_tag campaign.feature.tiny.url, class: 'circle live-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign is LIVE!" } %>	
 							<% else %>
-								<%= image_tag campaign.feature.tiny.url, class: 'circle dead-campaign' %>
+								<%= image_tag campaign.feature.tiny.url, class: 'circle dead-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign NOT live!" } %>
 							<% end %>	
 						<% end %>				
 					<% else %>			
 						<%= image_tag "missing-thumb.png", :alt => "missing thumbnail", class: 'circle' %>
 					<% end %>
-					<span class="title"><b>Title:</b> <%= campaign.title  %></span>
+					<span class="title" data-position="bottom" data-delay="50" data-tooltip="Visit <%= campaign.title%>"><b>Title:</b> <%= campaign.title  %></span>
 					<p><b>URL:</b> <%= "#{root_url.chomp('/')}#{url_for campaign}" %><p>
 					<p><b>Entries:</b> <%= campaign.posts.count %><p>
 					<%= link_to campaign_path(campaign), data: {confirm: 'Are you sure?'}, method: :delete, class: 'secondary-content' do %>
-						<span class="fa-stack fa-lg">
+						<span class="fa-stack fa-lg" data-position="bottom" data-delay="50" data-tooltip="Delete <%= campaign.title%>">
 							<i class="fa fa-circle fa-stack-2x"></i>
 							<i class="fa fa-trash fa-stack-1x fa-inverse"></i>
 						</span>
 					<% end %>
 					<%= link_to edit_campaign_path(campaign), class: 'secondary-content edit' do %>
-						<span class="fa-stack fa-lg">
+						<span class="fa-stack fa-lg" data-position="top" data-delay="50" data-tooltip="Edit <%= campaign.title%>">
 							<i class="fa fa-circle fa-stack-2x"></i>
 							<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 						</span>
 					<% end %>
-					<a class="copy secondary-content" data-clipboard-text="<%= "#{root_url.chomp('/')}#{url_for campaign}" %>">
+					<a class="copy secondary-content" data-position="bottom" data-delay="50" data-tooltip="Copy link to <%= campaign.title%>" data-clipboard-text="<%= "#{root_url.chomp('/')}#{url_for campaign}" %>">
 						<span class="fa-stack fa-lg">
 							<i class="fa fa-circle fa-stack-2x"></i>
 							<i class="fa fa-clipboard fa-stack-1x fa-inverse"></i>
