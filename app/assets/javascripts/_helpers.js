@@ -19,8 +19,7 @@ $(function(){
           } else if ($(this).hasClass("tooltipped")) {
             // Remove The tooltipped class
             $(this).removeClass("tooltipped");
-            $('.tooltipped').tooltip('remove');
-            console.log(this);                
+            $('.tooltipped').tooltip('remove');                           
           }
         }); 
       }

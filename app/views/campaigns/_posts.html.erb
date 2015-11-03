@@ -2,7 +2,7 @@
 	<% if post.image_url? %>
 		<div class="col l3 m3 s4 xs4 entry-thumb">
 			<% if user_admin(current_user) %>
-				<%= link_to campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete, class: 'post-delete', :remote => true do %>
+				<%= link_to campaign_post_path(@campaign, post), data: { confirm: 'Are you sure?' }, method: :delete, class: 'post-delete', :remote => true, :data => { :position => "top", :delay => "50", :tooltip => "Delete post from #{post.full_name}" } do %>
 					<span class="fa-stack fa-lg circle hoverable z-depth-1">
 					  <i class="fa fa-circle fa-stack-2x red-text text-darken-4"></i>
 					  <i class="fa fa-times fa-stack-1x white-text"></i>
