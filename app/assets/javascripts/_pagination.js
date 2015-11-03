@@ -14,7 +14,7 @@ $(function() {
           }
         }); 
       }      
-    }, 100);
+    }, 50);
     $('.feed-vid').each(function(){			
   		videojs(this).dispose();
   	});

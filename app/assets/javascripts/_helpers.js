@@ -19,10 +19,10 @@ $(function(){
           } else if ($(this).hasClass("tooltipped")) {
             // Remove The tooltipped class
             $(this).removeClass("tooltipped");
-            $('.tooltipped').tooltip('remove');                           
+            $(this).tooltip('remove');                           
           }
         }); 
       }
-    }, 100);
+    }, 50);
   });
 });
