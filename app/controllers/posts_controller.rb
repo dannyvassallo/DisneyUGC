@@ -55,6 +55,9 @@ class PostsController < ApplicationController
     @post.campaign = @campaign
 
     if @post.save
+      if @campaign.email_recipients != nil && @campaign.email_notifications == true
+        UserMailer.notification_email(@post).deliver_now
+      end
       flash[:notice] = "Your new post was created!"
       redirect_to @campaign
     else

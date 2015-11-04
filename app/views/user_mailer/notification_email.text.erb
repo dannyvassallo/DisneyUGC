@@ -1,0 +1,5 @@
+<%= @post.email_address %> Submitted An Entry!
+
+<%= @post.campaign.title %> now has <%= @post.campaign.posts.count %> entries.
+
+<%= link_to 'Visit the Promotion Here', url_for(@post.campaign) %>

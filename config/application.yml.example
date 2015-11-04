@@ -1,8 +1,20 @@
-AWS_ACCESS_KEY_ID: *******************
-AWS_SECRET_ACCESS_KEY: *********************
+AWS_ACCESS_KEY_ID: *****************************
+AWS_SECRET_ACCESS_KEY: *****************************
 development:
-  AWS_BUCKET: ******
+  AWS_BUCKET: **********
+  SENDGRID_USERNAME: ******************
+  SENDGRID_PASSWORD: ******************
+  MAIL_HOST: *****************
+  EMAIL_URL: *****************
 staging:
-  AWS_BUCKET: ******
+  AWS_BUCKET: **********
+  SENDGRID_USERNAME: ******************
+  SENDGRID_PASSWORD: ******************
+  MAIL_HOST: *****************
+  EMAIL_URL: *****************
 production:
-  AWS_BUCKET: ******
+  AWS_BUCKET: **********
+  SENDGRID_USERNAME: ******************
+  SENDGRID_PASSWORD: ******************
+  MAIL_HOST: *****************
+  EMAIL_URL: *****************
