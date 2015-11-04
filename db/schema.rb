@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030161956) do
+ActiveRecord::Schema.define(version: 20151104170822) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20151030161956) do
     t.boolean  "feature_processing", default: false, null: false
     t.boolean  "video_processing",   default: false, null: false
     t.boolean  "live",               default: false
+    t.string   "analytics"
   end
 
   add_index "campaigns", ["slug"], name: "index_campaigns_on_slug", unique: true

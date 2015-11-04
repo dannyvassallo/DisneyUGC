@@ -99,7 +99,7 @@ class CampaignsController < ApplicationController
   private
 
   def campaign_params
-    params.require(:campaign).permit(:title, :description, :call_to_action, :feature,:feature_cache, :video, :video_cache, :live, :slug)
+    params.require(:campaign).permit(:title, :description, :call_to_action, :feature,:feature_cache, :video, :video_cache, :live, :slug, :analytics)
   end
 
 end
