@@ -4,11 +4,17 @@ development:
   AWS_BUCKET: **********
   SENDGRID_USERNAME: ******************
   SENDGRID_PASSWORD: ******************
+  MAIL_HOST: *****************
+  EMAIL_URL: *****************
 staging:
   AWS_BUCKET: **********
   SENDGRID_USERNAME: ******************
   SENDGRID_PASSWORD: ******************
+  MAIL_HOST: *****************
+  EMAIL_URL: *****************
 production:
   AWS_BUCKET: **********
   SENDGRID_USERNAME: ******************
   SENDGRID_PASSWORD: ******************
+  MAIL_HOST: *****************
+  EMAIL_URL: *****************
