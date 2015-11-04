@@ -83,6 +83,24 @@
 		<div class="col s12">
 		  <div class="switch">
 		    <label>
+		      Email Notifications OFF
+    			<%= f.check_box :email_notifications, label: false, :class => "validate", :wrapper => false %>
+		      <span class="lever"></span>
+		      Email Notifications ON
+		    </label>
+		  </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s12">
+			<%= f.input :email_recipients, label: false, :class => "validate", :wrapper => false %>
+			<label for="analytics">Enter emails for notifications</label>
+		</div>
+	</div>		
+	<div class="row">
+		<div class="col s12">
+		  <div class="switch">
+		    <label>
 		      Hidden
     			<%= f.check_box :live, label: false, :class => "validate", :wrapper => false %>
 		      <span class="lever"></span>
