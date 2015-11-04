@@ -45,4 +45,28 @@
       <i class="fa fa-trophy"></i> WINNER
     <% end %>     
   </div>
+  <div class="row">
+    <form class="col s10 offset-l1">
+      <div class="row">
+        <%= form_tag(campaign_path(@campaign, @campaign.posts), :method => "get", id: "search-form") do %>
+          <div class="input-field col s8">
+            <i class="material-icons prefix">search</i>
+            <%= text_area_tag :search, params[:search], id: 'icon_prefix2', :class => 'materialize-textarea' %>
+            <label for="icon_prefix2">Search by Email or Name</label>
+          </div>
+          <div class="input-field col s2">
+            <%= submit_tag "Search", :class => 'btn grey darken-4' %>
+          </div>
+        <% end %>
+      </div>
+    </form>
+  </div>  
 </div>
+<% if params[:search] && params[:search].length > 0 && !@posts.present? %>            
+  <script>   
+    window.onload = function () {
+      var msg = "No email address or name found containing the search terms \'<%= params[:search]%>\'";
+      Materialize.toast(msg, 5000, 'red darken-4');
+    }               
+  </script>
+<% end %>   

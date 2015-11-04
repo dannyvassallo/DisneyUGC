@@ -27,8 +27,8 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :campaigns, only: [:index]
-  resources :campaigns, path: '', except: [:index] do
+  resources :campaigns, only: [:index, :create]
+  resources :campaigns, path: '', except: [:index, :create] do
     resources :posts, only: [:create, :destroy]    
   end
 

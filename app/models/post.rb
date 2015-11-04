@@ -54,4 +54,8 @@ class Post < ActiveRecord::Base
 		self.video_url.url
   end  
 
+  def self.search(search)
+    where("(full_name || ' ' || email_address) LIKE ?", "%#{search.downcase}%")     
+  end
+
 end

@@ -19,7 +19,11 @@ class CampaignsController < ApplicationController
         not_found
       end
     end
-    @posts = @campaign.posts.paginate(:page => params[:page], :per_page => 12).order('created_at DESC')
+    if params[:search]
+      @posts = @campaign.posts.search(params[:search]).paginate(:page => params[:page], :per_page => 12).order('created_at DESC')
+    else
+      @posts = @campaign.posts.paginate(:page => params[:page], :per_page => 12).order('created_at DESC')
+    end
   end
 
   def new
