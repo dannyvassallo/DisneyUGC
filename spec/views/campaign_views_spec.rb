@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Campaign Security Tests" do
+describe "Campaign View Security Tests" do
 
   include TestFactories  
   
