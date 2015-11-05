@@ -35,13 +35,13 @@
     <% if user_admin(current_user) %>
       <div class="row">
         <div class="col s4 center-align">
-          <%= link_to	'New Campaign', new_campaign_path, class: 'waves-effect waves-light btn grey darken-4' %>
+          <%= link_to	'New Campaign', new_campaign_path, class: 'waves-effect waves-light btn grey darken-4 admin-link' %>
         </div>
         <div class="col s4 center-align">
-          <%= link_to 'View Campaigns', campaigns_path, class: 'waves-effect waves-light btn grey darken-4' %>
+          <%= link_to 'View Campaigns', campaigns_path, class: 'waves-effect waves-light btn grey darken-4 admin-link' %>
         </div>
         <div class="col s4 center-align">
-          <%= link_to 'Create an Admin', admin_index_path, class: 'waves-effect waves-light btn grey darken-4' %>
+          <%= link_to 'Create an Admin', admin_index_path, class: 'waves-effect waves-light btn grey darken-4 admin-link' %>
         </div>        
       <% end %>
     </div>
