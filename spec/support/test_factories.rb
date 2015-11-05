@@ -11,13 +11,22 @@ module TestFactories
   #     Post.create(post_options)
   # end
 
-  def test_campaign(options={})
+  def dead_test_campaign(options={})
     campaign_options = {
         title: 'Live Campaign',
         description: 'This is a campaign description',
-        call_to_action: 'This is a CTA',        
+        call_to_action: 'This is a CTA'                
       }.merge(options)
+      Campaign.create(campaign_options)
+  end
 
+  def live_test_campaign(options={})
+    campaign_options = {
+        title: 'Live Campaign',
+        description: 'This is a campaign description',
+        call_to_action: 'This is a CTA',
+        live: true                
+      }.merge(options)
       Campaign.create(campaign_options)
   end
 

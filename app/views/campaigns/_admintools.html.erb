@@ -15,7 +15,7 @@
     </h4>       
   </div>    
 </div>
-<div class="row">
+<div id="admin-tools" class="row">
   <div class="col l10 offset-l1 m12 s12 center-align">
     <%= link_to get_posts_path(campaign_id: @campaign.id, format: "csv"), class: 'btn waves-effect waves-light blue accent-3', :data => { :position => "top", :delay => "50", :tooltip => "Download all entries from #{@campaign.title}" } do %>
       <i class="fa fa-cloud-download"></i> ENTRIES
