@@ -57,7 +57,7 @@ describe CampaignsController do
       print("\nAnon couldn't update a campaign")
     end
 
-    it "attempts to update a campaign with Admin and check it's title" do         
+    it "attempts to update a campaign with Admin and check it's title" do
       @user.update_attributes(:role => 'admin')
       @user.save!                
       put :update, id: @campaign, campaign: { title: 'Test!'}
@@ -65,6 +65,35 @@ describe CampaignsController do
       expect(@campaign.title).to eq('Test!')
       print("\nAdmin updated a campaign")      
     end    
+  end
+
+  describe '#destroy' do
+    it "attempts to create then destroy a new campaign as Admin" do
+      @user.update_attributes(:role => 'admin')
+      @user.save! 
+      campaign = create(:campaign)
+      expect(Campaign.count).to eq(1)
+      delete :destroy, id: campaign.id
+      expect(Campaign.count).to eq(0)
+      print("\nAdmin deleted a campaign")
+    end
+
+    it "attempts to create then destroy a list with a non-admin user" do      
+      campaign = create(:campaign)
+      expect(Campaign.count).to eq(1)
+      delete :destroy, id: campaign.id
+      expect(Campaign.count).to eq(1)
+      print("\nNon-Admin couldn't delete a campaign")
+    end
+
+    it "attempts to create then destroy a list without a user" do
+      sign_out @user
+      campaign = create(:campaign)
+      expect(Campaign.count).to eq(1)
+      delete :destroy, id: campaign.id
+      expect(Campaign.count).to eq(1)
+      print("\nAnon couldn't delete a campaign")
+    end
   end
 
 end
