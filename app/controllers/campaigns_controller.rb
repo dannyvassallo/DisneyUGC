@@ -97,7 +97,9 @@ class CampaignsController < ApplicationController
         flash[:error] = "There was an error deleting the campaign '#{title}'. Please try again."
         render :show
       end    
-    end
+    else
+      not_found
+    end  
   end
 
   private
