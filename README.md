@@ -55,3 +55,8 @@ if you mess up do this:
 ```shell
 heroku buildpacks:clear --app APPNAME
 ```
+
+to clear jobs:
+```
+rake jobs:clear
+```
