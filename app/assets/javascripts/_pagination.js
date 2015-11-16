@@ -1,6 +1,5 @@
 $(function() {
-  $(".sort_paginate_ajax").on("click", ".pagination a", function(){    
-  	imgloader();
+  $(".sort_paginate_ajax").on("click", ".pagination a", function(){      	
     setTimeout(function(){
       if ($('#helpers:checkbox:checked').val() === "on"){
         $('*').each(function(){
