@@ -5,14 +5,15 @@ require 'faker'
     title: 'radio disney contest',
     description: Faker::Lorem.paragraph(2),
     call_to_action: Faker::Lorem.sentence,
-    feature: File.open(Dir['app/assets/images/faker/*.jpg'].sample)
+    feature: File.open(Dir['app/assets/images/faker/*.jpg'].sample),
+    live: true
   )
   @campaign.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)
   @campaign.save!
 end
 campaigns = Campaign.all
 
-100.times do
+50.times do
   post = Post.new(
       full_name: Faker::Name.name,
       email_address: Faker::Internet.email,
