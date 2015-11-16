@@ -4,14 +4,14 @@ function vidResizer(){
 
 $(function(){
   setTimeout(function(){
-    $('video').ready(function(){
-      vH = $('video').height();
+    $('#feature video').ready(function(){
+      vH = $('#feature video').height();
       vidResizer(vH);     
     });
   }, 300);
 });
 
 $(window).resize(function(){
-  vH = $('video').height();
+  vH = $('#feature video').height();
   vidResizer(vH);
 });
