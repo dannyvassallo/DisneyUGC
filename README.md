@@ -56,7 +56,15 @@ if you mess up do this:
 heroku buildpacks:clear --app APPNAME
 ```
 
+###Clear Jobs
+
 to clear jobs:
 ```
 rake jobs:clear
+```
+
+###Using Pry
+throw pry anywhere to get an irb debug console:
+```
+pry
 ```

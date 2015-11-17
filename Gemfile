@@ -19,7 +19,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'timecop'
-  gem 'email_spec'
+  gem 'email_spec'  
 end
 
 gem 'rails', '4.2.1'
@@ -37,7 +37,7 @@ gem 'whenever', :require => false
 gem 'active_model_serializers'
 gem 'restclient'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
-
+gem 'pry', groups: [:development, :test]
 
 gem 'figaro', '1.0'
 gem 'faker'

@@ -52,9 +52,8 @@ class PostsController < ApplicationController
   def create
     @campaign = Campaign.friendly.find(params[:campaign_id])
     @post = Post.new(post_params)    
-    @post.campaign = @campaign
-
-    if @post.save
+    @post.campaign = @campaign    
+    if @post.save          
       if @campaign.email_recipients != nil && @campaign.email_notifications == true
         UserMailer.notification_email(@post).deliver_now
       end
