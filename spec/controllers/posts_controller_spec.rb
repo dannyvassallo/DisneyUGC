@@ -5,7 +5,7 @@ describe PostsController do
   include TestFactories  
   include Devise::TestHelpers
 
-  before do
+  before do  
     @campaign = create(:campaign)    
     @campaign.save!    
   end
@@ -25,7 +25,7 @@ describe PostsController do
       @post = Post.last            
       expect(@post.campaign.title).to eq(@campaign.title)
       expect(Post.count).to eq(1)
-      print("\nAnon created post with just a photo.")
+      print("\nAnon created post with just a photo")
     end 
 
     it "underage anon attempts to create a post with just a photo and fails" do
@@ -41,7 +41,7 @@ describe PostsController do
       }
       @post = Post.last            
       expect(Post.count).to eq(0)
-      print("\nAnon couldn't create post with just a photo.")
+      print("\nAnon couldn't create post with just a photo")
     end 
 
     it "Of age anon attempts to create a post with just a video" do
@@ -58,7 +58,7 @@ describe PostsController do
       @post = Post.last            
       expect(@post.campaign.title).to eq(@campaign.title)
       expect(Post.count).to eq(1)
-      print("\nAnon created post with just a photo.")
+      print("\nAnon created post with just a photo")
     end 
 
     it "underage anon attempts to create a post with just a video and fails" do
@@ -74,38 +74,55 @@ describe PostsController do
       }
       @post = Post.last            
       expect(Post.count).to eq(0)
-      print("\nAnon couldn't create post with just a photo.")
+      print("\nAnon couldn't create post with just a photo")
     end 
 
   end
 
-  # describe '#destroy' do
-  #   it "attempts to create then destroy a new campaign as Admin" do
-  #     @user.update_attributes(:role => 'admin')
-  #     @user.save! 
-  #     campaign = create(:campaign)
-  #     expect(Campaign.count).to eq(1)
-  #     delete :destroy, id: campaign.id
-  #     expect(Campaign.count).to eq(0)
-  #     print("\nAdmin deleted a campaign")
-  #   end
+  describe '#destroy' do
 
-  #   it "attempts to create then destroy a list with a non-admin user" do      
-  #     campaign = create(:campaign)
-  #     expect(Campaign.count).to eq(1)
-  #     delete :destroy, id: campaign.id
-  #     expect(Campaign.count).to eq(1)
-  #     print("\nNon-Admin couldn't delete a campaign")
-  #   end
+    before do
+      @user = create(:user)    
+      @user.save!       
+      sign_in @user
+      post :create, campaign_id: @campaign.slug, post:{        
+        full_name: Faker::Name.name,
+        dob: "22 November, 1967",
+        email_address: Faker::Internet.email,
+        image_url: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/files/rails.png'))),            
+        video_url: nil,
+        video_url_processing: false,
+        image_url_processing: false
+      }            
+    end
 
-  #   it "attempts to create then destroy a list without a user" do
-  #     sign_out @user
-  #     campaign = create(:campaign)
-  #     expect(Campaign.count).to eq(1)
-  #     delete :destroy, id: campaign.id
-  #     expect(Campaign.count).to eq(1)
-  #     print("\nAnon couldn't delete a campaign")
-  #   end
-  # end
+    it "attempts destroy a new post as Admin" do
+      @post = Post.last
+      expect(Post.count).to eq(1)
+      @user.update_attributes(:role => 'admin')
+      @user.save!       
+      delete :destroy, campaign_id: @campaign.slug, id: @post.id
+      expect(Post.count).to eq(0)
+      print("\nAdmin deleted a post")
+    end
+
+    it "attempts destroy a new post as Non-Admin" do
+      @post = Post.last
+      expect(Post.count).to eq(1)     
+      delete :destroy, campaign_id: @campaign.slug, id: @post.id
+      expect(Post.count).to eq(1)
+      print("\nNon-Admin couldn't delete a post")
+    end
+
+    it "attempts destroy a new post as Anon" do
+      sign_out @user
+      @post = Post.last
+      expect(Post.count).to eq(1)     
+      delete :destroy, campaign_id: @campaign.slug, id: @post.id
+      expect(Post.count).to eq(1)
+      print("\nAnon couldn't delete a post")
+    end
+
+  end
 
 end
