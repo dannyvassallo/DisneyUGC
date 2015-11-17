@@ -58,7 +58,7 @@ describe PostsController do
       @post = Post.last            
       expect(@post.campaign.title).to eq(@campaign.title)
       expect(Post.count).to eq(1)
-      print("\nAnon created post with just a photo")
+      print("\nAnon created post with just a video")
     end 
 
     it "underage anon attempts to create a post with just a video and fails" do
@@ -74,7 +74,7 @@ describe PostsController do
       }
       @post = Post.last            
       expect(Post.count).to eq(0)
-      print("\nAnon couldn't create post with just a photo")
+      print("\nAnon couldn't create post with just a video")
     end 
 
   end
