@@ -46,7 +46,9 @@ class CampaignsController < ApplicationController
         redirect_to campaigns_path
       else
         flash[:error] = "There was an error creating the campaign. Please try again."
-        render :new
+        @campaign.remove_video!
+        @campaign.remove_feature!        
+        render action: :new
       end 
     else
       not_found
@@ -70,14 +72,12 @@ class CampaignsController < ApplicationController
 
       if @campaign.update_attributes(campaign_params)
         flash[:notice] = "The campaign '#{title}' was updated!"
-        if @campaign.live_changed?
-          redirect_to campaign_path(@campaign)
-        else
-          redirect_to campaigns_path
-        end
+        redirect_to campaigns_path        
       else
         flash[:error] = "There was an error updating the campaign. Please try again."
-        render :edit
+        @campaign.remove_video!
+        @campaign.remove_feature!
+        render action: :edit
       end 
     else
       not_found
