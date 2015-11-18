@@ -38,16 +38,15 @@ class CampaignsController < ApplicationController
   def create
     @user = current_user    
     if user_admin(@user)    
-      @campaign = Campaign.new(campaign_params)
+      modified_params = feature_priority(campaign_params)
+      @campaign = Campaign.new(modified_params)      
       title = @campaign.title
 
       if @campaign.save
         flash[:notice] = "Your new campaign '#{title}' was created!"
         redirect_to campaigns_path
       else
-        flash[:error] = "There was an error creating the campaign. Please try again."
-        @campaign.remove_video!
-        @campaign.remove_feature!        
+        flash[:error] = "There was an error creating the campaign. Please try again."        
         render action: :new
       end 
     else
@@ -64,19 +63,17 @@ class CampaignsController < ApplicationController
     end       
   end
 
-  def update
+  def update    
     @user = current_user    
-    if user_admin(@user)        
-      @campaign = Campaign.friendly.find(params[:id])
+    if user_admin(@user)
+      @campaign = Campaign.friendly.find(params[:id])      
+      modified_params = feature_priority(campaign_params, @campaign)
       title = @campaign.title
-
-      if @campaign.update_attributes(campaign_params)
+      if @campaign.update_attributes(modified_params)
         flash[:notice] = "The campaign '#{title}' was updated!"
         redirect_to campaigns_path        
       else
         flash[:error] = "There was an error updating the campaign. Please try again."
-        @campaign.remove_video!
-        @campaign.remove_feature!
         render action: :edit
       end 
     else
@@ -104,8 +101,22 @@ class CampaignsController < ApplicationController
 
   private
 
+  def feature_priority(modified_params, campaign = nil)
+    modified_params = modified_params.dup
+    if modified_params['video']
+      campaign.remove_feature! unless campaign.nil?
+      modified_params.delete('feature')
+      modified_params.delete('feature_cache')
+    elsif modified_params['feature']
+      campaign.remove_video! unless campaign.nil?
+      modified_params.delete('video')
+      modified_params.delete('video_cache')
+    end
+    return modified_params
+  end
+
   def campaign_params
-    params.require(:campaign).permit(:title, :description, :call_to_action, :feature,:feature_cache, :video, :video_cache, :live, :slug, :analytics, :email_recipients, :email_notifications)
+    params.require(:campaign).permit(:title, :description, :call_to_action, :feature, :feature_cache, :video, :video_cache, :live, :slug, :analytics, :email_recipients, :email_notifications)
   end
 
 end

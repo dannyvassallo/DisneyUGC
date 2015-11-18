@@ -13,7 +13,7 @@ class Video_urlUploader < CarrierWave::Uploader::Base
   process :encode_video=> [:mp4, audio_codec: "aac",:custom => "-strict experimental -q:v 5 -preset slow -g 30"]
 
   version :thumb do
-    
+            
     process thumbnail: [{format: 'png', quality: 10, size: 320, strip: false, logger: Rails.logger}]    
     process resize_to_fill: [320, 320]
     process :efficient_conversion => [320, 320]
