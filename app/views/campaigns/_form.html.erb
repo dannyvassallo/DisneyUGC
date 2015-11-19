@@ -13,9 +13,9 @@
 						<%= image_tag( @campaign.feature.url ) %>
 					<% elsif @campaign.video? %>
 					<div id="feature" class="card-image">
-						<%= videojs_rails sources: { mp4: "#{@campaign.video.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", poster: "#{@campaign.video.poster.url}", class: 'vjs-big-play-centered primary-player' %>					
-					<% end %>	
-						<span class="card-title campaign-title"><%= @campaign.title %></span>					
+						<%= videojs_rails sources: { mp4: "#{@campaign.video.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", poster: "#{@campaign.video.poster.url}", class: 'vjs-big-play-centered primary-player' %>
+					<% end %>
+						<span class="card-title campaign-title"><%= @campaign.title %></span>
 					</div>
 					<div class="card-content">
 	          <p><%= @campaign.description %></p>
@@ -23,7 +23,7 @@
 	        <div class="card-action center-align">
 						<%= @campaign.call_to_action %><br>
 						<a class="btn waves-effect waves-light grey add-content darken-4" href="#">Enter Here</a>
-					</div>				
+					</div>
 				</div>
 			</div>
 		</div>
@@ -40,7 +40,7 @@
 				<span>IMAGE</span>
 				<%= f.file_field :feature %>
 			</div>
-			<div class="file-path-wrapper">				
+			<div class="file-path-wrapper">
 		        <input class="file-path validate" type="text">
 			</div>
 			<%= f.hidden_field :feature_cache %>
@@ -50,21 +50,25 @@
 				<span>VIDEO</span>
 				<%= f.file_field :video %>
 			</div>
-			<div class="file-path-wrapper">				
+			<div class="file-path-wrapper">
 		        <input class="file-path validate" type="text">
-			</div>				
-		</div>			
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<label>Choose a Campaign Type</label>
+		<%= f.input :campaign_type, :label => false, :collection => [['Both Media Types', 'Both Media Types'], ['Just Video', 'Just Video'], ['Just Photo', 'Just Photo']], :label_method => :last, :value_method => :first, :as => :materialize_radio_buttons, :checked => @campaign.campaign_type  %>
 	</div>
 	<div class="row">
 		<div class="input-field col s12">
 			<%= f.input :title, label: false, :class => "validate", :wrapper => false %>
-			<label for="campaign_title">Enter a Title</label>				
+			<label for="campaign_title">Enter a Title</label>
 		</div>
-	</div>		
+	</div>
 	<div class="row">
 		<div class="input-field col s12">
 			<%= f.input :description, label: false, :class => "validate", :wrapper => false %>
-			<label for="campaign_description">Enter a Description</label>				
+			<label for="campaign_description">Enter a Description</label>
 		</div>
 	</div>
 	<div class="row">
@@ -78,7 +82,7 @@
 			<%= f.input :analytics, label: false, :class => "validate", :wrapper => false %>
 			<label for="analytics">Enter a Google Analytics ID</label>
 		</div>
-	</div>	
+	</div>
 	<div class="row">
 		<div class="col s12">
 		  <div class="switch">
@@ -96,7 +100,7 @@
 			<%= f.input :email_recipients, label: false, :class => "validate", :wrapper => false %>
 			<label for="analytics">Enter emails for notifications</label>
 		</div>
-	</div>		
+	</div>
 	<div class="row">
 		<div class="col s12">
 		  <div class="switch">
@@ -108,9 +112,9 @@
 		    </label>
 		  </div>
 		</div>
-	</div>		
+	</div>
 	<div class="row">
-		<div class="input-field col s12">	
+		<div class="input-field col s12">
 			<%= button_tag(type: 'submit', class: 'btn grey darken-4 waves-effect waves-light') do %>
 				<i class="material-icons left">add</i>Publish
 			<% end %>

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def self.search(search)
-    where("email LIKE ?", "%#{search}%")     
+    where("email LIKE ?", "%#{search}%")
   end
 
 end

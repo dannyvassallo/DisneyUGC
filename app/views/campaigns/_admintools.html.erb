@@ -2,7 +2,7 @@
   <div class="col l6 offset-l1">
     <h4>Admin Tools</h4>
   </div>
-  <div class="col l4">        
+  <div class="col l4">
     <h4>
       <div class="switch">
         <label>
@@ -11,9 +11,9 @@
           <span id="helper-lever" class="lever"></span>
           Help On
         </label>
-      </div>        
-    </h4>       
-  </div>    
+      </div>
+    </h4>
+  </div>
 </div>
 <div id="admin-tools" class="row">
   <div class="col l10 offset-l1 m12 s12 center-align">
@@ -29,21 +29,21 @@
         <%= button_tag(type: 'submit', class: 'btn deep-orange accent-3 waves-effect waves-light', :data => { :position => "top", :delay => "50", :tooltip => "End #{@campaign.title}" }) do %>
           <i class="fa fa-ban"></i> <%= "END" %>
         <% end %>
-      <% end %>      
-    <% else %>          
+      <% end %>
+    <% else %>
       <%= simple_form_for @campaign, html: { class: "start-campaign"} do |f| %>
         <%= f.check_box :live, label: false, :class => "hidden", :wrapper => false, :checked => true %>
         <%= button_tag(type: 'submit', class: 'btn green accent-4 waves-effect waves-light', :data => { :position => "top", :delay => "50", :tooltip => "Set #{@campaign.title}" }) do %>
           <i class="fa fa-thumbs-up"></i> <%= "GO LIVE" %>
         <% end %>
-      <% end %>     
+      <% end %>
     <% end %>
     <%= link_to slideshow_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light orange darken-4', :data => { :position => "bottom", :delay => "50", :tooltip => "View a slideshow of all entries" } do %>
       <i class="fa fa-photo"></i> SLIDESHOW
-    <% end %> 
+    <% end %>
     <%= link_to random_winner_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light green darken-4', :data => { :position => "top", :delay => "50", :tooltip => "Pick a random winner" } do %>
       <i class="fa fa-trophy"></i> WINNER
-    <% end %>     
+    <% end %>
   </div>
   <div class="row">
     <form class="col s10 offset-l1">
@@ -60,13 +60,13 @@
         <% end %>
       </div>
     </form>
-  </div>  
+  </div>
 </div>
-<% if params[:search] && params[:search].length > 0 && !@posts.present? %>            
-  <script>   
+<% if params[:search] && params[:search].length > 0 && !@posts.present? %>
+  <script>
     window.onload = function () {
       var msg = "No email address or name found containing the search terms \'<%= params[:search]%>\'";
       Materialize.toast(msg, 5000, 'red darken-4');
-    }               
+    }
   </script>
-<% end %>   
+<% end %>

@@ -5,55 +5,88 @@
 		<%= simple_form_for [@campaign, @campaign.posts.build], html: {  class: 'the-wizard' } do |f| %>
 			<fieldset>
 	        	<h5>Enter Your Full Name</h5>
-	        	<p class="wizard-desc">Please give us your first and last name.</p>			
-		        <div class="input-field col s12">				
-					<%= f.input :full_name, :input_html => {:autofocus => true} %>				
-		        </div>	
+	        	<p class="wizard-desc">Please give us your first and last name.</p>
+		        <div class="input-field col s12">
+					<%= f.input :full_name, :input_html => {:autofocus => true} %>
+		        </div>
 	        </fieldset>
 			<fieldset>
-	        	<h5>Enter Your Email Address</h5>
-	        	<p class="wizard-desc">Please enter a valid email address.</p>
-		        <div class="input-field col s12">				
-					<%= f.input :email_address %>				
-		        </div>	
-	        </fieldset>
-	        <fieldset>
-	        	<h5>Enter Your Birthday</h5>
-	        	<p class="wizard-desc">You must be 13 years or older to enter a submission!</p>
-		        <div class="input-field col s12">
-				<%= f.input :dob, input_html: { class: 'datepicker' }, :label => 'Date of Birth' %>				
-		        </div>	        
-	        </fieldset>
-	        <fieldset>
-	        	<h5>Upload A Photo Or Video</h5>
-	        	<p class="wizard-desc">Use your camera to upload a photo or a video!</p>
-				<div class="file-field input-field col s12">
-					<div class="btn grey darken-4">						
-						<span>IMAGE</span>
-						<label class="hidden-label">image upload</label>
-						<%= f.file_field :image_url, :accept => "image/*", :capture => "camera" %>
-						<%= f.hidden_field :image_url_cache %>
+      	<h5>Enter Your Email Address</h5>
+      	<p class="wizard-desc">Please enter a valid email address.</p>
+        <div class="input-field col s12">
+			<%= f.input :email_address %>
+        </div>
+      </fieldset>
+      <fieldset>
+      	<h5>Enter Your Birthday</h5>
+      	<p class="wizard-desc">You must be 13 years or older to enter a submission!</p>
+        <div class="input-field col s12">
+					<%= f.input :dob, input_html: { class: 'datepicker' }, :label => 'Date of Birth' %>
+        </div>
+      </fieldset>
+			<% if @campaign.campaign_type == "Both Media Types" %>
+	      <fieldset>
+	      	<h5>Upload A Photo Or Video</h5>
+	      	<p class="wizard-desc">Use your camera to upload a photo or a video!</p>
+					<div class="file-field input-field col s12">
+						<div class="btn grey darken-4">
+							<span>IMAGE</span>
+							<label class="hidden-label">image upload</label>
+							<%= f.file_field :image_url, :accept => "image/*", :capture => "camera" %>
+							<%= f.hidden_field :image_url_cache %>
+						</div>
+						<div class="file-path-wrapper">
+			        <input class="file-path validate" type="text">
+						</div>
 					</div>
-					<div class="file-path-wrapper">				
-				        <input class="file-path validate" type="text">
-					</div>				
-				</div>
-				<div class="file-field input-field col s12">
-					<div class="btn grey darken-4">						
-						<span>VIDEO</span>
-						<label class="hidden-label">image upload</label>
-						<%= f.file_field :video_url, :accept => "video/*", :capture => "camera" %>
+					<div class="file-field input-field col s12">
+						<div class="btn grey darken-4">
+							<span>VIDEO</span>
+							<label class="hidden-label">image upload</label>
+							<%= f.file_field :video_url, :accept => "video/*", :capture => "camera" %>
+						</div>
+						<div class="file-path-wrapper">
+			        <input class="file-path validate" type="text">
+						</div>
 					</div>
-					<div class="file-path-wrapper">				
-				        <input class="file-path validate" type="text">
-					</div>				
-				</div>	
-			</fieldset>
+				</fieldset>
+			<% elsif @campaign.campaign_type == "Just Photo" %>
+				<fieldset>
+					<h5>Upload A Photo</h5>
+					<p class="wizard-desc">Use your camera to upload a photo!</p>
+					<div class="file-field input-field col s12">
+						<div class="btn grey darken-4">
+							<span>IMAGE</span>
+							<label class="hidden-label">image upload</label>
+							<%= f.file_field :image_url, :accept => "image/*", :capture => "camera" %>
+							<%= f.hidden_field :image_url_cache %>
+						</div>
+						<div class="file-path-wrapper">
+			        <input class="file-path validate" type="text">
+						</div>
+					</div>
+				</fieldset>
+			<% elsif @campaign.campaign_type == "Just Video" %>
+				<fieldset>
+					<h5>Upload A Video</h5>
+					<p class="wizard-desc">Use your camera to upload a video!</p>
+					<div class="file-field input-field col s12">
+						<div class="btn grey darken-4">
+							<span>VIDEO</span>
+							<label class="hidden-label">image upload</label>
+							<%= f.file_field :video_url, :accept => "video/*", :capture => "camera" %>
+						</div>
+						<div class="file-path-wrapper">
+				      <input class="file-path validate" type="text">
+						</div>
+					</div>
+				</fieldset>
+			<% end %>
 			<fieldset>
 	        	<h5>Terms Of Service</h5>
 	        	<p class="wizard-desc">By submitting a photo or video you agree to our <a href="#">Terms of Service</a>.</p>
 			</fieldset>
-			<%= f.submit 'Submit' , class: 'btn green add-content darken-4' %>		
+			<%= f.submit 'Submit' , class: 'btn green add-content darken-4' %>
 		<% end %>
 	</div>
 </div>

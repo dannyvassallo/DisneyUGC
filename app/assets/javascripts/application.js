@@ -23,4 +23,5 @@
 //= require _copy-url
 //= require _slideshowresize
 //= require _helpers
+//= require _disablemediatype
 //= require_tree .

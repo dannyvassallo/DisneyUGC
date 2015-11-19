@@ -4,11 +4,11 @@
 		<div class="modal-content center-align">
 			<% if post.image_url? %>
 				<img class="responsive-img" src="<%= post.image_url.url %>">
-			<% elsif post.video_url? %>				
+			<% elsif post.video_url? %>
 				<video preload="auto" class="vjs-big-play-centered video-js vjs-default-skin vjs-paused vjs-controls-enabled vjs-user-inactive modal-video feed-vid" controls data-setup="{}">
 					<source src="<%= post.video_url.url %>" type='video/mp4'>
 				</video>
-			<% end %>		
+			<% end %>
 		</div>
 	</div>
 <% end %>

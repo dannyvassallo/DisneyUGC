@@ -4,26 +4,26 @@
       <a href="/" class="brand-logo">RDUGC</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <% if !@campaign || user_admin(@user) %>
-      <ul class="right hide-on-med-and-down">        
+      <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
           <li class="user-info">Hello, <%= link_to @user.email, edit_user_registration_path(@user) %>!</li>
-          <li>          
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+          <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
           </li>
         <% else %>
           <li>
-          <%= link_to('Login', new_user_session_path)  %>  
+          <%= link_to('Login', new_user_session_path)  %>
           </li>
         <% end %>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <% if user_signed_in? %>
           <li>
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
           </li>
         <% else %>
           <li>
-          <%= link_to('Login', new_user_session_path)  %>  
+          <%= link_to('Login', new_user_session_path)  %>
           </li>
         <% end %>
       </ul>

@@ -2,8 +2,8 @@ require 'rubygems'
 require 'streamio-ffmpeg'
 
 class VideoUploader < CarrierWave::Uploader::Base
-  
-	include CarrierWave::Video	
+
+	include CarrierWave::Video
 	include CarrierWave::Video::Thumbnailer
 	include ::CarrierWave::Backgrounder::Delay
 
@@ -23,7 +23,7 @@ class VideoUploader < CarrierWave::Uploader::Base
 		def full_filename for_file
 			png_name for_file, version_name
 		end
-	end	
+	end
 
 	def png_name for_file, version_name
 		%Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
@@ -36,7 +36,7 @@ class VideoUploader < CarrierWave::Uploader::Base
 	end
 
 	def extension_white_list
-		%w(ogg ogv 3gp mp4 m4v webm mov m2v 3g2)    
+		%w(ogg ogv 3gp mp4 m4v webm mov m2v 3g2)
 	end
 
 end

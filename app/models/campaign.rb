@@ -4,7 +4,7 @@ class Campaign < ActiveRecord::Base
 	friendly_id :title, use: :slugged
 	mount_uploader :feature, FeatureUploader
 	process_in_background :feature
-	mount_uploader :video, VideoUploader	 
+	mount_uploader :video, VideoUploader
 	process_in_background :video
 	validates_presence_of :title
 	validates_presence_of :description
@@ -15,7 +15,7 @@ class Campaign < ActiveRecord::Base
 	end
 
   def normalize_friendly_id(string)
-		super.gsub("-", "")		
+		super.gsub("-", "")
 	end
 
 end

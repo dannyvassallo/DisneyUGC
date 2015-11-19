@@ -2,8 +2,8 @@ require 'rubygems'
 require 'streamio-ffmpeg'
 
 class Video_urlUploader < CarrierWave::Uploader::Base
-  
-  include CarrierWave::Video  
+
+  include CarrierWave::Video
   include CarrierWave::Video::Thumbnailer
   include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::MiniMagick
@@ -13,12 +13,12 @@ class Video_urlUploader < CarrierWave::Uploader::Base
   process :encode_video=> [:mp4, audio_codec: "aac",:custom => "-strict experimental -q:v 5 -preset slow -g 30"]
 
   version :thumb do
-    
-    process thumbnail: [{format: 'png', quality: 10, size: 320, strip: false, logger: Rails.logger}]    
+
+    process thumbnail: [{format: 'png', quality: 10, size: 320, strip: false, logger: Rails.logger}]
     process resize_to_fill: [320, 320]
     process :efficient_conversion => [320, 320]
-    
-    def full_filename for_file      
+
+    def full_filename for_file
       png_name for_file, version_name
     end
 
@@ -36,7 +36,7 @@ class Video_urlUploader < CarrierWave::Uploader::Base
         end
         img
       end
-    end    
+    end
 
   end
 
@@ -47,7 +47,7 @@ class Video_urlUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-    %w(ogg ogv 3gp mp4 m4v webm mov m2v 3g2)    
+    %w(ogg ogv 3gp mp4 m4v webm mov m2v 3g2)
   end
 
 end

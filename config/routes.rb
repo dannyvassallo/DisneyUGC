@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   root to: 'welcome#index'
   # BEGIN CUSTOM DEVISE ROUTES #
-  devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" } 
+  devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
   devise_scope :user do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
     get "register", to: "devise/registrations#new"
-  end  
+  end
   # END CUSTOM DEVISE ROUTES #
   scope "/admin" do
     resources :users, except: [:show]
@@ -26,10 +26,10 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
   resources :campaigns, only: [:index, :create]
   resources :campaigns, path: '', except: [:index, :create] do
-    resources :posts, only: [:create, :destroy]    
+    resources :posts, only: [:create, :destroy]
   end
 
 end
