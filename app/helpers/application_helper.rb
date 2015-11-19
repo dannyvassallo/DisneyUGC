@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   def user_admin(user)
     if user && user.role == 'admin'
       return true

@@ -1,5 +1,5 @@
 $(function(){
-  $('#helper-lever').on('click', function(){    
+  $('#helper-lever').on('click', function(){
     setTimeout(function(){
       if ($('#helpers:checkbox:checked').val() === "on"){
         $('*').each(function(){
@@ -7,11 +7,11 @@ $(function(){
             // Do NOTHING Element is not Tooltipped
           } else if ($(this).data().hasOwnProperty("tooltip")) {
             // Add The tooltipped class
-            $(this).addClass("tooltipped");          
+            $(this).addClass("tooltipped");
             // reinitialize tooltips
-            $(this).tooltip({delay: 50});          
+            $(this).tooltip({delay: 50});
           }
-        }); 
+        });
       } else {
         $('*').each(function(){
           if (typeof $(this).data("tooltip") === "undefined"){
@@ -19,9 +19,9 @@ $(function(){
           } else if ($(this).hasClass("tooltipped")) {
             // Remove The tooltipped class
             $(this).removeClass("tooltipped");
-            $(this).tooltip('remove');                           
+            $(this).tooltip('remove');
           }
-        }); 
+        });
       }
     }, 50);
   });

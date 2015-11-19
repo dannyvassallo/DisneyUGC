@@ -1,29 +1,29 @@
 <div class="col l12 m12 s12 xs12">
 	<ul class="collection">
 		<% @campaigns.each do |campaign| %>
-			<li class="collection-item avatar">						
+			<li class="collection-item avatar">
 				<%= link_to campaign_path(campaign) do %>
 					<% if campaign.video? %>
 						<% if campaign.video_processing? %>
-							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle', :data => { :position => "bottom", :delay => "50", :tooltip => "Thumbnail is processing..." } %>				
+							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle', :data => { :position => "bottom", :delay => "50", :tooltip => "Thumbnail is processing..." } %>
 						<% else %>
 							<% if campaign.live %>
-								<%= image_tag campaign.video.thumb.url, class: 'circle live-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign is LIVE!" } %>	
+								<%= image_tag campaign.video.thumb.url, class: 'circle live-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign is LIVE!" } %>
 							<% else %>
 								<%= image_tag campaign.video.thumb.url, class: 'circle dead-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign is NOT live!" } %>
-							<% end %>	
+							<% end %>
 						<% end %>
 					<% elsif campaign.feature? %>
 						<% if campaign.feature_processing? %>
-							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle', :data => { :position => "bottom", :delay => "50", :tooltip => "Thumbnail is processing..." } %>				
+							<%= image_tag "red-preloader.gif", :alt => "preloader", class: 'circle', :data => { :position => "bottom", :delay => "50", :tooltip => "Thumbnail is processing..." } %>
 						<% else %>
 							<% if campaign.live %>
-								<%= image_tag campaign.feature.tiny.url, class: 'circle live-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign is LIVE!" } %>	
+								<%= image_tag campaign.feature.tiny.url, class: 'circle live-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign is LIVE!" } %>
 							<% else %>
 								<%= image_tag campaign.feature.tiny.url, class: 'circle dead-campaign', :data => { :position => "bottom", :delay => "50", :tooltip => "This campaign NOT live!" } %>
-							<% end %>	
-						<% end %>				
-					<% else %>			
+							<% end %>
+						<% end %>
+					<% else %>
 						<%= image_tag "missing-thumb.png", :alt => "missing thumbnail", class: 'circle' %>
 					<% end %>
 					<span class="title" data-position="bottom" data-delay="50" data-tooltip="Visit <%= campaign.title%>"><b>Title:</b> <%= campaign.title  %></span>

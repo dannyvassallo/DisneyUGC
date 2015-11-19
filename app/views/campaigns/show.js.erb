@@ -1,9 +1,9 @@
 $('.sort_paginate_ajax').html("<%= escape_javascript(render("posts"))%>");
 $('.feed-modal-trigger').leanModal({
 	complete: function() {
-	    $('video').each(function(){ 
-	      this.player.pause(); 
+	    $('video').each(function(){
+	      this.player.pause();
 	    });
-	} 
+	}
 });
 imgloader();

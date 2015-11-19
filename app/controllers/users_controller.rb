@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user    
-    if user_admin(@user)  
-      @user = User.find(params[:id])    
+    @user = current_user
+    if user_admin(@user)
+      @user = User.find(params[:id])
       if params[:user][:password].blank?
         params[:user].delete(:password)
         params[:user].delete(:password_confirmation)
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       else
         flash[:error] = "There was an error updating the user. Please try again."
         redirect_to admin_index_path
-      end    
+      end
     else
       not_found
     end

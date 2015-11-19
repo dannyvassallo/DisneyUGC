@@ -24,7 +24,7 @@ $(function(){
 	    return $.rails.confirmed(link);
 	  });
 	  return $('#modal1 .close').on('click', function() {
-	    return $('#modal1').closeModal();	    
+	    return $('#modal1').closeModal();
 	  });
-	};	
+	};
 });

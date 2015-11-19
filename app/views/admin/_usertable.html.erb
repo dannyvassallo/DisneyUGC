@@ -3,7 +3,7 @@
       <tr>
         <th data-field="id">Email Address</th>
         <th data-field="name">Is Admin?</th>
-        <th data-field="name">Change Status</th>          
+        <th data-field="name">Change Status</th>
       </tr>
     </thead>
     <tbody>
@@ -21,23 +21,23 @@
                 <%= simple_form_for(user) do |f| %>
                   <%= f.input :role, :as => :hidden, :input_html => { :value => "" } %>
                   <%= f.submit 'Revoke Admin', :class => 'btn red darken-4' %>
-                <% end %> 
+                <% end %>
               <% else %>
                 <%= simple_form_for(user) do |f| %>
                   <%= f.input :role, :as => :hidden, :input_html => { :value => "admin" } %>
                   <%= f.submit 'Make Admin', :class => 'btn green darken-4' %>
-                <% end %>  
-              <% end %>  
+                <% end %>
+              <% end %>
             </td>
           </tr>
-        <% end %>     
-      <% else %>     
-        <script>   
+        <% end %>
+      <% else %>
+        <script>
             window.onload = function () {
               var msg = "No user email address found containing the search terms \'<%= params[:search]%>\'";
               Materialize.toast(msg, 5000, 'red darken-4');
-            }               
+            }
         </script>
-      <% end %>     
+      <% end %>
     </tbody>
   </table>

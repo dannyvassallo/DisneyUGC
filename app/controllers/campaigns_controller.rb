@@ -3,7 +3,7 @@ class CampaignsController < ApplicationController
   include ApplicationHelper
 
   def index
-    @user = current_user    
+    @user = current_user
     if user_admin(@user)
       @campaigns = Campaign.all
     else
@@ -13,7 +13,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.friendly.find(params[:id])
-    @user = current_user    
+    @user = current_user
     unless @campaign.live
       unless user_admin(@user)
         not_found
@@ -27,7 +27,7 @@ class CampaignsController < ApplicationController
   end
 
   def new
-    @user = current_user    
+    @user = current_user
     if user_admin(@user)
       @campaign = Campaign.new
     else
@@ -36,54 +36,54 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @user = current_user    
-    if user_admin(@user)    
+    @user = current_user
+    if user_admin(@user)
       modified_params = feature_priority(campaign_params)
-      @campaign = Campaign.new(modified_params)      
+      @campaign = Campaign.new(modified_params)
       title = @campaign.title
 
       if @campaign.save
         flash[:notice] = "Your new campaign '#{title}' was created!"
         redirect_to campaigns_path
       else
-        flash[:error] = "There was an error creating the campaign. Please try again."        
+        flash[:error] = "There was an error creating the campaign. Please try again."
         render action: :new
-      end 
+      end
     else
       not_found
-    end      
+    end
   end
 
   def edit
-    @user = current_user    
-    if user_admin(@user)      
+    @user = current_user
+    if user_admin(@user)
       @campaign = Campaign.friendly.find(params[:id])
     else
       not_found
-    end       
+    end
   end
 
-  def update    
-    @user = current_user    
+  def update
+    @user = current_user
     if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:id])      
+      @campaign = Campaign.friendly.find(params[:id])
       modified_params = feature_priority(campaign_params, @campaign)
       title = @campaign.title
       if @campaign.update_attributes(modified_params)
         flash[:notice] = "The campaign '#{title}' was updated!"
-        redirect_to campaigns_path        
+        redirect_to campaigns_path
       else
         flash[:error] = "There was an error updating the campaign. Please try again."
         render action: :edit
-      end 
+      end
     else
       not_found
-    end           
+    end
   end
 
   def destroy
-    @user = current_user    
-    if user_admin(@user)    
+    @user = current_user
+    if user_admin(@user)
       @campaign = Campaign.friendly.find(params[:id])
       title = @campaign.title
 
@@ -93,10 +93,10 @@ class CampaignsController < ApplicationController
       else
         flash[:error] = "There was an error deleting the campaign '#{title}'. Please try again."
         render :show
-      end    
+      end
     else
       not_found
-    end  
+    end
   end
 
   private
