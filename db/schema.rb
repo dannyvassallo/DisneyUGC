@@ -11,23 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104203642) do
+ActiveRecord::Schema.define(version: 20151119162535) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
     t.string   "call_to_action"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.string   "slug"
     t.string   "feature"
     t.string   "video"
-    t.boolean  "feature_processing",  default: false, null: false
-    t.boolean  "video_processing",    default: false, null: false
+    t.boolean  "feature_processing",  default: false,              null: false
+    t.boolean  "video_processing",    default: false,              null: false
     t.boolean  "live",                default: false
     t.string   "analytics"
     t.string   "email_recipients"
     t.boolean  "email_notifications", default: false
+    t.string   "campaign_type",       default: "Both Media Types"
   end
 
   add_index "campaigns", ["slug"], name: "index_campaigns_on_slug", unique: true

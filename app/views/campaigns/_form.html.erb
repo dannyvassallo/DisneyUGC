@@ -56,6 +56,10 @@
 		</div>
 	</div>
 	<div class="row">
+		<label>Choose a Campaign Type</label>
+		<%= f.input :campaign_type, :label => false, :collection => [['Both Media Types', 'Both Media Types'], ['Just Video', 'Just Video'], ['Just Photo', 'Just Photo']], :label_method => :last, :value_method => :first, :as => :materialize_radio_buttons  %>
+	</div>
+	<div class="row">
 		<div class="input-field col s12">
 			<%= f.input :title, label: false, :class => "validate", :wrapper => false %>
 			<label for="campaign_title">Enter a Title</label>
