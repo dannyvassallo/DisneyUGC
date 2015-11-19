@@ -13,6 +13,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.friendly.find(params[:id])
+    @duration_limit = Time.at(@campaign.duration_limit).utc.strftime("%M:%S")
     @user = current_user
     unless @campaign.live
       unless user_admin(@user)
