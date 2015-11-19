@@ -29,7 +29,11 @@ class Post < ActiveRecord::Base
   def video
     if !video_url.blank?
       movie = FFMPEG::Movie.new(self.video_url.path)
-      print "THE LENGTH IS #{movie.duration}"
+      duration = movie.duration
+      duration_limit = self.campaign.duration_limit
+      if duration > duration_limit
+        errors.add(:video_url, "Video must not be longer than #{duration_limit}")
+      end
     end
   end
 

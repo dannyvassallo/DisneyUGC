@@ -116,7 +116,7 @@ class CampaignsController < ApplicationController
   end
 
   def campaign_params
-    params.require(:campaign).permit(:title, :description, :call_to_action, :feature, :feature_cache, :video, :video_cache, :live, :slug, :analytics, :email_recipients, :email_notifications, :campaign_type)
+    params.require(:campaign).permit(:title, :description, :call_to_action, :feature, :feature_cache, :video, :video_cache, :live, :slug, :analytics, :email_recipients, :email_notifications, :campaign_type, :duration_limit)
   end
 
 end
