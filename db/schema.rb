@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119162535) do
+ActiveRecord::Schema.define(version: 20151119202726) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "title"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20151119162535) do
     t.string   "email_recipients"
     t.boolean  "email_notifications", default: false
     t.string   "campaign_type",       default: "Both Media Types"
+    t.integer  "duration_limit",      default: 15
   end
 
   add_index "campaigns", ["slug"], name: "index_campaigns_on_slug", unique: true
