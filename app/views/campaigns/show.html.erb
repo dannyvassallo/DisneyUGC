@@ -37,6 +37,7 @@
 				<%= render 'admintools' %>
 			<!-- END ADMIN PANEL -->
 		<% end %>
+		<% if @campaign.entries_visible || user_admin(@user) %>
 		<div class="row">
 			<div class="col l10 offset-l1">
 				<% if user_admin(@user) && !@campaign.live %>
@@ -53,6 +54,7 @@
 				</div>
 			</div>
 		</div>
+		<% end %>
 	</div>
 	<div class="parallax-container">
 		<div class="parallax">
