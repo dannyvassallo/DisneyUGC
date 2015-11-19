@@ -48,6 +48,7 @@
 						<div class="file-path-wrapper">
 			        <input class="file-path validate" type="text">
 						</div>
+						<h6 class="red-text">Video Duration Limit - <%= @duration_limit %></h6>
 					</div>
 				</fieldset>
 			<% elsif @campaign.campaign_type == "Just Photo" %>
@@ -79,6 +80,7 @@
 						<div class="file-path-wrapper">
 				      <input class="file-path validate" type="text">
 						</div>
+						<h6 class="red-text">Video Duration Limit - <%= @duration_limit %></h6>
 					</div>
 				</fieldset>
 			<% end %>
