@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "noreply@#{ENV['EMAIL_']}"
+  default from: "noreply@#{ENV['EMAIL_URL']}"
 
   def notification_email(post)
     @post = post
