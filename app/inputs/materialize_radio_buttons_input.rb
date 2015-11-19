@@ -2,7 +2,7 @@ class MaterializeRadioButtonsInput < SimpleForm::Inputs::CollectionRadioButtonsI
 
   # Creates a radio button set for use with Materialize CSS
 
-  def input
+  def input(wrapper_options)
     label_method, value_method = detect_collection_methods
     iopts = {
       :item_wrapper_class => 'field',
