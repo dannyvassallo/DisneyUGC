@@ -57,7 +57,7 @@
 	</div>
 	<div class="row">
 		<label>Choose a Campaign Type</label>
-		<%= f.input :campaign_type, :label => false, :collection => [['Both Media Types', 'Both Media Types'], ['Just Video', 'Just Video'], ['Just Photo', 'Just Photo']], :label_method => :last, :value_method => :first, :as => :materialize_radio_buttons  %>
+		<%= f.input :campaign_type, :label => false, :collection => [['Both Media Types', 'Both Media Types'], ['Just Video', 'Just Video'], ['Just Photo', 'Just Photo']], :label_method => :last, :value_method => :first, :as => :materialize_radio_buttons, :checked => @campaign.campaign_type  %>
 	</div>
 	<div class="row">
 		<div class="input-field col s12">

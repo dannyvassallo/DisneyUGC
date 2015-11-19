@@ -5,7 +5,6 @@ class MaterializeRadioButtonsInput < SimpleForm::Inputs::CollectionRadioButtonsI
   def input
     label_method, value_method = detect_collection_methods
     iopts = {
-      :checked => 1,
       :item_wrapper_class => 'field',
       :collection_wrapper_class => 'grouped inline fields'
      }
@@ -24,7 +23,7 @@ class MaterializeRadioButtonsInput < SimpleForm::Inputs::CollectionRadioButtonsI
   protected
 
   def build_nested_boolean_style_item_tag(collection_builder)
-    tag = String.new
+    tag = ''
     tag << '<p>'.html_safe
     tag << collection_builder.radio_button + collection_builder.label
     tag << '</p>'.html_safe
