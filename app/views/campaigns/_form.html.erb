@@ -8,7 +8,45 @@
 		var bottomColor = "<%= @campaign.bottom_color %>";
 	</script>
 <% end %>
+<% if @campaign.text_color %>
+	<script type="text/javascript">
+		var textColor = "<%= @campaign.text_color %>";
+	</script>
+<% end %>
+<% if @campaign.text_shadow %>
+	<script type="text/javascript">
+		var textShadow = "<%= @campaign.text_shadow %>";
+	</script>
+<% end %>
 <%= simple_form_for @campaign, :class => "col s12" do |f| %>
+	<div class="row">
+		<label>Choose a Campaign Type</label>
+		<%= f.input :campaign_type, :label => false, :collection => [['Both Media Types', 'Both Media Types'], ['Just Video', 'Just Video'], ['Just Photo', 'Just Photo']], :label_method => :last, :value_method => :first, :as => :materialize_radio_buttons, :checked => @campaign.campaign_type  %>
+	</div>
+	<div class="row">
+		<div class="input-field col s12">
+			<%= f.input :duration_limit, label: false, :class => "validate", :wrapper => false %>
+			<label for="campaign_title">Duration Limit in Seconds (only applies to videos)</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s12">
+			<%= f.input :title, label: false, :class => "validate", :wrapper => false %>
+			<label for="campaign_title">Enter a Title</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s12">
+			<%= f.input :description, label: false, :class => "validate", :wrapper => false %>
+			<label for="campaign_description">Enter a Description</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col s12">
+			<%= f.input :call_to_action, label: false, :class => "validate", :wrapper => false %>
+			<label for="campaign_call_to_action">Enter a Call To Action</label>
+		</div>
+	</div>
 	<% if @campaign.feature? || @campaign.video? %>
 		<div class="row">
 			<div class="col l12">
@@ -51,7 +89,7 @@
 				<%= f.file_field :feature %>
 			</div>
 			<div class="file-path-wrapper">
-		        <input class="file-path validate" type="text">
+        <input class="file-path validate" type="text">
 			</div>
 			<%= f.hidden_field :feature_cache %>
 		</div>
@@ -61,7 +99,15 @@
 				<%= f.file_field :video %>
 			</div>
 			<div class="file-path-wrapper">
-		        <input class="file-path validate" type="text">
+	      <input class="file-path validate" type="text">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="file-field col s12">
+			<label for="campaign_title">Gradient Background / Text Preview</label>
+			<div class="gradient-preview valign-wrapper">
+				<h2 class="valign colored-text">Text Example</h2>
 			</div>
 		</div>
 	</div>
@@ -75,37 +121,13 @@
 		  <%= f.input :bottom_color, as: :minicolors, label: false %>
 		</div>
 		<div class="file-field col s4">
-			<label for="campaign_title">Gradient Background Preview</label>
-			<div class="gradient-preview"></div>
+			<label for="campaign_title">Campaign Text Color</label>
+		  <%= f.input :text_color, as: :minicolors, label: false %>
 		</div>
 	</div>
 	<div class="row">
-		<label>Choose a Campaign Type</label>
-		<%= f.input :campaign_type, :label => false, :collection => [['Both Media Types', 'Both Media Types'], ['Just Video', 'Just Video'], ['Just Photo', 'Just Photo']], :label_method => :last, :value_method => :first, :as => :materialize_radio_buttons, :checked => @campaign.campaign_type  %>
-	</div>
-	<div class="row">
-		<div class="input-field col s12">
-			<%= f.input :duration_limit, label: false, :class => "validate", :wrapper => false %>
-			<label for="campaign_title">Duration Limit in Seconds (only applies to videos)</label>
-		</div>
-	</div>
-	<div class="row">
-		<div class="input-field col s12">
-			<%= f.input :title, label: false, :class => "validate", :wrapper => false %>
-			<label for="campaign_title">Enter a Title</label>
-		</div>
-	</div>
-	<div class="row">
-		<div class="input-field col s12">
-			<%= f.input :description, label: false, :class => "validate", :wrapper => false %>
-			<label for="campaign_description">Enter a Description</label>
-		</div>
-	</div>
-	<div class="row">
-		<div class="input-field col s12">
-			<%= f.input :call_to_action, label: false, :class => "validate", :wrapper => false %>
-			<label for="campaign_call_to_action">Enter a Call To Action</label>
-		</div>
+		<label>Choose a Text Shadow Level</label>
+		<%= f.input :text_shadow, :label => false, :collection => [['none', 'None'], ['text-z-depth-1', 'Depth 1'], ['text-z-depth-2', 'Depth 2'], ['text-z-depth-3', 'Depth 3'], ['text-z-depth-4', 'Depth 4'], ['text-z-depth-5', 'Depth 5']], :label_method => :last, :value_method => :first, :as => :materialize_radio_buttons, :checked => @campaign.text_shadow  %>
 	</div>
 	<div class="row">
 		<div class="input-field col s12">

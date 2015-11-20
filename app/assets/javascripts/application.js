@@ -25,4 +25,5 @@
 //= require _helpers
 //= require _disablemediatype
 //= require jquery.minicolors
+//= require _shadow
 //= require_tree .

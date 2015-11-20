@@ -15,5 +15,18 @@
         background: -moz-linear-gradient(<%= @campaign.top_color %>, <%= @campaign.bottom_color %>); /* For Firefox 3.6 to 15 */
         background: linear-gradient(<%= @campaign.top_color %>, <%= @campaign.bottom_color %>); /* Standard syntax (must be last) */
       }
+      .colored-text{
+        color: <%= @campaign.text_color %>;
+      }
+    </style>
+    <script type="text/javascript">
+        var textShadow = '<%= @campaign.text_shadow %>'
+    </script>
+<% end %>
+<% if user_admin(@user) %>
+    <style>
+        #campaign-feature{
+            margin-top: 0;
+        }
     </style>
 <% end %>
