@@ -1,6 +1,7 @@
+var coloredText = $('.colored-text');
+
 $('.campaign_text_shadow .materialize_radio_buttons').on('click', function(){
   var cssClass = this.value;
-  var coloredText = $('.colored-text');
   for(i=1; i < 6; i++){
     var remClass = 'text-z-depth-'+([i]);
     coloredText.removeClass(remClass);
@@ -9,3 +10,11 @@ $('.campaign_text_shadow .materialize_radio_buttons').on('click', function(){
     coloredText.addClass(cssClass);
   }
 });
+
+function addTextShadow(){
+  if(typeof(textShadow) != 'undefined' && textShadow != 'none'){
+    coloredText.addClass(textShadow);
+  }
+}
+
+addTextShadow();

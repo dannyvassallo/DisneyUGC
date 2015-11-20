@@ -27,5 +27,17 @@ $('.minicolors-picker').mouseup(function(){
   setPreview();
 });
 
+$(document).click(function(event) {
+  if(!$(event.target).closest('.minicolors-panel').length) {
+    if($('.minicolors-panel').is(":visible")) {
+      bottomColor = $('#campaign_bottom_color').val();
+      topColor = $('#campaign_top_color').val();
+      textColor = $('#campaign_text_color').val();
+      setPreview();
+    }
+  }
+});
+
+
 setPreview();
 

@@ -19,6 +19,9 @@
         color: <%= @campaign.text_color %>;
       }
     </style>
+    <script type="text/javascript">
+        var textShadow = '<%= @campaign.text_shadow %>'
+    </script>
 <% end %>
 <% if user_admin(@user) %>
     <style>

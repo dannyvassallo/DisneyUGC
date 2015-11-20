@@ -183,3 +183,13 @@ li.collection-item.avatar{
     color: black;
   }
 }
+
+// radio buttons inline
+.materialize_radio_buttons{
+  span{
+    display: inline-block;
+  }
+  label{
+    padding: 0 35px;
+  }
+}
