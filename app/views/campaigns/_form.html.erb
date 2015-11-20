@@ -13,6 +13,11 @@
 		var textColor = "<%= @campaign.text_color %>";
 	</script>
 <% end %>
+<% if @campaign.text_shadow %>
+	<script type="text/javascript">
+		var textShadow = "<%= @campaign.text_shadow %>";
+	</script>
+<% end %>
 <%= simple_form_for @campaign, :class => "col s12" do |f| %>
 	<% if @campaign.feature? || @campaign.video? %>
 		<div class="row">
@@ -83,6 +88,10 @@
 			<label for="campaign_title">Campaign Text Color</label>
 		  <%= f.input :text_color, as: :minicolors, label: false %>
 		</div>
+	</div>
+	<div class="row">
+		<label>Choose a Text Shadow Level</label>
+		<%= f.input :text_shadow, :label => false, :collection => [['none', 'None'], ['text-z-depth-1', 'Depth 1'], ['text-z-depth-2', 'Depth 2'], ['text-z-depth-3', 'Depth 3'], ['text-z-depth-4', 'Depth 4'], ['text-z-depth-5', 'Depth 5']], :label_method => :last, :value_method => :first, :as => :materialize_radio_buttons, :checked => @campaign.text_shadow  %>
 	</div>
 	<div class="row">
 		<div class="file-field col s12">

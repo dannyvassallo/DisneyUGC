@@ -134,7 +134,8 @@ class CampaignsController < ApplicationController
       :entries_visible,
       :top_color,
       :bottom_color,
-      :text_color)
+      :text_color,
+      :text_shadow)
   end
 
 end
