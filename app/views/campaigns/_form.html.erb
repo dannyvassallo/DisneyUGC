@@ -75,8 +75,16 @@
 		  <%= f.input :bottom_color, as: :minicolors, label: false %>
 		</div>
 		<div class="file-field col s4">
-			<label for="campaign_title">Gradient Background Preview</label>
-			<div class="gradient-preview"></div>
+			<label for="campaign_title">Campaign Text Color</label>
+		  <%= f.input :text_color, as: :minicolors, label: false %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="file-field col s12">
+			<label for="campaign_title">Gradient Background / Text Preview</label>
+			<div class="gradient-preview valign-wrapper">
+				<h2 class="valign colored-text">Text Example</h2>
+			</div>
 		</div>
 	</div>
 	<div class="row">

@@ -133,7 +133,8 @@ class CampaignsController < ApplicationController
       :duration_limit,
       :entries_visible,
       :top_color,
-      :bottom_color)
+      :bottom_color,
+      :text_color)
   end
 
 end

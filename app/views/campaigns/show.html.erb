@@ -1,14 +1,5 @@
-<script>
-	var gaCode = '<%= @campaign.analytics %>';
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', gaCode, 'auto');
-  ga('send', 'pageview');
-</script>
-<%= render 'gradientstyles' %>
+<%= render 'campaignanalytics' %>
+<%= render 'customcampaignstyles' %>
 <main>
 	<div class="container">
 		<div class="row">
@@ -42,11 +33,11 @@
 		<div class="row">
 			<div class="col l10 offset-l1">
 				<% if user_admin(@user) && !@campaign.live %>
-					<h5>Recent Entries (NOT ACCEPTING ENTRIES!)</h5>
+					<h5 class="colored-text">Recent Entries (NOT ACCEPTING ENTRIES!)</h5>
 				<% elsif user_admin(@user) && @campaign.live %>
-					<h5>Recent Entries (LIVE!)</h5>
+					<h5 class="colored-text">Recent Entries (LIVE!)</h5>
 				<% else %>
-					<h5>Recent Entries</h5>
+					<h5 class="colored-text">Recent Entries</h5>
 				<% end %>
 			</div>
 			<div class="col l10 offset-l1">
