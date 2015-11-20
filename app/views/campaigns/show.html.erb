@@ -3,6 +3,13 @@
 <main>
 	<div class="container">
 		<div class="row">
+			<div class="col l3 offset-l1 card-panel hoverable center-align back-link">
+				<% if user_admin(@user) %>
+						<%= link_to campaigns_path do %>
+							<p><i class="fa fa-arrow-left"></i> Back to Campaigns</p>
+						<% end %>
+				<% end %>
+			</div>
 			<div class="col l10 offset-l1 m12 s12">
 				<div id="campaign-feature" class="card large hoverable">
 					<% if @campaign.feature? %>

@@ -20,3 +20,10 @@
       }
     </style>
 <% end %>
+<% if user_admin(@user) %>
+    <style>
+        #campaign-feature{
+            margin-top: 0;
+        }
+    </style>
+<% end %>
