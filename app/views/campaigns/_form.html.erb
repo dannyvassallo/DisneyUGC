@@ -8,6 +8,11 @@
 		var bottomColor = "<%= @campaign.bottom_color %>";
 	</script>
 <% end %>
+<% if @campaign.text_color %>
+	<script type="text/javascript">
+		var textColor = "<%= @campaign.text_color %>";
+	</script>
+<% end %>
 <%= simple_form_for @campaign, :class => "col s12" do |f| %>
 	<% if @campaign.feature? || @campaign.video? %>
 		<div class="row">
