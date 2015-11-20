@@ -45,7 +45,7 @@ class CampaignsController < ApplicationController
 
       if @campaign.save
         flash[:notice] = "Your new campaign '#{title}' was created!"
-        redirect_to campaigns_path
+        redirect_to @campaign
       else
         flash[:error] = "There was an error creating the campaign. Please try again."
         render action: :new
@@ -72,7 +72,7 @@ class CampaignsController < ApplicationController
       title = @campaign.title
       if @campaign.update_attributes(modified_params)
         flash[:notice] = "The campaign '#{title}' was updated!"
-        redirect_to campaigns_path
+        redirect_to @campaign
       else
         flash[:error] = "There was an error updating the campaign. Please try again."
         render action: :edit
@@ -117,7 +117,23 @@ class CampaignsController < ApplicationController
   end
 
   def campaign_params
-    params.require(:campaign).permit(:title, :description, :call_to_action, :feature, :feature_cache, :video, :video_cache, :live, :slug, :analytics, :email_recipients, :email_notifications, :campaign_type, :duration_limit, :entries_visible)
+    params.require(:campaign).permit(:title,
+      :description,
+      :call_to_action,
+      :feature,
+      :feature_cache,
+      :video,
+      :video_cache,
+      :live,
+      :slug,
+      :analytics,
+      :email_recipients,
+      :email_notifications,
+      :campaign_type,
+      :duration_limit,
+      :entries_visible,
+      :top_color,
+      :bottom_color)
   end
 
 end

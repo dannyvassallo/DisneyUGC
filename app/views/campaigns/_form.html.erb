@@ -1,3 +1,13 @@
+<% if @campaign.top_color %>
+	<script type="text/javascript">
+		var topColor = "<%= @campaign.top_color %>";
+	</script>
+<% end %>
+<% if @campaign.bottom_color %>
+	<script type="text/javascript">
+		var bottomColor = "<%= @campaign.bottom_color %>";
+	</script>
+<% end %>
 <%= simple_form_for @campaign, :class => "col s12" do |f| %>
 	<% if @campaign.feature? || @campaign.video? %>
 		<div class="row">
@@ -53,6 +63,20 @@
 			<div class="file-path-wrapper">
 		        <input class="file-path validate" type="text">
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="file-field col s4">
+			<label for="campaign_title">Background Gradient Top Color</label>
+		  <%= f.input :top_color, as: :minicolors, label: false %>
+		</div>
+		<div class="file-field col s4">
+			<label for="campaign_title">Background Gradient Bottom Color</label>
+		  <%= f.input :bottom_color, as: :minicolors, label: false %>
+		</div>
+		<div class="file-field col s4">
+			<label for="campaign_title">Gradient Background Preview</label>
+			<div class="gradient-preview"></div>
 		</div>
 	</div>
 	<div class="row">

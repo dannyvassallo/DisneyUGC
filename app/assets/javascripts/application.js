@@ -24,4 +24,5 @@
 //= require _slideshowresize
 //= require _helpers
 //= require _disablemediatype
+//= require jquery.minicolors
 //= require_tree .
