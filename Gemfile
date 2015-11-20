@@ -19,7 +19,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'timecop'
-  gem 'email_spec'  
+  gem 'email_spec'
 end
 
 gem 'rails', '4.2.1'
@@ -56,3 +56,4 @@ gem 'videojs_rails'
 gem 'will_paginate-materialize', '~> 0.1.0'
 gem 'zeroclipboard-rails'
 gem 'randumb'
+gem 'jquery-minicolors-rails'

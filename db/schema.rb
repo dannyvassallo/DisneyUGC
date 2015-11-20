@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119213928) do
+ActiveRecord::Schema.define(version: 20151120154823) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string   "title"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20151119213928) do
     t.string   "campaign_type",       default: "Both Media Types"
     t.integer  "duration_limit",      default: 15
     t.boolean  "entries_visible",     default: true
+    t.string   "top_color",           default: "#ffffff"
+    t.string   "bottom_color",        default: "#ffffff"
   end
 
   add_index "campaigns", ["slug"], name: "index_campaigns_on_slug", unique: true
