@@ -1,0 +1,3 @@
+https://github.com/heroku/heroku-buildpack-ruby
+https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer
