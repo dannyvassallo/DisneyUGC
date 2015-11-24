@@ -7,6 +7,7 @@ class Video_urlUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video::Thumbnailer
   include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::MiniMagick
+  include CarrierWave::MimeTypes
 
   storage :fog
 
@@ -15,8 +16,10 @@ class Video_urlUploader < CarrierWave::Uploader::Base
   version :thumb do
 
     process thumbnail: [{format: 'png', quality: 10, size: 320, strip: false, logger: Rails.logger}]
+    process :set_content_type_png
+    process resize_to_fill: [320, 320]
     process :efficient_conversion => [320, 320]
-    # process resize_to_fill: [320, 320]
+
 
     def full_filename for_file
       png_name for_file, version_name
@@ -36,6 +39,11 @@ class Video_urlUploader < CarrierWave::Uploader::Base
         end
         img
       end
+    end
+
+    def set_content_type_png(*args)
+      Rails.logger.debug "#{file.content_type}"
+      self.file.instance_variable_set(:@content_type, "image/png")
     end
 
   end
