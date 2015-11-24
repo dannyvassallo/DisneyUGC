@@ -14,21 +14,21 @@ class Video_urlUploader < CarrierWave::Uploader::Base
 
   version :thumb do
 
-    process thumbnail: [{format: 'jpg', quality: 10, size: 320, strip: false, logger: Rails.logger}]
+    process thumbnail: [{format: 'png', quality: 10, size: 320, strip: false, logger: Rails.logger}]
     process :efficient_conversion => [320, 320]
-    process resize_to_fill: [320, 320]
+    # process resize_to_fill: [320, 320]
 
     def full_filename for_file
       png_name for_file, version_name
     end
 
     def png_name for_file, version_name
-      %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.jpg}
+      %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
     end
 
     def efficient_conversion(width, height)
       manipulate! do |img|
-        img.format("jpg") do |c|
+        img.format("png") do |c|
           c.fuzz        "3%"
           c.trim
           c.resize      "#{width}x#{height}>"
