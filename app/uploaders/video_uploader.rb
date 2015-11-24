@@ -6,6 +6,7 @@ class VideoUploader < CarrierWave::Uploader::Base
 	include CarrierWave::Video
 	include CarrierWave::Video::Thumbnailer
 	include ::CarrierWave::Backgrounder::Delay
+	include CarrierWave::MimeTypes
 
 	storage :fog
 
