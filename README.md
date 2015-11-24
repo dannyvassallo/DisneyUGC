@@ -48,6 +48,8 @@ if app doesnt run, scale up:
 ```
 heroku ps:scale web=1
 ```
+If that doesnt work goto heroku and flip the switches first
+
 
 if you mess up do this:
 ```shell
