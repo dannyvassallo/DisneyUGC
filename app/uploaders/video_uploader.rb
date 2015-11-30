@@ -6,6 +6,7 @@ class VideoUploader < CarrierWave::Uploader::Base
 	include CarrierWave::Video
 	include CarrierWave::Video::Thumbnailer
 	include ::CarrierWave::Backgrounder::Delay
+	include CarrierWave::MimeTypes
 
 	storage :fog
 
@@ -13,6 +14,13 @@ class VideoUploader < CarrierWave::Uploader::Base
 
 	version :thumb do
 		process thumbnail: [{format: 'png', quality: 10, size: 45, strip: false, logger: Rails.logger}]
+		process :set_content_type_png
+
+    def set_content_type_png(*args)
+      Rails.logger.debug "#{file.content_type}"
+      self.file.instance_variable_set(:@content_type, "image/png")
+    end
+
 		def full_filename for_file
 			png_name for_file, version_name
 		end
@@ -20,6 +28,13 @@ class VideoUploader < CarrierWave::Uploader::Base
 
 	version :poster do
 		process thumbnail: [{format: 'png', quality: 10, size: 720, strip: false, logger: Rails.logger}]
+		process :set_content_type_png
+
+    def set_content_type_png(*args)
+      Rails.logger.debug "#{file.content_type}"
+      self.file.instance_variable_set(:@content_type, "image/png")
+    end
+
 		def full_filename for_file
 			png_name for_file, version_name
 		end

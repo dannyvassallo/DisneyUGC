@@ -37,9 +37,7 @@ gem install streamio-ffmpeg
 ###Buildpacks with FFMpeg and Thumbnailer
 The set the buildpack:
 ```shell
-heroku buildpacks:set https://github.com/heroku/heroku-buildpack-ruby --app APPNAME
-heroku buildpacks:add --index 1 https://github.com/Litterfeldt/heroku-buildpack-ffmpeg-x264-fdk_aac --app APPNAME
-heroku buildpacks:add --index 2 https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer --app APPNAME
+heroku buildpacks:set https://github.com/ddollar/heroku-buildpack-multi.git --app APPNAME
 ```
 run the workers:
 ```
@@ -50,6 +48,8 @@ if app doesnt run, scale up:
 ```
 heroku ps:scale web=1
 ```
+If that doesnt work goto heroku and flip the switches first
+
 
 if you mess up do this:
 ```shell
@@ -67,4 +67,8 @@ rake jobs:clear
 throw pry anywhere to get an irb debug console:
 ```
 pry
+```
+###Run Rails C on Heroku
+```
+heroku run bundle exec rails console --app APPNAME
 ```
