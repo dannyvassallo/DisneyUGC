@@ -37,9 +37,7 @@ gem install streamio-ffmpeg
 ###Buildpacks with FFMpeg and Thumbnailer
 The set the buildpack:
 ```shell
-heroku buildpacks:set https://github.com/heroku/heroku-buildpack-ruby --app APPNAME
-heroku buildpacks:add --index 1 https://github.com/hyshka/heroku-buildpack-timidity-cedar-14 --app APPNAME
-heroku buildpacks:add --index 2 https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer --app APPNAME
+heroku buildpacks:set https://github.com/ddollar/heroku-buildpack-multi.git --app APPNAME
 ```
 run the workers:
 ```
