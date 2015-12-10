@@ -1,2 +1,1 @@
-rails: bin/rails server
-worker: rake jobs:work
+foreman: foreman s
