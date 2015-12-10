@@ -1,2 +1,2 @@
 rails: bin/rails server
-workers: rake jobs:work
+worker: rake jobs:work
