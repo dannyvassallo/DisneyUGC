@@ -1,1 +1,1 @@
-Dir.mkdir(File.join(Rails.root, 'tmp'));
+Rails.root.join('tmp')
