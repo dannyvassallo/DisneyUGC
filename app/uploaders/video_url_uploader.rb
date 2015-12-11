@@ -9,6 +9,7 @@ class Video_urlUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video::Thumbnailer
   include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::MiniMagick
+  include CarrierWave::MimeTypes
 
   storage :fog
 
