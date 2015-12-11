@@ -15,7 +15,7 @@ class Video_urlUploader < CarrierWave::Uploader::Base
   version :thumb do
 
     process thumbnail: [{format: 'png', quality: 10, size: 320, strip: false, logger: Rails.logger}]
-    # process resize_to_fill: [320, 320]
+    process resize_to_fill: [320, 320]
     # process :efficient_conversion => [320, 320]
 
     def full_filename for_file
