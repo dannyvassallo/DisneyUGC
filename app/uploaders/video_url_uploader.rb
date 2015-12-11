@@ -18,6 +18,7 @@ class Video_urlUploader < CarrierWave::Uploader::Base
   version :thumb do
 
     process thumbnail: [{format: 'png', quality: 10, size: 320, strip: false, logger: Rails.logger}]
+    process :convert => 'png'
     process :set_content_type
     process resize_to_fill: [320, 320]
     # process :efficient_conversion => [320, 320]
@@ -30,11 +31,6 @@ class Video_urlUploader < CarrierWave::Uploader::Base
       %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
     end
 
-    def set_content_type(*args)
-      content_type = file.content_type == 'application/octet-stream' || file.content_type.blank? ? MIME::Types.type_for(original_filename).first : file.content_type
-
-      self.file.instance_variable_set(:@content_type, content_type)
-    end
     # def efficient_conversion(width, height)
     #   manipulate! do |img|
     #     img.format("png") do |c|
@@ -57,6 +53,12 @@ class Video_urlUploader < CarrierWave::Uploader::Base
 
   def extension_white_list
     %w(ogg ogv 3gp mp4 m4v webm mov m2v 3g2)
+  end
+
+  def set_content_type(*args)
+    content_type = file.content_type == 'application/octet-stream' || file.content_type.blank? ? MIME::Types.type_for(original_filename).first : file.content_type
+
+    self.file.instance_variable_set(:@content_type, content_type)
   end
 
 end
