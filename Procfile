@@ -1,2 +1,2 @@
 web: bundle exec ruby config.ru
-workers: rake jobs:work
+worker: bundle exec rake jobs:work
