@@ -1,3 +1,4 @@
 https://github.com/a2ikm/heroku-buildpack-libjpeg62.git
+https://github.com/ello/heroku-buildpack-imagemagick-cedar-14
 https://github.com/bruchu/heroku-buildpack-ffmpeg.git
 https://github.com/heroku/heroku-buildpack-ruby.git
