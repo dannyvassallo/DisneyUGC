@@ -46,7 +46,7 @@ heroku run rake jobs:work --app APPNAME
 
 if app doesnt run, scale up:
 ```
-ps:scale web=1 workers=1 --app disneyugc-staging --app APPNAME
+heroku ps:scale web=1 workers=1 --app disneyugc-staging
 ```
 
 if you mess up do this:
