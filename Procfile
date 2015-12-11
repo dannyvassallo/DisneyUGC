@@ -1,2 +1,2 @@
-rails: bin/rails server
-workers: rake jobs:work
+web: bundle exec ruby config.ru
+worker: bundle exec rake jobs:work
