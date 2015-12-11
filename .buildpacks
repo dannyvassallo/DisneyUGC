@@ -1,3 +1,2 @@
-https://github.com/markaschneider/heroku-buildpack-ruby-ffmpeg-sox.git
-https://github.com/johnklawlor/heroku-buildpack-ffmpeg-thumbnailer
+https://github.com/bruchu/heroku-buildpack-ffmpeg.git
 https://github.com/heroku/heroku-buildpack-ruby.git
