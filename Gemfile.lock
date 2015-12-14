@@ -437,6 +437,7 @@ DEPENDENCIES
   pundit
   rails (= 4.2.1)
   rails_12factor
+  rake
   randumb
   restclient
   rspec-rails (~> 3.1.0)
