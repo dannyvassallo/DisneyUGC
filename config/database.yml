@@ -4,14 +4,10 @@ sqlite: &sqlite
 
 mysql: &mysql
   adapter: mysql2
-  username: root
-  password:
   database: disneyugc_<%= Rails.env %>
 
 postgresql: &postgresql
   adapter: postgresql
-  username: postgres
-  password:
   database: disneyugc_<%= Rails.env %>
   min_messages: ERROR
 
