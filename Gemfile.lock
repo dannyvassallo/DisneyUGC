@@ -432,7 +432,6 @@ DEPENDENCIES
   jquery-rails
   materialize-sass
   mini_magick
-  net-ssh
   pg
   pry
   pundit
