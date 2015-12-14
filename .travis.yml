@@ -14,27 +14,8 @@ before_script:
 env:
   AWS_ACCESS_KEY_ID: areallylongstring
   AWS_SECRET_ACCESS_KEY: areallylongstring
-  development:
-    AWS_BUCKET: blip
-    SENDGRID_USERNAME: nope
-    SENDGRID_PASSWORD: snore
-    MAIL_HOST: https://test.com
-    EMAIL_URL: test.com
-  test:
-    AWS_BUCKET: blip
-    SENDGRID_USERNAME: nope
-    SENDGRID_PASSWORD: snore
-    MAIL_HOST: https://test.com
-    EMAIL_URL: test.com
-  staging:
-    AWS_BUCKET: blip
-    SENDGRID_USERNAME: nope
-    SENDGRID_PASSWORD: snore
-    MAIL_HOST: https://test.com
-    EMAIL_URL: test.com
-  production:
-    AWS_BUCKET: blip
-    SENDGRID_USERNAME: nope
-    SENDGRID_PASSWORD: snore
-    MAIL_HOST: https://test.com
-    EMAIL_URL: test.com
+  AWS_BUCKET: blip
+  SENDGRID_USERNAME: nope
+  SENDGRID_PASSWORD: snore
+  MAIL_HOST: https://test.com
+  EMAIL_URL: test.com
