@@ -9,6 +9,7 @@ env:
 script:
   - 'bundle exec rake && bundle exec rake features'
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
+after_script:
   - bundle exec rspec spec
 before_install:
   - 'sudo aptitude -y -q install libcairo2-dev libpixman-1-dev libpango1.0-dev libgif-dev libjpeg-dev libgtk2.0-dev vlc libvlc-dev portaudio19-dev libsqlite3-dev libcurl4-openssl-dev makeself curl'
