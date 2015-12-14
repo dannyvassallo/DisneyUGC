@@ -6,8 +6,10 @@ env:
   - DB=mysql
   - DB=postgresql
 script:
+  - 'bundle exec rake && bundle exec rake features'
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
   - bundle exec rspec spec
 before_script:
   - mysql -e 'create database disneyugc_test'
   - psql -c 'create database disneyugc_test' -U postgres
+  - 'sudo aptitude -y -q install libcairo2-dev libpixman-1-dev libpango1.0-dev libgif-dev libjpeg-dev libgtk2.0-dev vlc libvlc-dev portaudio19-dev libsqlite3-dev libcurl4-openssl-dev makeself curl'
