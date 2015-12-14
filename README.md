@@ -80,3 +80,19 @@ Throw pry anywhere to get an irb debug console:
 pry
 ```
 
+###Travis CI
+
+install:
+```
+gem install travis
+```
+
+encrypt ENV:
+```
+travis encrypt SOMEVAR=secretvalue
+```
+This will output a string looking something like:
+```
+secure: ".... encrypted data ...."
+```
+Copy paste it into the ```travis.yml``` file.
