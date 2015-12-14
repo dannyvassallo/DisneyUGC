@@ -1,3 +1,5 @@
+$new-campaign-text-color: #fff;
+
 .dead-campaign{
  border: 3px #B71C1C solid;
 }
@@ -192,4 +194,72 @@ li.collection-item.avatar{
   label{
     padding: 0 35px;
   }
+}
+
+// disney styles
+
+.page-footer{
+  margin-top: 0 !important;
+}
+
+.new-campaign{
+  color: $new-campaign-text-color;
+  label{
+    color: $new-campaign-text-color;
+  }
+  input{
+    border-bottom: 1px solid $new-campaign-text-color;
+  }
+  /* label color */
+  .input-field label {
+    color: $new-campaign-text-color;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: $new-campaign-text-color;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid $new-campaign-text-color;
+    box-shadow: 0 1px 0 0 $new-campaign-text-color;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+    border-bottom: 1px solid $new-campaign-text-color;
+    box-shadow: 0 1px 0 0 $new-campaign-text-color;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid $new-campaign-text-color;
+    box-shadow: 0 1px 0 0 $new-campaign-text-color;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: $new-campaign-text-color;
+  }
+  [type="radio"]:checked + label:after, [type="radio"] + label:after {
+    border-radius: 50%;
+    border: 2px solid $new-campaign-text-color;
+    z-index: 0;
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    transform: scale(1.02);
+  }
+  [type="radio"]:checked + label:after{
+    background-color: $new-campaign-text-color;
+  }
+  .switch label input[type=checkbox]:checked + .lever {
+      background-color: $new-campaign-text-color;
+  }
+  .switch label input[type=checkbox]:checked + .lever:after {
+      background-color: $new-campaign-text-color;
+  }
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#369a0f+0,82c03a+100 */
+  background: #369a0f; /* Old browsers */
+  background: -moz-linear-gradient(top,  #369a0f 0%, #82c03a 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #369a0f 0%,#82c03a 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #369a0f 0%,#82c03a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#369a0f', endColorstr='#82c03a',GradientType=0 ); /* IE6-9 */
 }

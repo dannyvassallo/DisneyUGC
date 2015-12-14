@@ -16,6 +16,7 @@
 !/log/.keep
 /tmp
 /public/uploads
+tmp/cache/
 
 # Ignore application configuration
 /config/application.yml
