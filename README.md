@@ -96,3 +96,7 @@ This will output a string looking something like:
 secure: ".... encrypted data ...."
 ```
 Copy paste it into the ```travis.yml``` file.
+
+ALTERNATIVELY
+
+You may add them in the settings in your Travis CI Dashboard for the repo.
