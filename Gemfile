@@ -57,5 +57,5 @@ gem 'will_paginate-materialize', '~> 0.1.0'
 gem 'zeroclipboard-rails'
 gem 'randumb'
 gem 'jquery-minicolors-rails'
-gem "heroku-forward"
+gem 'heroku-forward'
 gem 'thin'

@@ -1,5 +1,5 @@
 #Radio Disney UGC Platform
-
+Build Status: [![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
 Platform for Radio Disney to create User Generated Content Contests
 
 ###Getting Started
@@ -10,14 +10,25 @@ bundle install
 rake db:migrate
 foreman s
 ```
+visit ```localhost:5000``` in the browser.
+
+###Create an Admin
+```shell
+rails c
+u = User.first
+u.update_attributes(:role => 'admin')
+u.save!
+```
 
 ###Sticky Footer
+
 Content must be between 2 main tags for sticky footer to work:
 ```html
 <main></main>
 ```
 
 ###Set ENV with figaro on Heroku
+
 Production:
 ```shell
 figaro heroku:set -e production
@@ -28,14 +39,16 @@ figaro heroku:set -e staging --app APPNAME
 ```
 
 ###Local Video Processing
+
 ```shell
 brew install ffmpeg
 brew install ffmpegthumbnailer
 gem install streamio-ffmpeg
 ```
+
 ###Production/Staging Video Processing
-###Buildpacks with FFMpeg and Thumbnailer
-The set the buildpack:
+
+To set the buildpack:
 ```shell
 heroku buildpacks:set https://github.com/ddollar/heroku-buildpack-multi.git --app APPNAME
 ```
@@ -56,13 +69,14 @@ heroku buildpacks:clear --app APPNAME
 
 ###Clear Jobs
 
-to clear jobs:
+To clear jobs:
 ```
 rake jobs:clear
 ```
 
 ###Using Pry
-throw pry anywhere to get an irb debug console:
+
+Throw pry anywhere to get an irb debug console:
 ```
 pry
 ```
