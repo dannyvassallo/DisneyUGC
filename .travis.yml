@@ -6,7 +6,9 @@ env:
   - DB=mysql
   - DB=postgresql
 script:
+  - gem install rake
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
+  - bundle exec rspec spec
 before_script:
   - mysql -e 'create database disneyugc_test'
   - psql -c 'create database disneyugc_test' -U postgres

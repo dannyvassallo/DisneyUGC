@@ -1,6 +1,4 @@
-#Radio Disney UGC Platform
-Build Status: [![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
-
+#Radio Disney UGC Platform [![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
 Platform for Radio Disney to create User Generated Content Contests
 
 ###Getting Started
