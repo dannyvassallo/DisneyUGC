@@ -60,4 +60,5 @@ gem 'randumb'
 gem 'jquery-minicolors-rails'
 gem 'heroku-forward'
 gem 'thin'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
+
