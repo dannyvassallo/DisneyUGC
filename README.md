@@ -43,6 +43,7 @@ figaro heroku:set -e staging --app APPNAME
 brew install ffmpeg
 brew install ffmpegthumbnailer
 gem install streamio-ffmpeg
+brew install mysql
 ```
 
 ###Production/Staging Video Processing
