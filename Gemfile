@@ -20,6 +20,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'timecop'
   gem 'email_spec'
+  gem 'rake'
 end
 
 gem 'rails', '4.2.1'
@@ -59,3 +60,5 @@ gem 'randumb'
 gem 'jquery-minicolors-rails'
 gem 'heroku-forward'
 gem 'thin'
+gem 'mysql2', '~> 0.3.18'
+

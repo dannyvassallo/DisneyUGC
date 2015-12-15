@@ -1,6 +1,4 @@
-#Radio Disney UGC Platform
-Build Status: [![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
-
+#Radio Disney UGC Platform [![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
 Platform for Radio Disney to create User Generated Content Contests
 
 ###Getting Started
@@ -45,6 +43,7 @@ figaro heroku:set -e staging --app APPNAME
 brew install ffmpeg
 brew install ffmpegthumbnailer
 gem install streamio-ffmpeg
+brew install mysql
 ```
 
 ###Production/Staging Video Processing
@@ -82,3 +81,23 @@ Throw pry anywhere to get an irb debug console:
 pry
 ```
 
+###Travis CI
+
+install:
+```
+gem install travis
+```
+
+encrypt ENV:
+```
+travis encrypt SOMEVAR=secretvalue
+```
+This will output a string looking something like:
+```
+secure: ".... encrypted data ...."
+```
+Copy paste it into the ```travis.yml``` file.
+
+ALTERNATIVELY
+
+You may add them in the settings in your Travis CI Dashboard for the repo.
