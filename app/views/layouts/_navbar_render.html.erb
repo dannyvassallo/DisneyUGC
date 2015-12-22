@@ -1,10 +1,5 @@
-<% if current_page?(controller: 'campaigns', action: 'show') %>
-  <% if current_user && user_admin(current_user) %>
-    <%= render partial: 'layouts/navbar' %>
-  <% else %>
-    <%= render partial: 'layouts/dummy_nav' %>
-  <% end %>
-<% else %>
+<% if current_user && user_admin(current_user) %>
   <%= render partial: 'layouts/navbar' %>
+<% else %>
+  <%= render partial: 'layouts/dummy_nav' %>
 <% end %>
-

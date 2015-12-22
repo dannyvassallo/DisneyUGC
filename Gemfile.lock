@@ -458,6 +458,3 @@ DEPENDENCIES
   whenever
   will_paginate-materialize (~> 0.1.0)
   zeroclipboard-rails
-
-BUNDLED WITH
-   1.10.6
