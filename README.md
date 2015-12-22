@@ -101,3 +101,8 @@ Copy paste it into the ```travis.yml``` file.
 ALTERNATIVELY
 
 You may add them in the settings in your Travis CI Dashboard for the repo.
+
+###Signup URL
+```
+localhost:5000/users/8626705366
+```

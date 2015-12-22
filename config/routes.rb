@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root to: 'welcome#index'
   # BEGIN CUSTOM DEVISE ROUTES #
-  devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  devise_for :users, :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "8626705366" }
   devise_scope :user do
     get "login", to: "devise/sessions#new"
     get "logout", to: "devise/sessions#destroy"
-    get "register", to: "devise/registrations#new"
+    get "8626705366", to: "devise/registrations#new"
   end
   # END CUSTOM DEVISE ROUTES #
   scope "/admin" do
