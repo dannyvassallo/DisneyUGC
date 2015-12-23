@@ -1,32 +1,47 @@
 <main class="landing">
   <div class="parallax-container">
-    <div class="parallax"><img src="http://materializecss.com/images/parallax1.jpg"></div>
-  </div>
-  <div class="section white">
-    <div class="row container">
-      <h2 class="header">Parallax</h2>
-      <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+    <div class="parallax valign-wrapper">
+      <img src="https://s3.amazonaws.com/rdugc/assets/abstractblue.jpg">
+      <div class="container valign">
+        <div class="row">
+          <div class="col s12">
+            <h1 class="text-z-depth-1">Create a new contest</h1>
+          </div>
+          <div class="col s12">
+            <%= link_to 'New Campaign', new_campaign_path, class: 'waves-effect waves-light btn grey darken-4 admin-link z-depth-1' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="parallax-container">
-    <div class="parallax"><img src="http://materializecss.com/images/parallax2.jpg"></div>
-  </div>
-</main>
-
-
-<!--   <div class="container">
-    <% if user_admin(current_user) %>
-      <div class="row">
-        <div class="col s4 center-align">
-          <%= link_to 'New Campaign', new_campaign_path, class: 'waves-effect waves-light btn grey darken-4 admin-link' %>
+    <div class="parallax valign-wrapper">
+      <img src="https://s3.amazonaws.com/rdugc/assets/redabstract.jpg">
+      <div class="container valign">
+        <div class="row">
+          <div class="col s12 right-align">
+            <h1 class="text-z-depth-1">View all contests</h1>
+          </div>
+          <div class="col s12 right-align">
+            <%= link_to 'View Campaigns', campaigns_path, class: 'waves-effect waves-light btn grey darken-4 admin-link' %>
+          </div>
         </div>
-        <div class="col s4 center-align">
-          <%= link_to 'View Campaigns', campaigns_path, class: 'waves-effect waves-light btn grey darken-4 admin-link' %>
-        </div>
-        <div class="col s4 center-align">
-          <%= link_to 'Create an Admin', admin_index_path, class: 'waves-effect waves-light btn grey darken-4 admin-link' %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
- -->
+  <div class="parallax-container">
+    <div class="parallax valign-wrapper">
+      <img src="https://s3.amazonaws.com/rdugc/assets/greenabstract.jpg">
+      <div class="container valign">
+        <div class="row">
+          <div class="col s12">
+            <h1 class="text-z-depth-1">Add a team member</h1>
+          </div>
+          <div class="col s12">
+            <%= link_to 'Create an Admin', admin_index_path, class: 'waves-effect waves-light btn grey darken-4 admin-link' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
