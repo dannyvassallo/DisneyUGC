@@ -20,4 +20,5 @@ $(function(){
 		selectYears: 100, // Creates a dropdown of 15 years to control year
 		container: 'body',
 	});
+  $('.parallax').parallax();
 });
