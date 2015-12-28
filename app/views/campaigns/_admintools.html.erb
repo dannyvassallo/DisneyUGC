@@ -1,9 +1,9 @@
 <div id="admin-tools" class="row">
   <div class="col s10 offset-s1 card large hoverable">
-    <div class="col s6">
+    <div class="col s12">
       <h4>Admin Tools</h4>
     </div>
-    <div class="col s6">
+    <div class="col s12">
       <h4>
         <div class="switch">
           <label>
@@ -16,43 +16,43 @@
       </h4>
     </div>
     <div class="col s12 center-align">
-      <%= link_to get_posts_path(campaign_id: @campaign.id, format: "csv"), class: 'btn waves-effect waves-light blue accent-3', :data => { :position => "top", :delay => "50", :tooltip => "Download all entries from #{@campaign.title}" } do %>
+      <%= link_to get_posts_path(campaign_id: @campaign.id, format: "csv"), class: 'col s12 btn waves-effect waves-light blue accent-3', :data => { :position => "top", :delay => "50", :tooltip => "Download all entries from #{@campaign.title}" } do %>
         <i class="fa fa-cloud-download"></i> ENTRIES
       <% end %>
-      <%= link_to edit_campaign_path(@campaign), class: 'btn waves-effect waves-light purple darken-3', :data => { :position => "bottom", :delay => "50", :tooltip => "Edit #{@campaign.title}" } do %>
+      <%= link_to edit_campaign_path(@campaign), class: 'col s12 btn waves-effect waves-light purple darken-3', :data => { :position => "bottom", :delay => "50", :tooltip => "Edit #{@campaign.title}" } do %>
         <i class="fa fa-pencil"></i> <%= "EDIT" %>
       <% end %>
       <% if @campaign.live %>
-        <%= simple_form_for @campaign, html: { class: "stop-campaign"} do |f| %>
+        <%= simple_form_for @campaign, html: { class: "col s12 stop-campaign"} do |f| %>
           <%= f.check_box :live, label: false, :class => "hidden", :wrapper => false, :checked => false %>
-          <%= button_tag(type: 'submit', class: 'btn deep-orange accent-3 waves-effect waves-light', :data => { :position => "top", :delay => "50", :tooltip => "End #{@campaign.title}" }) do %>
+          <%= button_tag(type: 'submit', class: 'col s12 btn deep-orange accent-3 waves-effect waves-light', :data => { :position => "top", :delay => "50", :tooltip => "End #{@campaign.title}" }) do %>
             <i class="fa fa-ban"></i> <%= "END" %>
           <% end %>
         <% end %>
       <% else %>
-        <%= simple_form_for @campaign, html: { class: "start-campaign"} do |f| %>
+        <%= simple_form_for @campaign, html: { class: "col s12 start-campaign"} do |f| %>
           <%= f.check_box :live, label: false, :class => "hidden", :wrapper => false, :checked => true %>
-          <%= button_tag(type: 'submit', class: 'btn green accent-4 waves-effect waves-light', :data => { :position => "top", :delay => "50", :tooltip => "Set #{@campaign.title}" }) do %>
+          <%= button_tag(type: 'submit', class: 'col s12 btn green accent-4 waves-effect waves-light', :data => { :position => "top", :delay => "50", :tooltip => "Set #{@campaign.title}" }) do %>
             <i class="fa fa-thumbs-up"></i> <%= "GO LIVE" %>
           <% end %>
         <% end %>
       <% end %>
-      <%= link_to slideshow_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light orange darken-4', :data => { :position => "bottom", :delay => "50", :tooltip => "View a slideshow of all entries" } do %>
+      <%= link_to slideshow_path(campaign_id: @campaign.id), class: 'col s12 btn waves-effect waves-light orange darken-4', :data => { :position => "bottom", :delay => "50", :tooltip => "View a slideshow of all entries" } do %>
         <i class="fa fa-photo"></i> SLIDESHOW
       <% end %>
-      <%= link_to random_winner_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light green darken-4', :data => { :position => "top", :delay => "50", :tooltip => "Pick a random winner" } do %>
+      <%= link_to random_winner_path(campaign_id: @campaign.id), class: 'col s12 btn waves-effect waves-light green darken-4', :data => { :position => "top", :delay => "50", :tooltip => "Pick a random winner" } do %>
         <i class="fa fa-trophy"></i> WINNER
       <% end %>
     </div>
     <div class="col s12">
       <%= form_tag(campaign_path(@campaign, @campaign.posts), :method => "get", id: "search-form") do %>
-        <div class="input-field col s8 offset-s1">
+        <div class="input-field col s12">
           <i class="material-icons prefix">search</i>
           <%= text_area_tag :search, params[:search], id: 'icon_prefix2', :class => 'materialize-textarea' %>
           <label for="icon_prefix2">Search by Email or Name</label>
         </div>
-        <div class="input-field col s2">
-          <%= submit_tag "Search", :class => 'btn grey darken-4' %>
+        <div class="input-field col s12">
+          <%= submit_tag "Search", :class => 'col s12 search-btn btn grey darken-4' %>
         </div>
       <% end %>
     </div>
