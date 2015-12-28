@@ -1,15 +1,17 @@
 <div id="slideshow" class="slider">
   <ul class="slides">
     <% @posts.each do |post| %>
-      <% if post.image_url != nil %>
-        <li>
-          <img src="<%= post.image_url.url %>">
+        <li class="valign-wrapper">
+          <% if post.video_url.length > 0 %>
+            <img src="<%= post.video_url.poster.url %>">
+          <% elsif post.image_url.length > 0 %>
+            <img src="<%= post.image_url.thumb.url %>">
+          <% end %>
           <div class="caption center-align">
             <h3><%= post.campaign.title %></h3>
             <h5>Submitted by: <%= post.full_name %></h5>
           </div>
         </li>
-      <% end %>
     <% end %>
   </ul>
 </div>
