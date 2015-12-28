@@ -12,7 +12,12 @@ function addWave(el){
 $(function(){
 	addWave('.button-next');
 	addWave('.button-back');
+  $('.x-out').on('click', function(){
+    $('#entryform').closeModal();
+  });
 });
+
+
 
 // init wizard
 $('.the-wizard').stepy({

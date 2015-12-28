@@ -18,3 +18,13 @@ fieldset{
 }
 .button-next,
 .stepy-navigator input[type="submit"] { float: right }
+
+.x-out{
+  text-align: right;
+  position: absolute;
+  top: 6px;
+  right: 11px;
+  .fa-circle{
+    text-shadow: 1px 1px 11px rgba(0,0,0,0.6);
+  }
+}
