@@ -1,5 +1,11 @@
 <!-- Modal Structure -->
 <div id="entryform" class="modal">
+	<div class="x-out hide-on-large-only">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-times fa-stack-1x fa-inverse"></i>
+		</span>
+	</div>
 	<div class="modal-content">
 		<h4>Submit Your Entry</h4>
 		<%= simple_form_for [@campaign, @campaign.posts.build], html: {  class: 'the-wizard' } do |f| %>
