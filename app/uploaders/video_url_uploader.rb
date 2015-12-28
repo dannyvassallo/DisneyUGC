@@ -32,6 +32,23 @@ class Video_urlUploader < CarrierWave::Uploader::Base
 
   end
 
+  version :poster do
+
+    process thumbnail: [{format: 'jpg', quality: 7, size: 640, strip: false, logger: Rails.logger}]
+    process :convert => 'jpg'
+    process :set_content_type
+    process resize_to_fill: [640, 640]
+
+    def full_filename for_file
+      jpg_name for_file, version_name
+    end
+
+    def jpg_name for_file, version_name
+      %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.jpg}
+    end
+
+  end
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
