@@ -6,6 +6,10 @@
   }
 }
 
+.parallax-container:after {
+  height: 50px !important;
+}
+
 .landing{
   color: $input-text-and-label;
   label{
