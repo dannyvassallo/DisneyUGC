@@ -3,10 +3,10 @@
 	<div id="<%= "post-#{post.id}" %>" class="modal">
 		<div class="modal-content center-align">
 			<% if post.image_url? %>
-				<img class="responsive-img" src="<%= post.image_url.url %>">
+				<img class="responsive-img" src="<%= prepend_cdn(post.image_url.path) %>">
 			<% elsif post.video_url? %>
 				<video preload="auto" class="vjs-big-play-centered video-js vjs-default-skin vjs-paused vjs-controls-enabled vjs-user-inactive modal-video feed-vid" controls data-setup="{}">
-					<source src="<%= post.video_url.url %>" type='video/mp4'>
+					<source src="<%= prepend_cdn(post.video_url.path) %>" type='video/mp4'>
 				</video>
 			<% end %>
 		</div>
