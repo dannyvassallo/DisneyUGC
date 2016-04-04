@@ -12,7 +12,7 @@
 			<div class="card hoverable">
 				<div class="card-image">
 					<a class="feed-modal-trigger" href="<%= "#post-#{post.id}" %>">
-						<img class="<%= "post-#{post.id}" %>" data-processing="<%= post.image_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.friendly_id %>" src="<%= prepend_cdn(post.image_url.thumb.path) %>" data-position="top" data-delay="50" data-tooltip="View post from <%= post.full_name %>">
+						<img class="<%= "post-#{post.id}" %>" data-processing="<%= post.image_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.friendly_id %>" src="<%= post.image_url.thumb.url %>" data-position="top" data-delay="50" data-tooltip="View post from <%= post.full_name%>">
 					</a>
 				</div>
 			</div>

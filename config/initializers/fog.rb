@@ -6,4 +6,5 @@ CarrierWave.configure do |config|
   }
   config.fog_directory  = ENV['AWS_BUCKET']
   config.fog_public     = true
+  config.asset_host = ENV['CLOUDFRONT_DOMAIN']
 end
