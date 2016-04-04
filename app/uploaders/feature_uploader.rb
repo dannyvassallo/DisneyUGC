@@ -53,4 +53,8 @@ class FeatureUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  def assets_host
+   ENV['CLOUDFRONT_DOMAIN']
+  end
+
 end

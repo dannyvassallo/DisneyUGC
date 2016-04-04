@@ -39,4 +39,8 @@ class VideoUploader < CarrierWave::Uploader::Base
 		%w(ogg ogv 3gp mp4 m4v webm mov m2v 3g2)
 	end
 
+  def assets_host
+   ENV['CLOUDFRONT_DOMAIN']
+  end
+
 end

@@ -65,4 +65,8 @@ class Video_urlUploader < CarrierWave::Uploader::Base
     self.file.instance_variable_set(:@content_type, content_type)
   end
 
+  def assets_host
+   ENV['CLOUDFRONT_DOMAIN']
+  end
+
 end
