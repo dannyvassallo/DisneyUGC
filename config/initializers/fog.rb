@@ -5,6 +5,7 @@ CarrierWave.configure do |config|
     aws_secret_access_key:  ENV['AWS_SECRET_ACCESS_KEY']
   }
   config.fog_directory  = ENV['AWS_BUCKET']
+  config.action_controller.asset_host = ENV['CLOUDFRONT_DOMAIN']
   config.asset_host = ENV['CLOUDFRONT_DOMAIN']
   config.fog_public     = true
 end
