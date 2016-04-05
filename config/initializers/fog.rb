@@ -4,8 +4,7 @@ CarrierWave.configure do |config|
     aws_access_key_id:      ENV['AWS_ACCESS_KEY_ID'],
     aws_secret_access_key:  ENV['AWS_SECRET_ACCESS_KEY']
   }
-  config.fog_directory  = ENV['AWS_BUCKET']
   config.asset_host = ENV['CLOUDFRONT_DOMAIN']
-  config.fog_public     = true
-  config.fog_attributes = {'Cache-Control' => 'max-age=315576000'}
+  config.fog_directory  = ENV['AWS_BUCKET']
+  config.fog_public = true
 end

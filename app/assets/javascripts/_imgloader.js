@@ -1,4 +1,4 @@
-var my_delay = 1000;
+var my_delay = 5000;
 
 function callAjax(img, postId, processing, url){
   var postClass = 'post-'+ postId;
@@ -19,7 +19,9 @@ function callAjax(img, postId, processing, url){
         } else {
           $('.'+postClass).attr('src', data.image_url.thumb.url);
         }
-      },
+      }, error: function(){
+        console.log('error');
+      }
     });
   }
 }
