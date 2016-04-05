@@ -33,7 +33,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'simple_form'
-gem 'font-awesome-rails'
 gem 'whenever', :require => false
 gem 'active_model_serializers'
 gem 'restclient'
