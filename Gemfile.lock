@@ -275,7 +275,7 @@ GEM
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
-    jquery-minicolors-rails (2.2.3.0)
+    jquery-minicolors-rails (2.1.4.1)
       jquery-rails
       rails (>= 3.2.8)
     jquery-rails (4.1.1)
@@ -465,7 +465,7 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   heroku-forward
   jbuilder (~> 2.0)
-  jquery-minicolors-rails
+  jquery-minicolors-rails (~> 2.1.4.0)
   jquery-rails
   materialize-sass
   mini_magick
