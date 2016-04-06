@@ -66,7 +66,7 @@ class Video_urlUploader < CarrierWave::Uploader::Base
   end
 
   def assets_host
-   ENV['CLOUDFRONT_DOMAIN']
+   ENV['CLOUDFRONT_UGC_DOMAIN']
   end
 
 end
