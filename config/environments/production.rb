@@ -3,7 +3,13 @@ Rails.application.configure do
   config.action_controller.asset_host = ENV["CLOUDFRONT_ASSETS_DOMAIN"]
   # Code is not reloaded between requests.
   config.cache_classes = true
-
+  config.font_assets.origin = '*'
+  config.middleware.insert_before ActionDispatch::Static, 'Rack::Cors', logger: (-> { Rails.logger }) do
+    allow do
+      origins '*'
+      resource '*', headers: :any, methods: [:get]
+    end
+  end
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -23,7 +29,7 @@ Rails.application.configure do
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   # config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
-  config.serve_static_files = false
+  config.serve_static_files = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier

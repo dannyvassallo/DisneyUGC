@@ -256,6 +256,8 @@ GEM
     fog-xml (0.1.2)
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
+    font_assets (0.1.12)
+      rack
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
@@ -310,6 +312,7 @@ GEM
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (1.6.4)
+    rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -459,6 +462,7 @@ DEPENDENCIES
   faker
   figaro (= 1.0)
   fog
+  font_assets
   friendly_id (~> 5.1.0)
   heroku-forward
   jbuilder (~> 2.0)
@@ -470,6 +474,7 @@ DEPENDENCIES
   pg
   pry
   pundit
+  rack-cors
   rails (= 4.2.1)
   rails_12factor
   rake

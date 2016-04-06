@@ -60,4 +60,6 @@ gem 'jquery-minicolors-rails', '~> 2.1.4.0'
 gem 'heroku-forward'
 gem 'thin'
 gem 'mysql2', '~> 0.3.18'
+gem 'font_assets'
+gem 'rack-cors', :require => 'rack/cors'
 

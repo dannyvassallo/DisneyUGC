@@ -106,3 +106,31 @@ You may add them in the settings in your Travis CI Dashboard for the repo.
 ```
 localhost:5000/users/8626705366
 ```
+
+###CORS setup on S3 for fonts
+
+1. Navigate to your AWS console and the S3 service
+2. Select the bucket you are using to store your assets
+3. Click the ‘Properties’ tab
+4. Under ‘Permissions’ click ‘Add CORS Configuration’
+5. Paste in the following
+
+If you are using CloudFront as your CDN and you want to use the example CORS configuration that limits requests from only your site, then you will need to decide which type of request your site will use: HTTP or HTTPS.
+
+The example allows requests from both protocols, however, CloudFront will cache the response from the first request and if it receives a subsequent request from a different protocol it will fail. Therefore if your site is using HTTP, only include that in the configuration and vice versa for HTTPS.
+
+```
+<CORSConfiguration>
+    <CORSRule>
+        <AllowedOrigin>http://www.mysite.com</AllowedOrigin>
+        <AllowedOrigin>https://www.mysite.com</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <AllowedMethod>HEAD</AllowedMethod>
+        <AllowedMethod>DELETE</AllowedMethod>
+        <AllowedMethod>PUT</AllowedMethod>
+        <AllowedMethod>POST</AllowedMethod>
+        <MaxAgeSeconds>3000</MaxAgeSeconds>
+        <AllowedHeader>Authorization</AllowedHeader>
+    </CORSRule>
+</CORSConfiguration>
+```
