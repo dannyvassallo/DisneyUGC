@@ -109,11 +109,11 @@ localhost:5000/users/8626705366
 
 ###FONT CORS ON S3 BUCKET
 
-1.Navigate to your AWS console and the S3 service
-2.Select the bucket you are using to store your assets
-3.Click the ‘Properties’ tab
-4.Under ‘Permissions’ click ‘Add CORS Configuration’
-5.Paste in the following
+1. Navigate to your AWS console and the S3 service
+2. Select the bucket you are using to store your assets
+3. Click the ‘Properties’ tab
+4. Under ‘Permissions’ click ‘Add CORS Configuration’
+5. Paste in the following
 
 If you are using CloudFront as your CDN and you want to use the example CORS configuration that limits requests from only your site, then you will need to decide which type of request your site will use: HTTP or HTTPS.
 
