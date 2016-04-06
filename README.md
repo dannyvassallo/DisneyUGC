@@ -107,7 +107,7 @@ You may add them in the settings in your Travis CI Dashboard for the repo.
 localhost:5000/users/8626705366
 ```
 
-###FONT CORS ON S3 BUCKET
+###CORS setup on S3 for fonts
 
 1. Navigate to your AWS console and the S3 service
 2. Select the bucket you are using to store your assets
