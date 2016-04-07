@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_controller.asset_host = ENV["CLOUDFRONT_ASSETS_DOMAIN"]
+  #change this to invalidate cached assets
+  config.assets.version = "1.1"
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.font_assets.origin = '*'
