@@ -135,7 +135,8 @@ class CampaignsController < ApplicationController
       :top_color,
       :bottom_color,
       :text_color,
-      :text_shadow)
+      :text_shadow,
+      :no_title)
   end
 
 end

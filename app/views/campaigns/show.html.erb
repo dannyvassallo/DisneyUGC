@@ -19,7 +19,7 @@
 					<div id="feature" class="card-image">
 						<%= videojs_rails sources: { mp4: "#{@campaign.video.url}"}, setup: "{}", controls: true, width:"auto", height:"100%", poster: "#{@campaign.video.poster.url}", class: 'vjs-big-play-centered primary-player' %>
 					<% end %>
-						<span class="card-title campaign-title"><%= @campaign.title %></span>
+						<span class="card-title campaign-title"><% if @campaign.no_title != false %><%= @campaign.title %><% end %></span>
 					</div>
 					<div class="card-content">
 	          <p><%= @campaign.description %></p>

@@ -36,6 +36,16 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="valign-wrapper">
+			<div class="valign">
+				<div class="input-field col s12">
+					<%= f.check_box :no_title, label: false, :class => "validate filled-in", :wrapper => false %>
+					<label for="campaign_no_title">Show Title?</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="input-field col s12">
 			<%= f.input :description, label: false, :class => "validate", :wrapper => false %>
 			<label for="campaign_description">Enter a Description</label>
