@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120202515) do
+ActiveRecord::Schema.define(version: 20160408162411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20151120202515) do
     t.string   "bottom_color",        default: "#ffffff"
     t.string   "text_color",          default: "#000000"
     t.string   "text_shadow",         default: "none"
+    t.boolean  "no_title"
   end
 
   add_index "campaigns", ["slug"], name: "index_campaigns_on_slug", unique: true, using: :btree
