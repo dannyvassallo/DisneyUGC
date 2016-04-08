@@ -1,20 +1,38 @@
-AWS_ACCESS_KEY_ID: *****************************
-AWS_SECRET_ACCESS_KEY: *****************************
+AWS_ACCESS_KEY_ID: *************************
+AWS_SECRET_ACCESS_KEY: *************************
 development:
-  AWS_BUCKET: **********
-  SENDGRID_USERNAME: ******************
-  SENDGRID_PASSWORD: ******************
-  MAIL_HOST: *****************
-  EMAIL_URL: *****************
+  AWS_BUCKET: *************************
+  SENDGRID_USERNAME: *************************
+  SENDGRID_PASSWORD: *************************
+  MAIL_HOST: *************************
+  EMAIL_URL: *************************
+  FOG_PROVIDER: *************************
+  FOG_DIRECTORY: *************************
+test:
+  AWS_BUCKET: *************************
+  SENDGRID_USERNAME: *************************
+  SENDGRID_PASSWORD: *************************
+  MAIL_HOST: *************************
+  EMAIL_URL: *************************
+  FOG_PROVIDER: *************************
+  FOG_DIRECTORY: *************************
 staging:
-  AWS_BUCKET: **********
-  SENDGRID_USERNAME: ******************
-  SENDGRID_PASSWORD: ******************
-  MAIL_HOST: *****************
-  EMAIL_URL: *****************
+  AWS_BUCKET: *************************
+  SENDGRID_USERNAME: *************************
+  SENDGRID_PASSWORD: *************************
+  MAIL_HOST: *************************
+  EMAIL_URL: *************************
+  CLOUDFRONT_UGC_DOMAIN: *************************
+  CLOUDFRONT_ASSETS_DOMAIN: *************************
+  FOG_PROVIDER: *************************
+  FOG_DIRECTORY: *************************
 production:
-  AWS_BUCKET: **********
-  SENDGRID_USERNAME: ******************
-  SENDGRID_PASSWORD: ******************
-  MAIL_HOST: *****************
-  EMAIL_URL: *****************
+  AWS_BUCKET: *************************
+  SENDGRID_USERNAME: *************************
+  SENDGRID_PASSWORD: *************************
+  MAIL_HOST: *************************
+  EMAIL_URL: *************************
+  CLOUDFRONT_UGC_DOMAIN: *************************
+  CLOUDFRONT_ASSETS_DOMAIN: *************************
+  FOG_PROVIDER: *************************
+  FOG_DIRECTORY: *************************
