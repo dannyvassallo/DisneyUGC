@@ -9,20 +9,6 @@
 	<div class="modal-content">
 		<h4>Submit Your Entry</h4>
 		<%= simple_form_for [@campaign, @campaign.posts.build], html: {  class: 'the-wizard' } do |f| %>
-			<fieldset>
-	        	<h5>Enter Your Full Name</h5>
-	        	<p class="wizard-desc">Please give us your first and last name.</p>
-		        <div class="input-field col s12">
-					<%= f.input :full_name, :input_html => {:autofocus => true} %>
-		        </div>
-	        </fieldset>
-			<fieldset>
-      	<h5>Enter Your Email Address</h5>
-      	<p class="wizard-desc">Please enter a valid email address.</p>
-        <div class="input-field col s12">
-			<%= f.input :email_address %>
-        </div>
-      </fieldset>
       <fieldset>
       	<h5>Enter Your Birthday</h5>
       	<p class="wizard-desc">You must be 13 years or older to enter a submission!</p>
@@ -90,6 +76,20 @@
 					</div>
 				</fieldset>
 			<% end %>
+			<fieldset>
+	        	<h5>Enter Your Full Name</h5>
+	        	<p class="wizard-desc">Please give us your first and last name.</p>
+		        <div class="input-field col s12">
+					<%= f.input :full_name, :input_html => {:autofocus => true} %>
+		        </div>
+      </fieldset>
+			<fieldset>
+      	<h5>Enter Your Email Address</h5>
+      	<p class="wizard-desc">Please enter a valid email address.</p>
+        <div class="input-field col s12">
+			<%= f.input :email_address %>
+        </div>
+      </fieldset>
 			<fieldset>
 	        	<h5>Terms Of Service</h5>
 	        	<p class="wizard-desc">By submitting a photo or video you agree to our <a href="#">Terms of Service</a>.</p>
