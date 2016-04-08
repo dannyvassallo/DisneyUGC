@@ -314,8 +314,12 @@ label[for="campaign_no_title"]{
     width: 310px;
     img{
       margin-top: -255px;
-      margin-bottom: -218px;
+      margin-bottom: -255px;
     }
+  }
+  .toast{
+    font-size: 12px !important;
+    text-align: center !important;
   }
 }
 
@@ -326,6 +330,10 @@ label[for="campaign_no_title"]{
       margin-top: -255px;
       margin-bottom: -255px;
     }
+  }
+  .toast{
+    font-size: 12px !important;
+    text-align: center !important;
   }
 }
 @media (min-width: 568px) and (max-width: 992px) {
