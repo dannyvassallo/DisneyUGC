@@ -1,4 +1,5 @@
-#Radio Disney UGC Platform ![alt text][rdlogo][![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
+#![alt text][rdlogo] Radio Disney UGC Platform
+[![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
 [rdlogo]: https://s3.amazonaws.com/rdugc/assets/rdlogo.png "RDLogo"
 
 
