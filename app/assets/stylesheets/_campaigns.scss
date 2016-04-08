@@ -11,6 +11,10 @@
 .add-content{
 	color: white !important;
 }
+
+.enter-here{
+  margin-top: 20px;
+}
 // parallax
 .parallax-container {
     position: absolute;
@@ -313,8 +317,12 @@ label[for="campaign_no_title"]{
     width: 310px;
     img{
       margin-top: -255px;
-      margin-bottom: -218px;
+      margin-bottom: -255px;
     }
+  }
+  .toast{
+    font-size: 12px !important;
+    text-align: center !important;
   }
 }
 
@@ -322,9 +330,13 @@ label[for="campaign_no_title"]{
   .featured-image{
     width: 320px;
     img{
-      margin-top: -240px;
-      margin-bottom: -203px;
+      margin-top: -255px;
+      margin-bottom: -255px;
     }
+  }
+  .toast{
+    font-size: 12px !important;
+    text-align: center !important;
   }
 }
 @media (min-width: 568px) and (max-width: 992px) {
@@ -332,7 +344,7 @@ label[for="campaign_no_title"]{
     width: 532px;
     img{
       margin-top: -255px;
-      margin-bottom: -218px;
+      margin-bottom: -255px;
     }
   }
 }
@@ -340,8 +352,8 @@ label[for="campaign_no_title"]{
   .featured-image{
     width: 690px;
     img{
-      margin-top: -200px;
-      margin-bottom: -160px;
+      margin-top: -198px;
+      margin-bottom: -197px;
     }
   }
 }
@@ -362,4 +374,8 @@ label[for="campaign_no_title"]{
     margin-top: 0;
     margin-bottom: 0;
   }
+}
+
+.card-action{
+  position: relative !important;
 }
