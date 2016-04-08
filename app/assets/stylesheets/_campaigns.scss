@@ -294,3 +294,72 @@ li.collection-item.avatar{
 label[for="campaign_no_title"]{
   top: -10px !important;
 }
+
+// SETTINGS FOR PROMO
+.feature-container{
+  position: relative;
+  .featured-image{
+    margin: 0 auto;
+    float: none !important;
+    max-width: 1170px;
+    img{
+      width: 1170px !important;
+      height: 800px !important;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .featured-image{
+    width: 310px;
+    img{
+      margin-top: -255px;
+      margin-bottom: -218px;
+    }
+  }
+}
+
+@media (min-width: 321px) and (max-width: 567px) {
+  .featured-image{
+    width: 320px;
+    img{
+      margin-top: -240px;
+      margin-bottom: -203px;
+    }
+  }
+}
+@media (min-width: 568px) and (max-width: 992px) {
+  .featured-image{
+    width: 532px;
+    img{
+      margin-top: -255px;
+      margin-bottom: -218px;
+    }
+  }
+}
+@media (min-width: 993px) and (max-width: 1199px) {
+  .featured-image{
+    width: 690px;
+    img{
+      margin-top: -200px;
+      margin-bottom: -160px;
+    }
+  }
+}
+@media (min-width: 1200px) and (max-width: 1699px) {
+  .featured-image{
+    width: 770px;
+  }
+  img{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1700px) {
+  .featured-image{
+    width: 1170px;
+  }
+  img{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

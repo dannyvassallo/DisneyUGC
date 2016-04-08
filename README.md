@@ -134,3 +134,11 @@ The example allows requests from both protocols, however, CloudFront will cache 
     </CORSRule>
 </CORSConfiguration>
 ```
+
+###If fonts are still not working
+
+Precompile your assets locally and then push your branch:
+
+```
+rake assets:precompile
+```
