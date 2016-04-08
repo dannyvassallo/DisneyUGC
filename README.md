@@ -2,6 +2,7 @@
 ####Build Status: [![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
 [rdlogo]: https://s3.amazonaws.com/rdugc/assets/rdlogo.png "RDLogo"
 
+###Description
 
 Platform for Radio Disney to create User Generated Content Contests
 
