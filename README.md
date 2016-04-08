@@ -1,4 +1,9 @@
-#Radio Disney UGC Platform [![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
+#![alt text][rdlogo] Radio Disney UGC Platform
+###Build Status: [![Build Status](https://travis-ci.org/dannyvassallo/DisneyUGC.svg)](https://travis-ci.org/dannyvassallo/DisneyUGC)
+[rdlogo]: https://s3.amazonaws.com/rdugc/assets/rdlogo.png "RDLogo"
+
+###Description
+
 Platform for Radio Disney to create User Generated Content Contests
 
 ###Getting Started
@@ -106,6 +111,31 @@ You may add them in the settings in your Travis CI Dashboard for the repo.
 ```
 localhost:5000/users/8626705366
 ```
+###Cloudfront settings
+
+####Assets
+
+######Origin:
+![alt text][originscreen1]
+[originscreen1]: https://s3.amazonaws.com/rdugc/assets/originexampleassets.png "Origin Screen Assets"
+
+######Behavior:
+![alt text][originscreen2]
+[originscreen2]: https://s3.amazonaws.com/rdugc/assets/behaviorexampleassets.png "Behavior Screen Assets"
+
+####UGC Content
+
+######Origin:
+![alt text][originscreen3]
+[originscreen3]: https://s3.amazonaws.com/rdugc/assets/ugcoriginexample.png "Origin Screen UGC"
+
+######Behavior:
+![alt text][originscreen4]
+[originscreen4]: https://s3.amazonaws.com/rdugc/assets/ugcbehaviorexample.png "Behavior Screen UGC"
+
+######Errors:
+![alt text][originscreen5]
+[originscreen5]: https://s3.amazonaws.com/rdugc/assets/ugcerrorsexample.png "Error Screen UGC"
 
 ###CORS setup on S3 for fonts
 
