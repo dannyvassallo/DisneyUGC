@@ -309,6 +309,12 @@ label[for="campaign_no_title"]{
     img{
       width: 1170px !important;
       height: 800px !important;
+      flex-basis: 1170px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      -webkit-flex-basis: 1170px;
+      -webkit-flex-grow: 0;
+      -webkit-flex-shrink: 0;
     }
   }
 }

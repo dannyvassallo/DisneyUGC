@@ -62,4 +62,5 @@ gem 'thin'
 gem 'mysql2', '~> 0.3.18'
 gem 'font_assets'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'autoprefixer-rails'
 
