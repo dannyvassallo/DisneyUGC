@@ -35,7 +35,7 @@ $('.the-wizard').stepy({
     if (fieldValue.length <= 2){
     	// field length validation
     	if(fieldId == 'post_image_url'){
-    		if($('#post_video_url').val().length >= 2){
+    		if(typeof $('#post_video_url').val() != 'undefined' && $('#post_video_url').val().length >= 2){
     			return true;
     		} else {
 				errorMsg = 'Your filename must be longer than that.';
@@ -43,7 +43,7 @@ $('.the-wizard').stepy({
 		    	return false;
     		}
     	} else if(fieldId == 'post_video_url'){
-    		if($('#post_image_url').val().length >= 2){
+    		if(typeof $('#post_image_url').val() != 'undefined' && $('#post_image_url').val().length >= 2){
     			return true;
     		} else {
 				errorMsg = 'Your filename must be longer than that.';
