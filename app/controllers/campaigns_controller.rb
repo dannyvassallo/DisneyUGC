@@ -102,7 +102,7 @@ class CampaignsController < ApplicationController
 
   def content_review
     @campaign = Campaign.friendly.find(params[:campaign_id])
-    @post_collection = @campaign.posts.paginate(page: params[:page], per_page: 15).order('created_at DESC')
+    @post_collection = @campaign.posts.paginate(page: params[:page], per_page: 10).order('created_at DESC')
     respond_to do |format|
       format.html
       format.js

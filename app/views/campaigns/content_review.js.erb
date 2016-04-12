@@ -2,11 +2,12 @@ var morePosts = '<%= escape_javascript render(:partial => "campaigns/content_rev
 var $morePosts = $(morePosts);
 $container.append($morePosts);
 $container.masonry( 'appended', $morePosts );
-forceBrowserRepaint();
-$container.masonry('reloadItems');
+$container.imagesLoaded().progress( function() {
+  $container.masonry('layout');
+});
 <% if @post_collection.next_page %>
   $('.pagination').hide();
-  var morePosts = '<%= escape_javascript render(:partial => "campaigns/content_review_posts") %>'
+  var morePosts = '<%= j will_paginate(@post_collection) %>'
   var $morePosts = $(morePosts);
   $container.append($morePosts);
   $container.masonry( 'appended', $morePosts );
