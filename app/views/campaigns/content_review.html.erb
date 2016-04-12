@@ -1,7 +1,7 @@
 <main>
   <div class="container">
     <div id="masonry-grid" class="row">
-      <%= render partial: 'content_review_posts', :locals=>{:post_collection=>@post_collection} %>
+      <%= render partial: 'content_review_posts' %>
     </div>
     <div id="infinite-scrolling">
       <%= will_paginate(@post_collection) %>

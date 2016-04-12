@@ -1,6 +1,7 @@
 class CampaignsController < ApplicationController
   respond_to :html, :js
   include ApplicationHelper
+  include CampaignsControllerHelper
 
   def index
     @user = current_user
@@ -107,6 +108,15 @@ class CampaignsController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def download_all_posts
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    @all_posts = @campaign.posts
+    download_zip_of_all_posts(@all_posts)
+    redirect_to content_review_path(@campaign)
+    title = @campaign.title
+    flash[:notice] = "All posts from '#{title}' were downloaded."
   end
 
   private

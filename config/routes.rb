@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
 
   get 'campaigns/content_review/:campaign_id' => 'campaigns#content_review', :as => 'content_review'
+  get 'campaigns/download_all_posts/:campaign_id' => 'campaigns#download_all_posts', :as => 'download_all_posts'
+
 
   resources :campaigns, only: [:index, :create]
   resources :campaigns, path: '', except: [:index, :create] do
