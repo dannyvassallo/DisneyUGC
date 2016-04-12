@@ -100,6 +100,10 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def content_review
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+  end
+
   private
 
   def feature_priority(modified_params, campaign = nil)

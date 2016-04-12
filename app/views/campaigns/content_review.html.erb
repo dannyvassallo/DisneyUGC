@@ -1,0 +1,22 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <% @campaign.posts.each do |post| %>
+        <div class="col s12 m3 l3">
+          <div class="card image-download">
+            <div class="card-image">
+              <img src="<%= post.image_url %>">
+            </div>
+            <div class="card-content">
+              <p><b>User Name: </b><%= post.full_name %></p>
+              <p><b>User Email: </b><%= post.email_address %></p>
+            </div>
+            <div class="card-action center-align">
+              <a class="btn green darken-4" href="#">+ to zip</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>

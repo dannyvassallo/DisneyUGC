@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'campaigns/content_review' => 'campaigns#content_review', :as => 'content_review'
+
   resources :campaigns, only: [:index, :create]
   resources :campaigns, path: '', except: [:index, :create] do
     resources :posts, only: [:create, :destroy]

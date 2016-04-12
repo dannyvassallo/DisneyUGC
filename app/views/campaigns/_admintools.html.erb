@@ -40,6 +40,9 @@
       <%= link_to slideshow_path(campaign_id: @campaign.id), class: 'col s12 m6 l2 btn waves-effect waves-light orange darken-4', :data => { :position => "bottom", :delay => "50", :tooltip => "View a slideshow of all entries" } do %>
         <i class="fa fa-photo"></i> SLIDESHOW
       <% end %>
+      <%= link_to content_review_path(campaign_id: @campaign.id), class: 'col s12 m6 l2 btn waves-effect waves-light grey darken-4', :data => { :position => "bottom", :delay => "50", :tooltip => "View a slideshow of all entries" } do %>
+        <i class="fa fa-check"></i> CONTENT REVIEW
+      <% end %>
       <%= link_to random_winner_path(campaign_id: @campaign.id), class: 'col s12 m6 l2 offset-m3 btn waves-effect waves-light green darken-4', :data => { :position => "top", :delay => "50", :tooltip => "Pick a random winner" } do %>
         <i class="fa fa-trophy"></i> WINNER
       <% end %>
