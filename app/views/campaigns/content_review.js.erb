@@ -1,0 +1,20 @@
+var morePosts = '<%= escape_javascript render(:partial => "campaigns/content_review_posts") %>'
+var $morePosts = $(morePosts);
+$container.append($morePosts);
+$container.masonry( 'appended', $morePosts );
+forceBrowserRepaint();
+$container.masonry('reloadItems');
+<% if @post_collection.next_page %>
+  $('.pagination').hide();
+  var morePosts = '<%= escape_javascript render(:partial => "campaigns/content_review_posts") %>'
+  var $morePosts = $(morePosts);
+  $container.append($morePosts);
+  $container.masonry( 'appended', $morePosts );
+  forceBrowserRepaint();
+  $container.imagesLoaded().progress( function() {
+    $container.masonry('layout');
+  });
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

@@ -26,4 +26,7 @@
 //= require _disablemediatype
 //= require jquery.minicolors
 //= require _shadow
+//= require _imagesloaded
+//= require _initmasonry
+//= require _masonry.pkgd.min
 //= require_tree .
