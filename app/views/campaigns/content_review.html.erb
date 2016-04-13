@@ -1,8 +1,10 @@
-<main>
+<main id="content_review_main">
   <div class="container">
     <div class="row">
-      <div class="col s12">
+      <div class="col s12 m6 center-align">
         <%= link_to "Download All Entries", download_all_posts_path(@campaign.id), :class => 'btn' %>
+      </div>
+      <div class="col s12 m6 center-align">
         <%= form_tag url_for(:controller => 'campaigns', :action => 'download_selected_posts'), :method => 'get' do %>
           <%= text_area_tag(:selected_posts) %>
           <%= submit_tag("Download Selected Entries", :class => 'btn') %>

@@ -1,3 +1,9 @@
-#infinite-scrolling{
+#infinite-scrolling, #selected_posts{
   display: none;
+}
+
+#content_review_main{
+  .pagination{
+    display: none;
+  }
 }
