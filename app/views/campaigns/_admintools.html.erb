@@ -15,32 +15,45 @@
         </div>
       </h4>
     </div>
-    <div class="col s12 center-align">
-      <%= link_to get_posts_path(campaign_id: @campaign.id, format: "csv"), class: 'col s12 m6 l2 offset-l1 btn waves-effect waves-light blue accent-3', :data => { :position => "top", :delay => "50", :tooltip => "Download all entries from #{@campaign.title}" } do %>
+    <div class="col s12 m4 center-align admin-btn">
+      <%= link_to get_posts_path(campaign_id: @campaign.id, format: "csv"), class: 'btn waves-effect waves-light blue accent-3', :data => { :position => "top", :delay => "50", :tooltip => "Download all entries from #{@campaign.title}" } do %>
         <i class="fa fa-cloud-download"></i> ENTRIES
       <% end %>
-      <%= link_to edit_campaign_path(@campaign), class: 'col s12 m6 l2 btn waves-effect waves-light purple darken-3', :data => { :position => "bottom", :delay => "50", :tooltip => "Edit #{@campaign.title}" } do %>
+    </div>
+    <div class="col s12 m4 center-align admin-btn">
+      <%= link_to edit_campaign_path(@campaign), class: 'btn waves-effect waves-light purple darken-3', :data => { :position => "bottom", :delay => "50", :tooltip => "Edit #{@campaign.title}" } do %>
         <i class="fa fa-pencil"></i> <%= "EDIT" %>
       <% end %>
+    </div>
+    <div class="col s12 m4 center-align admin-btn">
       <% if @campaign.live %>
-        <%= simple_form_for @campaign, html: { class: "col s12 m6 l2 stop-campaign"} do |f| %>
+        <%= simple_form_for @campaign, html: { class: "stop-campaign"} do |f| %>
           <%= f.check_box :live, label: false, :class => "hidden", :wrapper => false, :checked => false %>
-          <%= button_tag(type: 'submit', class: 'col s12 btn deep-orange accent-3 waves-effect waves-light', :data => { :position => "top", :delay => "50", :tooltip => "End #{@campaign.title}" }) do %>
+          <%= button_tag(type: 'submit', class: 'btn deep-orange accent-3 waves-effect waves-light', :data => { :position => "top", :delay => "50", :tooltip => "End #{@campaign.title}" }) do %>
             <i class="fa fa-ban"></i> <%= "END" %>
           <% end %>
         <% end %>
       <% else %>
-        <%= simple_form_for @campaign, html: { class: "col s12 m6 l2 start-campaign"} do |f| %>
+        <%= simple_form_for @campaign, html: { class: "start-campaign"} do |f| %>
           <%= f.check_box :live, label: false, :class => "hidden", :wrapper => false, :checked => true %>
           <%= button_tag(type: 'submit', class: 'col s12 btn green accent-4 waves-effect waves-light', :data => { :position => "top", :delay => "50", :tooltip => "Set #{@campaign.title}" }) do %>
             <i class="fa fa-thumbs-up"></i> <%= "GO LIVE" %>
           <% end %>
         <% end %>
       <% end %>
-      <%= link_to slideshow_path(campaign_id: @campaign.id), class: 'col s12 m6 l2 btn waves-effect waves-light orange darken-4', :data => { :position => "bottom", :delay => "50", :tooltip => "View a slideshow of all entries" } do %>
+    </div>
+    <div class="col s12 m4 center-align admin-btn">
+      <%= link_to slideshow_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light orange darken-4', :data => { :position => "bottom", :delay => "50", :tooltip => "View a slideshow of all entries" } do %>
         <i class="fa fa-photo"></i> SLIDESHOW
       <% end %>
-      <%= link_to random_winner_path(campaign_id: @campaign.id), class: 'col s12 m6 l2 offset-m3 btn waves-effect waves-light green darken-4', :data => { :position => "top", :delay => "50", :tooltip => "Pick a random winner" } do %>
+    </div>
+    <div class="col s12 m4 center-align admin-btn">
+      <%= link_to content_review_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light grey darken-4', :data => { :position => "bottom", :delay => "50", :tooltip => "View a slideshow of all entries" } do %>
+        <i class="fa fa-check"></i> CONTENT REVIEW
+      <% end %>
+    </div>
+    <div class="col s12 m4 center-align admin-btn">
+      <%= link_to random_winner_path(campaign_id: @campaign.id), class: 'btn waves-effect waves-light green darken-4', :data => { :position => "top", :delay => "50", :tooltip => "Pick a random winner" } do %>
         <i class="fa fa-trophy"></i> WINNER
       <% end %>
     </div>

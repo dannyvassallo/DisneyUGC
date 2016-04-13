@@ -385,3 +385,9 @@ label[for="campaign_no_title"]{
 .card-action{
   position: relative !important;
 }
+
+.image-download{
+  .card-content{
+    word-break: break-word;
+  }
+}

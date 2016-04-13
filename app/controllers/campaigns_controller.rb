@@ -1,6 +1,7 @@
 class CampaignsController < ApplicationController
   respond_to :html, :js
   include ApplicationHelper
+  include CampaignsControllerHelper
 
   def index
     @user = current_user
@@ -95,6 +96,47 @@ class CampaignsController < ApplicationController
         flash[:error] = "There was an error deleting the campaign '#{title}'. Please try again."
         render :show
       end
+    else
+      not_found
+    end
+  end
+
+  def content_review
+    @user = current_user
+    if user_admin(@user)
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      @post_collection = @campaign.posts.paginate(page: params[:page], per_page: 16).order('created_at DESC')
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      not_found
+    end
+  end
+
+  def download_all_posts
+    @user = current_user
+    if user_admin(@user)
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      @all_posts = @campaign.posts
+      download_zip_of_all_posts(@all_posts)
+      title = @campaign.title
+    else
+      not_found
+    end
+  end
+
+  def download_selected_posts
+    @user = current_user
+    if user_admin(@user)
+      selected_posts = params[:selected_posts].split(',')
+      @new_post_collection = []
+      selected_posts.each do |post|
+        post_model = Post.find(post)
+        @new_post_collection << post_model
+      end
+      download_zip_of_all_posts(@new_post_collection)
     else
       not_found
     end

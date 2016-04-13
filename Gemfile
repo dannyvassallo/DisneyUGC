@@ -63,4 +63,5 @@ gem 'mysql2', '~> 0.3.18'
 gem 'font_assets'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'autoprefixer-rails'
-
+gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
+gem 'zip-zip' # will load compatibility for old rubyzip API.
