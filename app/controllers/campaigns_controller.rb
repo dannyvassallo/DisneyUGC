@@ -103,7 +103,7 @@ class CampaignsController < ApplicationController
 
   def content_review
     @campaign = Campaign.friendly.find(params[:campaign_id])
-    @post_collection = @campaign.posts.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+    @post_collection = @campaign.posts.paginate(page: params[:page], per_page: 16).order('created_at DESC')
     respond_to do |format|
       format.html
       format.js
@@ -115,7 +115,17 @@ class CampaignsController < ApplicationController
     @all_posts = @campaign.posts
     download_zip_of_all_posts(@all_posts)
     title = @campaign.title
-    flash[:notice] = "All posts from '#{title}' were downloaded."
+  end
+
+  def download_selected_posts
+    selected_posts = params[:selected_posts].split(',')
+    @new_post_collection = []
+    selected_posts.each do |post|
+      post_model = Post.find(post)
+      @new_post_collection << post_model
+    end
+    # raise
+    download_zip_of_all_posts(@new_post_collection)
   end
 
   private

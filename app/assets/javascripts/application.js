@@ -29,4 +29,5 @@
 //= require _imagesloaded
 //= require _initmasonry
 //= require _masonry.pkgd.min
+//= require _content-review
 //= require_tree .
