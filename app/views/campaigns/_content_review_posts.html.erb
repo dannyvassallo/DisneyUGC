@@ -2,7 +2,12 @@
   <div class="col s12 m3 l3">
     <div class="card image-download">
       <div class="card-image">
-        <img src="<%= post.image_url %>">
+        <% if post.image_url? %>
+          <img src="<%= post.image_url %>">
+        <% end %>
+        <% if post.video_url? %>
+          <img src="<%= post.video_url.thumb.url %>">
+        <% end %>
       </div>
       <div class="card-content black-text">
         <p><b>User Name: </b><%= post.full_name %></p>

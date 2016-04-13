@@ -32,7 +32,11 @@ module CampaignsControllerHelper
         end
         # increment count and add photo to new directory
         count+=1
-        url = post.image_path
+        if post.image_path.nil?
+          url = post.video_path
+        else
+          url = post.image_path
+        end
         url = URI.encode(url)
         uri = URI.parse(url)
         filename = File.basename(uri.path)
