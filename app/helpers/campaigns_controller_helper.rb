@@ -2,7 +2,7 @@ module CampaignsControllerHelper
   # deps for downloading files
   require "open-uri"
   require "uri"
-  # dep for csz
+  # dep for csv
   require "csv"
   # dep for zip
   require "zip"
