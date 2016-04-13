@@ -114,7 +114,6 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.friendly.find(params[:campaign_id])
     @all_posts = @campaign.posts
     download_zip_of_all_posts(@all_posts)
-    redirect_to content_review_path(@campaign)
     title = @campaign.title
     flash[:notice] = "All posts from '#{title}' were downloaded."
   end
