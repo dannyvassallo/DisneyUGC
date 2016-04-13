@@ -21,6 +21,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+
+      get 'campaigns/download_all_posts/:campaign_id' => 'campaigns#download_all_posts', :as => 'download_all_posts'
+
       resources :campaigns do
         resources :posts, only: [:show]
       end
