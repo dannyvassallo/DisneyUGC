@@ -38,10 +38,13 @@ $(function(){
 
 });
 
+var prevContent;
+
 // ajax for zip creation
 function ajaxZipDownloader(el){
   $(el).on("ajax:beforeSend", function(){
     var campaignId = $(el).data('campaign-id');
+    $('#zip-downloader-modal').openModal();
     var checkIfReady = setInterval(function(){
       $.ajax({
         url: "/api/v1/campaigns/"+campaignId,
@@ -50,6 +53,13 @@ function ajaxZipDownloader(el){
         if(url){
           console.log(url);
           clearInterval(checkIfReady);
+          var downloadLink = $('<a>').addClass('zip-download-link btn green').attr('href', url);
+          var downloadLink = $(downloadLink).html("<i class='fa fa-download'></i> DOWNLOAD NOW");
+          $('.zip-modal-header').html('Your zip file is ready!');
+          $('.zip-modal-decription').html('Click the link below to download your new archive.');
+          prevContent = $('.zip-modal-content').html();
+          $('.zip-modal-content').empty();
+          $('.zip-modal-content').append(downloadLink);
         } else {
           console.log('Nothing yet');
         }
@@ -60,6 +70,14 @@ function ajaxZipDownloader(el){
     }, 1000);
   });
 }
+
+$(document).on('click', '.zip-download-link', function(){
+  $('#zip-downloader-modal').closeModal();
+  $('.zip-modal-header').html('Your zip is being prepared...');
+  $('.zip-modal-decription').html('Please wait while we download, organize, and zip up your files.');
+  $('.zip-modal-content').empty();
+  $('.zip-modal-content').append(prevContent);
+});
 
 $(function(){
   ajaxZipDownloader(".download-all-posts-btn");
