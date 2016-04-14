@@ -122,7 +122,7 @@ class CampaignsController < ApplicationController
       @campaign.save!
       @all_posts = @campaign.posts.map(&:id)
       ZipCreator.delay.download_zip_of_all_posts(@all_posts, @campaign.id)
-      redirect_to content_review_path(@campaign.id)
+      render :nothing => true, :status => 200, :content_type => 'text/html'
     else
       not_found
     end
@@ -136,7 +136,7 @@ class CampaignsController < ApplicationController
       @campaign.remove_zip_file = true
       @campaign.save!
       ZipCreator.delay.download_zip_of_all_posts(selected_posts, @campaign.id)
-      redirect_to content_review_path(@campaign.id)
+      render :nothing => true, :status => 200, :content_type => 'text/html'
     else
       not_found
     end

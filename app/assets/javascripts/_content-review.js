@@ -37,3 +37,31 @@ $(function(){
   });
 
 });
+
+// ajax for zip creation
+function ajaxZipDownloader(el){
+  $(el).on("ajax:beforeSend", function(){
+    var campaignId = $(el).data('campaign-id');
+    var checkIfReady = setInterval(function(){
+      $.ajax({
+        url: "/api/v1/campaigns/"+campaignId,
+      }).success(function(data) {
+        var url = data.zip_file.url;
+        if(url){
+          console.log(url);
+          clearInterval(checkIfReady);
+        } else {
+          console.log('Nothing yet');
+        }
+      }).error(function(data){
+        console.log('there was an error');
+        clearInterval(checkIfReady);
+      });
+    }, 1000);
+  });
+}
+
+$(function(){
+  ajaxZipDownloader(".download-all-posts-btn");
+  ajaxZipDownloader("#download-selected-posts-form");
+});
