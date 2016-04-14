@@ -1,7 +1,6 @@
 class CampaignsController < ApplicationController
   respond_to :html, :js
   include ApplicationHelper
-  include CampaignsControllerHelper
 
   def index
     @user = current_user
@@ -119,9 +118,11 @@ class CampaignsController < ApplicationController
     @user = current_user
     if user_admin(@user)
       @campaign = Campaign.friendly.find(params[:campaign_id])
-      @all_posts = @campaign.posts
-      download_zip_of_all_posts(@all_posts)
-      title = @campaign.title
+      @campaign.remove_zip_file = true
+      @campaign.save!
+      @all_posts = @campaign.posts.map(&:id)
+      ZipCreator.delay.download_zip_of_all_posts(@all_posts, @campaign.id)
+      redirect_to content_review_path(@campaign.id)
     else
       not_found
     end
@@ -130,13 +131,12 @@ class CampaignsController < ApplicationController
   def download_selected_posts
     @user = current_user
     if user_admin(@user)
-      selected_posts = params[:selected_posts].split(',')
-      @new_post_collection = []
-      selected_posts.each do |post|
-        post_model = Post.find(post)
-        @new_post_collection << post_model
-      end
-      download_zip_of_all_posts(@new_post_collection)
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      selected_posts = params[:selected_posts].split(',').map(&:to_i)
+      @campaign.remove_zip_file = true
+      @campaign.save!
+      ZipCreator.delay.download_zip_of_all_posts(selected_posts, @campaign.id)
+      redirect_to content_review_path(@campaign.id)
     else
       not_found
     end

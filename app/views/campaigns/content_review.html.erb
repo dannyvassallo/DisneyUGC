@@ -13,7 +13,7 @@
       <div class="col s12 m6 center-align">
         <div id="new-post-collection">
         </div>
-        <%= form_tag url_for(:controller => 'campaigns', :action => 'download_selected_posts'), :method => 'get' do %>
+        <%= form_tag download_selected_posts_path(@campaign.id),:method => 'get' do %>
           <%= text_area_tag(:selected_posts) %>
           <div class="btn disabled fake-btn">Download Selected Entries</div>
           <%= submit_tag("Download Selected Entries", :class => 'btn download-selected hide') %>
