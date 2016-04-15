@@ -41,7 +41,7 @@
 							<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 						</span>
 					<% end %>
-					<a class="copy secondary-content" data-position="bottom" data-delay="50" data-tooltip="Copy link to <%= campaign.title%>" data-clipboard-text="<%= "#{root_url.chomp('/')}#{url_for campaign}" %>">
+					<a class="copy secondary-content" data-position="bottom" data-delay="50" data-tooltip="Copy link to <%= campaign.title%>" data-clipboard-text="<%= "#{root_url(:protocol => 'https').chomp('/')}#{url_for campaign}" %>">
 						<span class="fa-stack fa-lg">
 							<i class="fa fa-circle fa-stack-2x"></i>
 							<i class="fa fa-clipboard fa-stack-1x fa-inverse"></i>
