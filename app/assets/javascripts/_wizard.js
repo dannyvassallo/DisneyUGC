@@ -1,11 +1,10 @@
 $(function(){
-  $("form").submit(function() {
-      $(this).submit(function() {
-          return false;
-      });
-      return true;
+  $('#new_post input:submit').click( function() {
+    this.disabled = true;
+    $('#new_post').submit();
   });
 });
+
 
 // email regex
 var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
