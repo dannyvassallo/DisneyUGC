@@ -8,12 +8,12 @@
     </div>
     <div class="row">
       <div class="col s12 m6 center-align">
-        <%= link_to "Download All Entries", download_all_posts_path(@campaign.id), :class => 'btn' %>
+        <%= link_to "Download All Entries", download_all_posts_path(@campaign.id), :class => 'btn download-all-posts-btn', :remote => true, :data => { :campaign_id => @campaign.id }, :method => 'post' %>
       </div>
       <div class="col s12 m6 center-align">
         <div id="new-post-collection">
         </div>
-        <%= form_tag url_for(:controller => 'campaigns', :action => 'download_selected_posts'), :method => 'get' do %>
+        <%= form_tag download_selected_posts_path(@campaign.id), :remote => true, :data => { :campaign_id => @campaign.id }, :method => 'post', :id => 'download-selected-posts-form' do %>
           <%= text_area_tag(:selected_posts) %>
           <div class="btn disabled fake-btn">Download Selected Entries</div>
           <%= submit_tag("Download Selected Entries", :class => 'btn download-selected hide') %>
@@ -33,3 +33,58 @@
     </a>
   </div>
 </main>
+<!-- zip downloader modal -->
+<div id="zip-downloader-modal" class="modal">
+  <div class="modal-content">
+    <h4 class="zip-modal-header">Your zip is being prepared<span>...</span></h4>
+    <p class="zip-modal-decription">Please wait while we download, organize, and zip up your files.</p>
+    <div class="row">
+      <div class="col s12 center-align zip-modal-content">
+
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

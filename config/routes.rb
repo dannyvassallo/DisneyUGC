@@ -21,18 +21,15 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-
-      get 'campaigns/download_all_posts/:campaign_id' => 'campaigns#download_all_posts', :as => 'download_all_posts'
-
       resources :campaigns do
         resources :posts, only: [:show]
       end
     end
   end
 
-  get 'campaigns/download_selected_posts/' => 'campaigns#download_selected_posts', :as => 'download_selected_posts'
+  post 'campaigns/download_selected_posts/:campaign_id' => 'campaigns#download_selected_posts', :as => 'download_selected_posts'
   get 'campaigns/content_review/:campaign_id' => 'campaigns#content_review', :as => 'content_review'
-  get 'campaigns/download_all_posts/:campaign_id' => 'campaigns#download_all_posts', :as => 'download_all_posts'
+  post 'campaigns/download_all_posts/:campaign_id' => 'campaigns#download_all_posts', :as => 'download_all_posts'
 
 
   resources :campaigns, only: [:index, :create]
