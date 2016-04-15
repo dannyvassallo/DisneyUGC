@@ -121,19 +121,18 @@ $('.the-wizard').submit(function(e){
 		Materialize.toast(errorMsg, 5000, 'red darken-4');
         return false;
         e.preventDefault();
-	} else if(video.length <= 2){
+	} else if(typeof video != 'undefined' && video.length <= 2){
 		if(image.length >= 2){
-			return true
+			return true;
 		} else {
 			errorMsg = 'Your filename must be longer than that.';
 			Materialize.toast(errorMsg, 5000, 'red darken-4');
 	    	return false;
 	    	e.preventDefault();
 		}
-
-	} else if(image.length <= 2){
+	} else if(typeof image != 'undefined' && image.length <= 2){
 		if(video.length >= 2){
-			return true
+			return true;
 		} else {
 			errorMsg = 'Your filename must be longer than that.';
 			Materialize.toast(errorMsg, 5000, 'red darken-4');
