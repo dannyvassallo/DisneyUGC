@@ -67,7 +67,7 @@ module ZipCreator
     if count === number_of_posts
       path = new_directory
       path.sub!(%r[/$],'')
-      archive = File.join(path,File.basename(path))+'.zip'
+      archive = File.join(path,File.basename(path))+Time.now.getutc.to_s+'.zip'
       FileUtils.rm archive, :force=>true
 
       Zip::File.open(archive, 'w') do |zipfile|
