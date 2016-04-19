@@ -53,12 +53,12 @@ module ZipCreator
         # create the csv
         if count === 1
           CSV.open("#{new_directory}/#{title}.csv", "wb") do |csv|
-            csv << ["count", "filename", "email address", "full name"]
+            csv << ["timestamp", "count", "filename", "email address", "full name"]
           end
         end
         # add lines to the csv for each image
         CSV.open("#{new_directory}/#{title}.csv", "a+") do |csv|
-          csv << [count, "#{count.to_s}-#{filename}", post.email_address, post.full_name]
+          csv << [post.created_at, count, "#{count.to_s}-#{filename}", post.email_address, post.full_name]
         end
       end
     end
