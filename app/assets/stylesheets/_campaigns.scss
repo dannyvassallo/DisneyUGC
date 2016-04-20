@@ -399,3 +399,18 @@ label[for="campaign_no_title"]{
 .official-rules-link{
   margin-right: 0 !important;
 }
+
+#content-preloader{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  z-index: 999999999999;
+  .preloader-valign{
+    margin-top: 50%;
+  }
+}
