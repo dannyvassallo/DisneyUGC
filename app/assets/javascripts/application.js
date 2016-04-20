@@ -30,4 +30,6 @@
 //= require _initmasonry
 //= require _masonry.pkgd.min
 //= require _content-review
+//= require _jquery.appear
+//= require _appearinit
 //= require_tree .
