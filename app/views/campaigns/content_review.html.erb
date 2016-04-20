@@ -115,6 +115,12 @@
 </script>
 <ul id="image-preloader" style="display: none;">
   <% @campaign.posts.each do |post| %>
-    <li><img onload="incImgCount()" src="<%= post.image_url %>"></li>
+    <% if post.video_url.url  %>
+      <% src = post.video_url.thumb.url %>
+    <% end %>
+    <% if post.image_url.url %>
+      <% src = post.image_url %>
+    <% end %>
+    <li><img onload="incImgCount()" src="<%= src %>"></li>
   <% end %>
 </ul>
