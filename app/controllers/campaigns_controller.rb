@@ -104,8 +104,8 @@ class CampaignsController < ApplicationController
     @user = current_user
     if user_admin(@user)
       @campaign = Campaign.friendly.find(params[:campaign_id])
-      @post_collection = @campaign.posts.paginate(page: params[:page], per_page: 16).order('created_at DESC')
-      # @post_collection = @campaign.posts.order('created_at DESC').all
+      # @post_collection = @campaign.posts.paginate(page: params[:page], per_page: 16).order('created_at DESC')
+      @post_collection = @campaign.posts.order('created_at DESC').all
       respond_to do |format|
         format.html
         format.js

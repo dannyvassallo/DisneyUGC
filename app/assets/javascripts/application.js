@@ -32,4 +32,6 @@
 //= require _content-review
 //= require _jquery.appear
 //= require _appearinit
+//= require _jquery.lazyload
+//= require _lazyloadinit
 //= require_tree .
