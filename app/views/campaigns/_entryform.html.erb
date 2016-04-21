@@ -1,3 +1,9 @@
+<script>
+  function openFileOption()
+{
+  document.getElementById("post_image_url").click();
+}
+</script>
 <!-- Modal Structure -->
 <div id="entryform" class="modal">
 	<div class="x-out hide-on-large-only">
@@ -42,6 +48,7 @@
 						</div>
 						<h6 class="red-text">Video Duration Limit - <%= @duration_limit %></h6>
 					</div>
+			     <a href="#" style="width: 200px;height: 100px;position: relative;display: block;" onclick="openFileOption();return;"></a>
 				</fieldset>
 			<% elsif @campaign.campaign_type == "Just Photo" %>
 				<fieldset>
