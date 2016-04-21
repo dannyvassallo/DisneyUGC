@@ -48,7 +48,6 @@
 						</div>
 						<h6 class="red-text">Video Duration Limit - <%= @duration_limit %></h6>
 					</div>
-			     <a href="#" style="width: 200px;height: 100px;position: relative;display: block;" onclick="openFileOption();return;"></a>
 				</fieldset>
 			<% elsif @campaign.campaign_type == "Just Photo" %>
 				<fieldset>
@@ -65,6 +64,7 @@
 			        <input class="file-path validate" type="text">
 						</div>
 					</div>
+					<a href="#" style="width: 200px;height: 100px;position: relative;display: block;" onclick="openFileOption();return;"></a>
 				</fieldset>
 			<% elsif @campaign.campaign_type == "Just Video" %>
 				<fieldset>
