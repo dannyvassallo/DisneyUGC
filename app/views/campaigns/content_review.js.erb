@@ -19,3 +19,6 @@
 //   // $(window).off('scroll');
 //   $('.pagination').remove();
 // <% end %>
+var morePosts = '<%= escape_javascript render(:partial => "campaigns/content_review_posts") %>';
+$('.sort_paginate_ajax').html(morePosts);
+rememberClickedPosts();

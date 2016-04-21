@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require _initialize-materialize
+//= require _contentreviewpagination
 //= require _imagesloaded
 //= require _initmasonry
 //= require _masonry.pkgd.min
@@ -22,3 +23,4 @@
 //= require _appearinit
 //= require _jquery.lazyload
 //= require _lazyloadinit
+//= require _contentreviewmemory

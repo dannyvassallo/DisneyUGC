@@ -3,10 +3,10 @@
     <div class="card image-download">
       <div class="card-image">
         <% if post.image_url? %>
-          <img onload="incImgCount()" class="lazy" data-original="<%= post.image_url %>">
+          <img src="<%= post.image_url %>">
         <% end %>
         <% if post.video_url? %>
-          <img onload="incImgCount()" class="lazy" data-original="<%= post.video_url.thumb.url %>">
+          <img src="<%= post.video_url.thumb.url %>">
         <% end %>
       </div>
       <div class="card-content black-text">
@@ -19,3 +19,6 @@
     </div>
   </div>
 <% end %>
+<div class="col l12 m12 s12 xs12 center-align">
+  <%= will_paginate @post_collection %>
+</div>
