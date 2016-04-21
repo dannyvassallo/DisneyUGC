@@ -1,21 +1,35 @@
-var morePosts = '<%= escape_javascript render(:partial => "campaigns/content_review_posts") %>'
-var $morePosts = $(morePosts);
-$container.append($morePosts);
-$container.masonry( 'appended', $morePosts );
-$container.imagesLoaded().progress( function() {
-  $container.masonry('layout');
+// var morePosts = '<%= escape_javascript render(:partial => "campaigns/content_review_posts") %>'
+// var $morePosts = $(morePosts);
+// $container.append($morePosts);
+// $container.masonry( 'appended', $morePosts );
+// $container.imagesLoaded().progress( function() {
+//   $container.masonry('layout');
+// });
+// <% if @post_collection.next_page %>
+//   $('.pagination').hide();
+//   var morePosts = '<%= j will_paginate(@post_collection) %>'
+//   var $morePosts = $(morePosts);
+//   $container.append($morePosts);
+//   $container.masonry( 'appended', $morePosts );
+//   forceBrowserRepaint();
+//   $container.imagesLoaded().progress( function() {
+//     $container.masonry('layout');
+//   });
+// <% else %>
+//   // $(window).off('scroll');
+//   $('.pagination').remove();
+// <% end %>
+var morePosts = '<%= escape_javascript render(:partial => "campaigns/content_review_posts") %>';
+$('.sort_paginate_ajax').html(morePosts);
+rememberClickedPosts();
+$container.masonry('destroy');
+var $container = $('#masonry-grid');
+$container.masonry({
+  columnWidth: '.col',
+  itemSelector: '.col'
 });
-<% if @post_collection.next_page %>
-  $('.pagination').hide();
-  var morePosts = '<%= j will_paginate(@post_collection) %>'
-  var $morePosts = $(morePosts);
-  $container.append($morePosts);
-  $container.masonry( 'appended', $morePosts );
-  forceBrowserRepaint();
+setTimeout(function(){
   $container.imagesLoaded().progress( function() {
     $container.masonry('layout');
   });
-<% else %>
-  $(window).off('scroll');
-  $('.pagination').remove();
-<% end %>
+}, 500);

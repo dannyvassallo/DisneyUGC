@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DisneyUGC</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render partial: 'layouts/navbar_render' %>
+	<%= yield %>
+	<%= render partial: 'layouts/footer' %>
+	<%= javascript_include_tag 'contentreview', 'data-turbolinks-track' => true %>
+	<%= render partial: 'layouts/flashmessages' %>
+</body>
+</html>

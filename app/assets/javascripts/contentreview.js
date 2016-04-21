@@ -12,20 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require zeroclipboard
 //= require materialize-sprockets
-//= require video
-//= require _pagination
-//= require _jquery.stepy
-//= require _wizard
-//= require _imgloader
-//= require _video-resizer
-//= require _copy-url
-//= require _slideshowresize
-//= require _helpers
-//= require _disablemediatype
-//= require jquery.minicolors
-//= require _shadow
+//= require _initialize-materialize
+//= require _contentreviewpagination
 //= require _imagesloaded
 //= require _initmasonry
 //= require _masonry.pkgd.min
@@ -34,4 +23,4 @@
 //= require _appearinit
 //= require _jquery.lazyload
 //= require _lazyloadinit
-//= require_tree .
+//= require _contentreviewmemory
