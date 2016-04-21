@@ -22,3 +22,14 @@
 var morePosts = '<%= escape_javascript render(:partial => "campaigns/content_review_posts") %>';
 $('.sort_paginate_ajax').html(morePosts);
 rememberClickedPosts();
+$container.masonry('destroy');
+var $container = $('#masonry-grid');
+$container.masonry({
+  columnWidth: '.col',
+  itemSelector: '.col'
+});
+setTimeout(function(){
+  $container.imagesLoaded().progress( function() {
+    $container.masonry('layout');
+  });
+}, 500);
