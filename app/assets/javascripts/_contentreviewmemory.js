@@ -62,12 +62,14 @@ function iterateThroughMarkedPosts(){
 }
 
 $(function(){
-  iterateThroughMarkedPosts();
-  rememberClickedPosts();
-  if($('#selected_posts').val().length > 0){
-    $('.fake-btn').addClass('hide');
-    $('.download-selected').removeClass('hide');
-    $('.mark-for-review').removeClass('hide');
+  if (typeof selectedPosts  != 'undefined' ){
+    iterateThroughMarkedPosts();
+    rememberClickedPosts();
+    if($('#selected_posts').val().length > 0){
+      $('.fake-btn').addClass('hide');
+      $('.download-selected').removeClass('hide');
+      $('.mark-for-review').removeClass('hide');
+    }
   }
 });
 
