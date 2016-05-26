@@ -1,0 +1,24 @@
+<% @post_collection.each do |post| %>
+  <div class="col s12 m3 l3">
+    <div class="card image-download">
+      <div class="card-image">
+        <% if post.image_url? %>
+          <img onerror="$(this).attr('src', $(this).data('fallback'));" data-fallback="<%= post.image_url.thumb.url %>" src="<%= post.image_url.content_review_thumb.url %>">
+        <% end %>
+        <% if post.video_url? %>
+          <img onerror="$(this).attr('src', $(this).data('fallback'));" data-fallback="<%= post.video_url.thumb.url %>" src="<%= post.video_url.content_review_thumb.url %>">
+        <% end %>
+      </div>
+      <div class="card-content black-text">
+        <p><b>User Name: </b><%= post.full_name %></p>
+        <p><b>User Email: </b><%= post.email_address %></p>
+      </div>
+      <div class="card-action center-align">
+        <a class="btn red darken-4 add-to-zip" data-id="<%= post.id %>">NOT ADDED</a>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="col l12 m12 s12 xs12 center-align">
+  <%= will_paginate @post_collection %>
+</div>

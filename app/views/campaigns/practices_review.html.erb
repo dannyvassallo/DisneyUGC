@@ -1,0 +1,129 @@
+<!-- PRELOADER -->
+<script>
+  // var images = 0;
+  // var postCount = <%= @campaign.posts.count %>;
+  // var li = 0;
+  // function incImgCount(){
+    // images++;
+    // console.log(images);
+    // if(images === postCount){
+    //   $('#content-preloader').fadeOut();
+    // }
+  // }
+
+  var selectedPosts = ('<%= @campaign.posts_for_review %>').replace(/&quot;/g,'');
+  selectedPosts = JSON.parse(selectedPosts);
+</script>
+
+<!-- <div id="content-preloader">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 center-align preloader-valign valign-wrapper">
+        <div class="progress valign">
+            <div class="indeterminate"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<main id="content_review_main" class="login-screens">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h2>Content Review Dashboard</h2>
+        <p><%= @campaign.title %>
+          <span>
+            <% if @campaign.needs_review == true %>
+              Marked For Review <div class="btn green">REVIEW NOW</div><%= link_to "Remove From Review", unmark_for_review_path(@campaign.id), :class => 'btn green', :data => { :campaign_id => @campaign.id }, :method => 'post' %>
+            <% end %>
+          </span>
+        </p>
+        <!-- <p>You can review and download all entries here. Click either the "Download All Entries" button OR click "Not Added" on the individual entries to add them to the new zip archive you are creating. After you've made your selections, you may click the up arrow and scroll to the top to submit the list with the "Download Selected Entries" button. <b>PLEASE BE PATIENT AND DO NOT RELOAD THE PAGE.</b> The request and archival process may take a while depending on the number of entrants. <b>REPEAT: PLEASE BE PATIENT.</b></p> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m4 center-align">
+        <%= link_to "Download All Entries", download_all_posts_path(@campaign.id), :class => 'btn download-all-posts-btn', :remote => true, :data => { :campaign_id => @campaign.id }, :method => 'post' %>
+      </div>
+      <div class="col s12 m4 center-align">
+        <div id="new-post-collection">
+        </div>
+        <%= form_tag download_selected_posts_path(@campaign.id), :remote => true, :data => { :campaign_id => @campaign.id }, :method => 'post', :id => 'download-selected-posts-form' do %>
+          <%= text_area_tag(:selected_posts) %>
+          <div class="btn disabled fake-btn">Download Selected Entries</div>
+          <%= submit_tag("Download Selected Entries", :class => 'btn download-selected hide') %>
+        <% end %>
+      </div>
+      <div class="col s12 m4 center-align">
+        <%= form_tag posts_for_review_path(@campaign.id), :data => { :campaign_id => @campaign.id }, :method => 'post', :id => 'posts-for-review-form' do %>
+          <%= text_area_tag(:selected_posts_for_review) %>
+          <div class="btn disabled fake-btn">Mark For Review</div>
+          <%= submit_tag("Mark For Review", :class => 'btn mark-for-review hide') %>
+        <% end %>
+      </div>
+    </div>
+    <div id="masonry-grid" class="row sort_paginate_ajax">
+      <%= render partial: 'content_review_posts' %>
+    </div>
+  </div>
+<!--   <div id="scrollTop" class="fixed-action-btn" style="bottom: 250px; right: 24px;">
+    <a class="btn-floating btn-large grey darken-4">
+      <i class="large fa fa-arrow-up"></i>
+    </a>
+  </div> -->
+</main>
+<!-- zip downloader modal -->
+<div id="zip-downloader-modal" class="modal">
+  <div class="modal-content">
+    <h4 class="zip-modal-header">Your zip is being prepared<span>...</span></h4>
+    <p class="zip-modal-decription">Please wait while we download, organize, and zip up your files.</p>
+    <div class="row">
+      <div class="col s12 center-align zip-modal-content">
+
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

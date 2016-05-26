@@ -115,6 +115,26 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def practices_review
+    @user = current_user
+    if user_admin(@user)
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      @post_collection = []
+      @campaign.posts_for_review.each do |id|
+        post = Post.find(id)
+        @post_collection << post
+      end
+      @post_collection = @post_collection.paginate(page: params[:page], per_page: 16)
+      # @post_collection = @campaign.posts.order('created_at DESC').all
+      respond_to do |format|
+        format.html { render layout: 'content_review' }
+        format.js
+      end
+    else
+      not_found
+    end
+  end
+
   def download_all_posts
     @user = current_user
     if user_admin(@user)
