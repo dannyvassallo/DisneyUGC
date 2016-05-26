@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post 'campaigns/download_selected_posts/:campaign_id' => 'campaigns#download_selected_posts', :as => 'download_selected_posts'
   get 'campaigns/content_review/:campaign_id' => 'campaigns#content_review', :as => 'content_review'
   post 'campaigns/download_all_posts/:campaign_id' => 'campaigns#download_all_posts', :as => 'download_all_posts'
+  post 'campaigns/posts_for_review/:campaign_id' => 'campaigns#posts_for_review', :as => 'posts_for_review'
 
 
   resources :campaigns, only: [:index, :create]

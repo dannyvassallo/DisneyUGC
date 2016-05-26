@@ -143,6 +143,20 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def posts_for_review
+    @user = current_user
+    if user_admin(@user)
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      selected_posts = params[:selected_posts_for_review].split(',').map(&:to_i)
+      @campaign.update_attributes(:posts_for_review => selected_posts)
+      @campaign.save!
+      redirect_to content_review_path
+      flash[:notice] = "The items you've selected are now marked for review."
+    else
+      not_found
+    end
+  end
+
   private
 
   def feature_priority(modified_params, campaign = nil)
@@ -179,7 +193,8 @@ class CampaignsController < ApplicationController
       :bottom_color,
       :text_color,
       :text_shadow,
-      :no_title)
+      :no_title,
+      :posts_for_review)
   end
 
 end

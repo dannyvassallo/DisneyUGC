@@ -26,7 +26,9 @@ var contains = function(needle) {
 };
 
 function rememberClickedPosts(){
-  var selectedPosts = [];
+  if (typeof selectedPosts[0] == 'undefined') {
+    selectedPosts = [];
+  }
   $('#new-post-collection').children().each(function(){
     selectedPosts.push($(this).html());
   });
@@ -43,7 +45,29 @@ function rememberClickedPosts(){
   });
 }
 
+var selectedPosts;
+
+function iterateThroughMarkedPosts(){
+  for (var i = 0; i < selectedPosts.length; i++) {
+    var newDiv = $('<div>'),
+    newDiv = newDiv.addClass('post-'+selectedPosts[i]),
+    newDiv = newDiv.html(selectedPosts[i]);
+    $('#new-post-collection').append(newDiv);
+  }
+  var children = $('#new-post-collection').children();
+  children.each(function(idx, val){
+     $('#selected_posts').val($('#selected_posts').val() + ($(this).html()+','));
+     $('#selected_posts_for_review').val($('#selected_posts_for_review').val() + ($(this).html()+','));
+  });
+}
+
 $(function(){
+  iterateThroughMarkedPosts();
   rememberClickedPosts();
+  if($('#selected_posts').val().length > 0){
+    $('.fake-btn').addClass('hide');
+    $('.download-selected').removeClass('hide');
+    $('.mark-for-review').removeClass('hide');
+  }
 });
 
