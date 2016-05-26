@@ -3,10 +3,10 @@
     <div class="card image-download">
       <div class="card-image">
         <% if post.image_url? %>
-          <img src="<%= post.image_url.thumb.url %>">
+          <img onerror="$(this).attr('src', $(this).data('fallback'));" data-fallback="<%= post.image_url.thumb.url %>" src="<%= post.image_url.content_review_thumb.url %>">
         <% end %>
         <% if post.video_url? %>
-          <img src="<%= post.video_url.thumb.url %>">
+          <img onerror="$(this).attr('src', $(this).data('fallback'));" data-fallback="<%= post.video_url.thumb.url %>" src="<%= post.video_url.content_review_thumb.url %>">
         <% end %>
       </div>
       <div class="card-content black-text">
