@@ -35,7 +35,7 @@
         <p><%= @campaign.title %>
           <span>
             <% if @campaign.needs_review == true %>
-              Marked For Review <div class="btn green">REVIEW NOW</div>
+              Marked For Review <div class="btn green">REVIEW NOW</div><%= link_to "Remove From Review", unmark_for_review_path(@campaign.id), :class => 'btn green', :data => { :campaign_id => @campaign.id }, :method => 'post' %>
             <% end %>
           </span>
         </p>

@@ -157,6 +157,19 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def unmark_for_review
+    @user = current_user
+    if user_admin(@user)
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      @campaign.update_attributes({:needs_review => false})
+      @campaign.save!
+      redirect_to content_review_path
+      flash[:notice] = "This selection has been removed from review."
+    else
+      not_found
+    end
+  end
+
   private
 
   def feature_priority(modified_params, campaign = nil)

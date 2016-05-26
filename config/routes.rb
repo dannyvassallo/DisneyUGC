@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'campaigns/content_review/:campaign_id' => 'campaigns#content_review', :as => 'content_review'
   post 'campaigns/download_all_posts/:campaign_id' => 'campaigns#download_all_posts', :as => 'download_all_posts'
   post 'campaigns/posts_for_review/:campaign_id' => 'campaigns#posts_for_review', :as => 'posts_for_review'
+  post 'campaigns/unmark_for_review/:campaign_id' => 'campaigns#unmark_for_review', :as => 'unmark_for_review'
+
 
 
   resources :campaigns, only: [:index, :create]
