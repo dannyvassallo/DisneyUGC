@@ -148,7 +148,7 @@ class CampaignsController < ApplicationController
     if user_admin(@user)
       @campaign = Campaign.friendly.find(params[:campaign_id])
       selected_posts = params[:selected_posts_for_review].split(',').map(&:to_i)
-      @campaign.update_attributes(:posts_for_review => selected_posts)
+      @campaign.update_attributes({:posts_for_review => selected_posts, :needs_review => true})
       @campaign.save!
       redirect_to content_review_path
       flash[:notice] = "The items you've selected are now marked for review."
@@ -194,7 +194,8 @@ class CampaignsController < ApplicationController
       :text_color,
       :text_shadow,
       :no_title,
-      :posts_for_review)
+      :posts_for_review,
+      :needs_review)
   end
 
 end

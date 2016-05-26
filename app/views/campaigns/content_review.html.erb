@@ -32,6 +32,13 @@
     <div class="row">
       <div class="col s12">
         <h2>Content Review Dashboard</h2>
+        <p><%= @campaign.title %>
+          <span>
+            <% if @campaign.needs_review == true %>
+              Marked For Review <div class="btn green">REVIEW NOW</div>
+            <% end %>
+          </span>
+        </p>
         <!-- <p>You can review and download all entries here. Click either the "Download All Entries" button OR click "Not Added" on the individual entries to add them to the new zip archive you are creating. After you've made your selections, you may click the up arrow and scroll to the top to submit the list with the "Download Selected Entries" button. <b>PLEASE BE PATIENT AND DO NOT RELOAD THE PAGE.</b> The request and archival process may take a while depending on the number of entrants. <b>REPEAT: PLEASE BE PATIENT.</b></p> -->
       </div>
     </div>
