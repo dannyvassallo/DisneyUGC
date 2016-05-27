@@ -24,3 +24,4 @@
 //= require _jquery.lazyload
 //= require _lazyloadinit
 //= require _contentreviewmemory
+//= require _contentreviewvideo

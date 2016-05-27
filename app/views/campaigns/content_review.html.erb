@@ -33,7 +33,11 @@
       <div class="col s12">
         <h2>Content Review Dashboard</h2>
         <% if @campaign.approved %>
-  <h4><span class="red-text">WARNING!</span> THIS CONTENT HAS BEEN APPROVED. MARKING FOR REVIEW AGAIN WILL ERASE ALL APPROVALS AND RESTART THE PROCESS.</h4>
+          <div class="row">
+            <div class="col s12 red darken-4 center-align">
+              <h4><span class="black-text">WARNING!</span> THIS CONTENT HAS BEEN APPROVED. MARKING FOR REVIEW AGAIN WILL ERASE ALL APPROVALS AND RESTART THE PROCESS.</h4>
+            </div>
+          </div>
         <% end %>
         <p>To mark for approval, click "NOT ADDED". When the content is added to the review list, the button will say "ADDED!". Once you are finished marking content for approval, click "MARK FOR REVIEW". This begins the approval process.</p>
       </div>
