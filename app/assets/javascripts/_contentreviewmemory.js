@@ -58,6 +58,7 @@ function iterateThroughMarkedPosts(){
   children.each(function(idx, val){
      $('#selected_posts').val($('#selected_posts').val() + ($(this).html()+','));
      $('#selected_posts_for_review').val($('#selected_posts_for_review').val() + ($(this).html()+','));
+     $('#approved_posts').val($('#approved_posts').val() + ($(this).html()+','));
   });
 }
 
@@ -69,6 +70,7 @@ $(function(){
       $('.fake-btn').addClass('hide');
       $('.download-selected').removeClass('hide');
       $('.mark-for-review').removeClass('hide');
+      $('.approve-posts').removeClass('hide');
     }
   }
 });

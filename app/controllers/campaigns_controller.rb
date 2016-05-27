@@ -135,6 +135,40 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def approved_content
+    @user = current_user
+    if user_admin(@user)
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      @post_collection = []
+      @campaign.approved_posts.each do |id|
+        post = Post.find(id)
+        @post_collection << post
+      end
+      @post_collection = @post_collection.paginate(page: params[:page], per_page: 16)
+      # @post_collection = @campaign.posts.order('created_at DESC').all
+      respond_to do |format|
+        format.html { render layout: 'content_review' }
+        format.js
+      end
+    else
+      not_found
+    end
+  end
+
+  def practices_review_index
+    @user = current_user
+    if user_admin(@user)
+      @campaigns = Campaign.all.where("needs_review = 'true'")
+      @approved_campaigns = Campaign.all.where("approved = 'true'")
+      respond_to do |format|
+        format.html { render layout: 'content_review' }
+        format.js
+      end
+    else
+      not_found
+    end
+  end
+
   def download_all_posts
     @user = current_user
     if user_admin(@user)
@@ -168,10 +202,34 @@ class CampaignsController < ApplicationController
     if user_admin(@user)
       @campaign = Campaign.friendly.find(params[:campaign_id])
       selected_posts = params[:selected_posts_for_review].split(',').map(&:to_i)
-      @campaign.update_attributes({:posts_for_review => selected_posts, :needs_review => true})
+      @campaign.update_attributes({
+        :posts_for_review => selected_posts,
+        :needs_review => true,
+        :approved => false,
+        :approved_posts => []
+      })
       @campaign.save!
       redirect_to content_review_path
       flash[:notice] = "The items you've selected are now marked for review."
+    else
+      not_found
+    end
+  end
+
+  def approve_posts
+    @user = current_user
+    if user_admin(@user)
+      @campaign = Campaign.friendly.find(params[:campaign_id])
+      selected_posts = params[:approved_posts].split(',').map(&:to_i)
+      @campaign.update_attributes({
+        :approved_posts => selected_posts,
+        :needs_review => false,
+        :approved => true,
+        :posts_for_review => []
+      })
+      @campaign.save!
+      redirect_to practices_review_index_path
+      flash[:notice] = "The items you've selected are now marked as approved."
     else
       not_found
     end
@@ -228,7 +286,10 @@ class CampaignsController < ApplicationController
       :text_shadow,
       :no_title,
       :posts_for_review,
-      :needs_review)
+      :needs_review,
+      :approved,
+      :approved_posts
+      )
   end
 
 end

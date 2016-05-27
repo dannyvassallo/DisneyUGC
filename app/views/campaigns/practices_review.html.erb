@@ -31,15 +31,8 @@
   <div class="container">
     <div class="row">
       <div class="col s12">
-        <h2>Content Review Dashboard</h2>
-        <p><%= @campaign.title %>
-          <span>
-            <% if @campaign.needs_review == true %>
-              Marked For Review <div class="btn green">REVIEW NOW</div><%= link_to "Remove From Review", unmark_for_review_path(@campaign.id), :class => 'btn green', :data => { :campaign_id => @campaign.id }, :method => 'post' %>
-            <% end %>
-          </span>
-        </p>
-        <!-- <p>You can review and download all entries here. Click either the "Download All Entries" button OR click "Not Added" on the individual entries to add them to the new zip archive you are creating. After you've made your selections, you may click the up arrow and scroll to the top to submit the list with the "Download Selected Entries" button. <b>PLEASE BE PATIENT AND DO NOT RELOAD THE PAGE.</b> The request and archival process may take a while depending on the number of entrants. <b>REPEAT: PLEASE BE PATIENT.</b></p> -->
+        <h2><%= @campaign.title %> Review</h2>
+        <p>Simply click the "ADDED!" button again to disapprove an entry. Click "APPROVE ADDED POSTS" to submit your approval.</p>
       </div>
     </div>
     <div class="row">
@@ -56,15 +49,22 @@
         <% end %>
       </div>
       <div class="col s12 m4 center-align">
-        <%= form_tag posts_for_review_path(@campaign.id), :data => { :campaign_id => @campaign.id }, :method => 'post', :id => 'posts-for-review-form' do %>
-          <%= text_area_tag(:selected_posts_for_review) %>
-          <div class="btn disabled fake-btn">Mark For Review</div>
-          <%= submit_tag("Mark For Review", :class => 'btn mark-for-review hide') %>
+        <%= form_tag approve_posts_path(@campaign.id), :data => { :campaign_id => @campaign.id }, :method => 'post', :id => 'approved-posts-form' do %>
+          <%= text_area_tag(:approved_posts) %>
+          <div class="btn disabled fake-btn">Approve Added Posts</div>
+          <%= submit_tag("Approve Added Posts", :class => 'btn approve-posts green hide') %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 center-align">
+        <% if @campaign.needs_review == true %>
+          <%= link_to "Remove From Review", unmark_for_review_path(@campaign.id), :class => 'btn red', :data => { :campaign_id => @campaign.id }, :method => 'post' %>
         <% end %>
       </div>
     </div>
     <div id="masonry-grid" class="row sort_paginate_ajax">
-      <%= render partial: 'content_review_posts' %>
+      <%= render partial: 'practices_review_posts' %>
     </div>
   </div>
 <!--   <div id="scrollTop" class="fixed-action-btn" style="bottom: 250px; right: 24px;">

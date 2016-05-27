@@ -1,6 +1,7 @@
 #infinite-scrolling,
 #selected_posts,
-#selected_posts_for_review{
+#selected_posts_for_review,
+#approved_posts{
   display: none;
 }
 
@@ -12,4 +13,8 @@
   .pagination{
     // display: none;
   }
+}
+
+.full-w{
+  width: 100%;
 }
