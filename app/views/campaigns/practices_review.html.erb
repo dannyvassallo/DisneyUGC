@@ -31,15 +31,8 @@
   <div class="container">
     <div class="row">
       <div class="col s12">
-        <h2>Content Review Dashboard</h2>
-        <% if @campaign.approved %>
-          <div class="row">
-            <div class="col s12 red darken-4 center-align">
-              <h4><span class="black-text">WARNING!</span> THIS CONTENT HAS BEEN APPROVED. MARKING FOR REVIEW AGAIN WILL ERASE ALL APPROVALS AND RESTART THE PROCESS.</h4>
-            </div>
-          </div>
-        <% end %>
-        <p>To mark for approval, click "NOT ADDED". When the content is added to the review list, the button will say "ADDED!". Once you are finished marking content for approval, click "MARK FOR REVIEW". This begins the approval process.</p>
+        <h2><%= @campaign.title %> Review</h2>
+        <p>Simply click the "ADDED!" button again to disapprove an entry. Click "APPROVE ADDED POSTS" to submit your approval.</p>
       </div>
     </div>
     <div class="row">
@@ -56,25 +49,22 @@
         <% end %>
       </div>
       <div class="col s12 m4 center-align">
-        <%= form_tag posts_for_review_path(@campaign.id), :data => { :campaign_id => @campaign.id }, :method => 'post', :id => 'posts-for-review-form' do %>
-          <%= text_area_tag(:selected_posts_for_review) %>
-          <div class="btn disabled fake-btn">Mark For Review</div>
-          <%= submit_tag("Mark For Review", :class => 'btn mark-for-review green hide') %>
+        <%= form_tag approve_posts_path(@campaign.id), :data => { :campaign_id => @campaign.id }, :method => 'post', :id => 'approved-posts-form' do %>
+          <%= text_area_tag(:approved_posts) %>
+          <div class="btn disabled fake-btn">Approve Added Posts</div>
+          <%= submit_tag("Approve Added Posts", :class => 'btn approve-posts green hide') %>
         <% end %>
       </div>
     </div>
-    <% if @campaign.needs_review == true %>
     <div class="row">
-      <div class="col s12 m4 offset-m2 center-align">
-        <%= link_to "REVIEW NOW", practices_review_path(@campaign), :class => 'btn green' %>
-      </div>
-      <div class="col s12 m4 center-align">
-        <%= link_to "Remove From Review", unmark_for_review_path(@campaign.id), :class => 'btn red', :data => { :campaign_id => @campaign.id }, :method => 'post' %>
+      <div class="col s12 center-align">
+        <% if @campaign.needs_review == true %>
+          <%= link_to "Remove From Review", unmark_for_review_path(@campaign.id), :class => 'btn red', :data => { :campaign_id => @campaign.id }, :method => 'post' %>
+        <% end %>
       </div>
     </div>
-    <% end %>
     <div id="masonry-grid" class="row sort_paginate_ajax">
-      <%= render partial: 'content_review_posts' %>
+      <%= render partial: 'practices_review_posts' %>
     </div>
   </div>
 <!--   <div id="scrollTop" class="fixed-action-btn" style="bottom: 250px; right: 24px;">

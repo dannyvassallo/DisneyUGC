@@ -7,11 +7,17 @@ $(function(){
       var id = $(this).attr('data-id');
       $('#new-post-collection').append("<div class=\"post-"+id+"\">"+id+"</div>");
       $('#selected_posts').val('');
+      $('#selected_posts_for_review').val('');
+      $('#approved_posts').val('');
       var children = $('#new-post-collection').children();
       children.each(function(idx, val){
          $('#selected_posts').val($('#selected_posts').val() + ($(this).html()+','));
+         $('#selected_posts_for_review').val($('#selected_posts_for_review').val() + ($(this).html()+','));
+         $('#approved_posts').val($('#approved_posts').val() + ($(this).html()+','));
       });
       $('.download-selected').removeClass('hide');
+      $('.mark-for-review').removeClass('hide');
+      $('.approve-posts').removeClass('hide');
       $('.fake-btn').addClass('hide');
     } else if ($(this).hasClass('green')){
       $(this).removeClass('green');
@@ -20,13 +26,19 @@ $(function(){
       elsClass = '.post-' + $(this).attr('data-id');
       $(elsClass).remove();
       $('#selected_posts').val('');
+      $('#selected_posts_for_review').val('');
+      $('#approved_posts').val('');
       var children = $('#new-post-collection').children();
       children.each(function(idx, val){
-         $('#selected_posts').val($('#selected_posts').val() + ($(this).html()+','));
+        $('#selected_posts').val($('#selected_posts').val() + ($(this).html()+','));
+        $('#selected_posts_for_review').val($('#selected_posts_for_review').val() + ($(this).html()+','));
+        $('#approved_posts').val($('#approved_posts').val() + ($(this).html()+','));
       });
       if(children.length < 1){
         $('.download-selected').addClass('hide');
         $('.fake-btn').removeClass('hide');
+        $('.mark-for-review').addClass('hide');
+        $('.approve-posts').addClass('hide');
       }
     }
   });
