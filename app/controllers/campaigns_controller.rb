@@ -130,7 +130,7 @@ class CampaignsController < ApplicationController
 
   def download_all_posts
     @campaign = Campaign.friendly.find(params[:campaign_id])
-    authorize @campaign
+    # authorize @campaign
     @campaign.remove_zip_file = true
     @campaign.save!
     @all_posts = @campaign.posts.map(&:id)
@@ -140,7 +140,7 @@ class CampaignsController < ApplicationController
 
   def download_selected_posts
     @campaign = Campaign.friendly.find(params[:campaign_id])
-    authorize @campaign
+    # authorize @campaign
     selected_posts = params[:selected_posts].split(',').map(&:to_i)
     @campaign.remove_zip_file = true
     @campaign.save!
