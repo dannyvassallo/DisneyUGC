@@ -1,6 +1,5 @@
 class AdminController < ApplicationController
   respond_to :html, :js
-  include ApplicationHelper
 
   def index
     @user = current_user

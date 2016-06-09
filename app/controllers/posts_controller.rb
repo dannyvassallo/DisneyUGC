@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   respond_to :html, :js
-  include ApplicationHelper
 
   def get_posts
     @user = current_user

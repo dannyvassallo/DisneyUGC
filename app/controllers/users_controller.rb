@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   respond_to :html, :js
-  include ApplicationHelper
 
 
   def edit

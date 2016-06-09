@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   require 'will_paginate/array'
 
-  rescue_from Pundit::NotAuthorizedError do |exception|
-    not_found
-  end
+  # rescue_from Pundit::NotAuthorizedError do |exception|
+  #   not_found
+  # end
 
 end
