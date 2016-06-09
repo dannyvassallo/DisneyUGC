@@ -13,9 +13,6 @@ describe "Sign in flow" do
       user = @user
       visit root_path
 
-      within '.nav-wrapper .right' do
-        click_link 'Login'
-      end
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
 
@@ -23,8 +20,8 @@ describe "Sign in flow" do
         click_button 'Log in'
       end
 
-      expect(current_path).to eq root_path
-      expect(page).to_not have_css('.admin-link')
+      expect(current_path).to eq limbo_path
+      expect(page).to have_css('#limbo-message')
       print ("\nNon-admin sign-in passed")
     end
   end
@@ -40,9 +37,6 @@ describe "Sign in flow" do
       user = @user
       visit root_path
 
-      within '.nav-wrapper .right' do
-        click_link 'Login'
-      end
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
 

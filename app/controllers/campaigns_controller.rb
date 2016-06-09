@@ -11,7 +11,7 @@ class CampaignsController < ApplicationController
     @duration_limit = Time.at(@campaign.duration_limit).utc.strftime("%M:%S")
     @user = current_user
     unless @campaign.live
-      unless user_admin(@user)
+      unless @user.admin?
         not_found
       end
     end

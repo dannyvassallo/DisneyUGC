@@ -10,9 +10,6 @@ describe "Campaign View Security Tests" do
     @live_campaign = live_test_campaign
     visit root_path
 
-    within '.nav-wrapper .right' do
-      click_link 'Login'
-    end
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password
 
