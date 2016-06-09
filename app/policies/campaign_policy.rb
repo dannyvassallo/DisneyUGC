@@ -4,15 +4,15 @@ class CampaignPolicy < ApplicationPolicy
   end
 
   def practices_review?
-    create?
+    user.present? && (user.reviewer? || user.admin?)
   end
 
   def approved_content?
-    create?
+    practices_review?
   end
 
   def practices_review_index?
-    create?
+    practices_review?
   end
 
   def download_all_posts?
@@ -28,7 +28,7 @@ class CampaignPolicy < ApplicationPolicy
   end
 
   def approve_posts?
-    create?
+    practices_review?
   end
 
   def unmark_for_review?

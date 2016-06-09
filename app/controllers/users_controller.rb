@@ -7,27 +7,23 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if user_admin(@user)
-      @user = User.find(params[:id])
-      if params[:user][:password].blank?
-        params[:user].delete(:password)
-        params[:user].delete(:password_confirmation)
-      end
-      if @user.update_attributes(user_params)
-        if @user.role == 'admin'
-          flash[:notice] = "#{@user.email} was granted admin privileges!"
-          redirect_to admin_index_path
-        else
-          flash[:notice] = "#{@user.email}'s admin privileges were revoked!"
-          redirect_to admin_index_path
-        end
+    @user = User.find(params[:id])
+    authorize @user
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+    if @user.update_attributes(user_params)
+      if @user.role == 'admin'
+        flash[:notice] = "#{@user.email} was granted privileges!"
+        redirect_to admin_index_path
       else
-        flash[:error] = "There was an error updating the user. Please try again."
+        flash[:notice] = "#{@user.email}'s privileges were revoked!"
         redirect_to admin_index_path
       end
     else
-      not_found
+      flash[:error] = "There was an error updating the user. Please try again."
+      redirect_to admin_index_path
     end
   end
 

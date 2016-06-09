@@ -4,7 +4,11 @@ class WelcomeController < ApplicationController
 	def index
     @user = current_user
     unless @user.admin?
-      redirect_to limbo_path
+      if !@user.reviewer?
+        redirect_to limbo_path
+      elsif @user.reviewer?
+        redirect_to practices_review_index_path
+      end
     end
 	end
 
