@@ -114,6 +114,16 @@ describe PostsController do
       print("\nNon-Admin couldn't delete a post")
     end
 
+    it "attempts destroy a new post as Reviewer" do
+      @post = Post.last
+      expect(Post.count).to eq(1)
+      @user.update_attributes(:role => 'reviewer')
+      @user.save!
+      delete :destroy, campaign_id: @campaign.slug, id: @post.id
+      expect(Post.count).to eq(1)
+      print("\nReviewer couldn't delete a post")
+    end
+
     it "attempts destroy a new post as Anon" do
       sign_out @user
       @post = Post.last

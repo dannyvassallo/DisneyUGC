@@ -9,13 +9,10 @@ describe "Sign in flow" do
   end
 
   describe "successful non-admin sign-in" do
-    it "redirects the user to the welcome index and doesnt show tools" do      
+    it "redirects the user to limbo" do
       user = @user
       visit root_path
 
-      within '.nav-wrapper .right' do
-        click_link 'Login'
-      end
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
 
@@ -23,14 +20,14 @@ describe "Sign in flow" do
         click_button 'Log in'
       end
 
-      expect(current_path).to eq root_path
-      expect(page).to_not have_css('.admin-link')
+      expect(current_path).to eq limbo_path
+      expect(page).to have_css('#limbo-message')
       print ("\nNon-admin sign-in passed")
     end
   end
 
   describe "successful admin sign-in" do
-    
+
     before do
       @user.update_attributes(:role => 'admin')
       @user.save!
@@ -40,9 +37,6 @@ describe "Sign in flow" do
       user = @user
       visit root_path
 
-      within '.nav-wrapper .right' do
-        click_link 'Login'
-      end
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
 
@@ -53,6 +47,30 @@ describe "Sign in flow" do
       expect(current_path).to eq root_path
       expect(page).to have_css('.admin-link')
       print ("\nAdmin sign-in passed")
+    end
+  end
+
+
+  describe "successful reviewer sign-in" do
+
+    before do
+      @user.update_attributes(:role => 'reviewer')
+      @user.save!
+    end
+
+    it "redirects the reviewer user to the review panel" do
+      user = @user
+      visit root_path
+
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+
+      within 'form' do
+        click_button 'Log in'
+      end
+
+      expect(current_path).to eq practices_review_index_path
+      print ("\nReviewer sign-in passed")
     end
   end
 

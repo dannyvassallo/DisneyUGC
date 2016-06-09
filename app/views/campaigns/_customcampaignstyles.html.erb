@@ -23,7 +23,7 @@
         var textShadow = '<%= @campaign.text_shadow %>'
     </script>
 <% end %>
-<% if user_admin(@user) %>
+<% if current_user && current_user.admin? %>
     <style>
         #campaign-feature{
             margin-top: 0;

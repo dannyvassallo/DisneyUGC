@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col l3 offset-l1 card-panel hoverable center-align back-link">
-				<% if user_admin(@user) %>
+				<% if current_user && current_user.admin? %>
 						<%= link_to campaigns_path do %>
 							<p><i class="fa fa-arrow-left"></i> Back to Campaigns</p>
 						<% end %>
@@ -42,17 +42,17 @@
 				</div>
 			</div>
 		</div>
-		<% if user_admin(@user) %>
+		<% if current_user && current_user.admin? %>
 			<!-- BEGIN ADMIN PANEL -->
 				<%= render 'admintools' %>
 			<!-- END ADMIN PANEL -->
 		<% end %>
-		<% if @campaign.entries_visible || user_admin(@user) %>
+		<% if @campaign.entries_visible || (current_user && current_user.admin?) %>
 		<div class="row">
 			<div class="col l10 offset-l1">
-				<% if user_admin(@user) && !@campaign.live %>
+				<% if (current_user && current_user.admin?) && !@campaign.live %>
 					<h5 class="colored-text">Recent Entries (NOT ACCEPTING ENTRIES!)</h5>
-				<% elsif user_admin(@user) && @campaign.live %>
+				<% elsif (current_user && current_user.admin?) && @campaign.live %>
 					<h5 class="colored-text">Recent Entries (LIVE!)</h5>
 				<% else %>
 					<h5 class="colored-text">Recent Entries</h5>

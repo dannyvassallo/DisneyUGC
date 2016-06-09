@@ -1,14 +1,9 @@
 class CampaignsController < ApplicationController
   respond_to :html, :js
-  include ApplicationHelper
 
   def index
-    @user = current_user
-    if user_admin(@user)
-      @campaigns = Campaign.all
-    else
-      not_found
-    end
+    @campaigns = Campaign.all
+    authorize @campaigns
   end
 
   def show
@@ -16,7 +11,7 @@ class CampaignsController < ApplicationController
     @duration_limit = Time.at(@campaign.duration_limit).utc.strftime("%M:%S")
     @user = current_user
     unless @campaign.live
-      unless user_admin(@user)
+      unless @user.admin?
         not_found
       end
     end
@@ -28,224 +23,168 @@ class CampaignsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.new
-    else
-      not_found
-    end
+    @campaign = Campaign.new
+    authorize @campaign
   end
 
   def create
-    @user = current_user
-    if user_admin(@user)
-      modified_params = feature_priority(campaign_params)
-      @campaign = Campaign.new(modified_params)
-      title = @campaign.title
+    modified_params = feature_priority(campaign_params)
+    @campaign = Campaign.new(modified_params)
+    authorize @campaign
+    title = @campaign.title
 
-      if @campaign.save
-        flash[:notice] = "Your new campaign '#{title}' was created!"
-        redirect_to @campaign
-      else
-        flash[:error] = "There was an error creating the campaign. Please try again."
-        render action: :new
-      end
+    if @campaign.save
+      flash[:notice] = "Your new campaign '#{title}' was created!"
+      redirect_to @campaign
     else
-      not_found
+      flash[:error] = "There was an error creating the campaign. Please try again."
+      render action: :new
     end
   end
 
   def edit
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:id])
-    else
-      not_found
-    end
+    @campaign = Campaign.friendly.find(params[:id])
+    authorize @campaign
   end
 
   def update
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:id])
-      modified_params = feature_priority(campaign_params, @campaign)
-      title = @campaign.title
-      if @campaign.update_attributes(modified_params)
-        flash[:notice] = "The campaign '#{title}' was updated!"
-        redirect_to @campaign
-      else
-        flash[:error] = "There was an error updating the campaign. Please try again."
-        render action: :edit
-      end
+    @campaign = Campaign.friendly.find(params[:id])
+    authorize @campaign
+    modified_params = feature_priority(campaign_params, @campaign)
+    title = @campaign.title
+    if @campaign.update_attributes(modified_params)
+      flash[:notice] = "The campaign '#{title}' was updated!"
+      redirect_to @campaign
     else
-      not_found
+      flash[:error] = "There was an error updating the campaign. Please try again."
+      render action: :edit
     end
   end
 
   def destroy
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:id])
-      title = @campaign.title
+    @campaign = Campaign.friendly.find(params[:id])
+    authorize @campaign
+    title = @campaign.title
 
-      if @campaign.destroy
-        flash[:notice] = "The campaign '#{title}' was deleted successfully."
-        redirect_to @campaign
-      else
-        flash[:error] = "There was an error deleting the campaign '#{title}'. Please try again."
-        render :show
-      end
+    if @campaign.destroy
+      flash[:notice] = "The campaign '#{title}' was deleted successfully."
+      redirect_to @campaign
     else
-      not_found
+      flash[:error] = "There was an error deleting the campaign '#{title}'. Please try again."
+      render :show
     end
   end
 
   def content_review
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:campaign_id])
-      @post_collection = @campaign.posts.paginate(page: params[:page], per_page: 16).order('created_at DESC')
-      # @post_collection = @campaign.posts.order('created_at DESC').all
-      respond_to do |format|
-        format.html { render layout: 'content_review' }
-        format.js
-      end
-    else
-      not_found
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    authorize @campaign
+    @post_collection = @campaign.posts.paginate(page: params[:page], per_page: 16).order('created_at DESC')
+    # @post_collection = @campaign.posts.order('created_at DESC').all
+    respond_to do |format|
+      format.html { render layout: 'content_review' }
+      format.js
     end
   end
 
   def practices_review
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:campaign_id])
-      @post_collection = []
-      @campaign.posts_for_review.each do |id|
-        post = Post.find(id)
-        @post_collection << post
-      end
-      @post_collection = @post_collection.paginate(page: params[:page], per_page: 16)
-      # @post_collection = @campaign.posts.order('created_at DESC').all
-      respond_to do |format|
-        format.html { render layout: 'content_review' }
-        format.js
-      end
-    else
-      not_found
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    authorize @campaign
+    @post_collection = []
+    @campaign.posts_for_review.each do |id|
+      post = Post.find(id)
+      @post_collection << post
+    end
+    @post_collection = @post_collection.paginate(page: params[:page], per_page: 16)
+    # @post_collection = @campaign.posts.order('created_at DESC').all
+    respond_to do |format|
+      format.html { render layout: 'content_review' }
+      format.js
     end
   end
 
   def approved_content
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:campaign_id])
-      @post_collection = []
-      @campaign.approved_posts.each do |id|
-        post = Post.find(id)
-        @post_collection << post
-      end
-      @post_collection = @post_collection.paginate(page: params[:page], per_page: 16)
-      # @post_collection = @campaign.posts.order('created_at DESC').all
-      respond_to do |format|
-        format.html { render layout: 'content_review' }
-        format.js
-      end
-    else
-      not_found
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    authorize @campaign
+    @post_collection = []
+    @campaign.approved_posts.each do |id|
+      post = Post.find(id)
+      @post_collection << post
+    end
+    @post_collection = @post_collection.paginate(page: params[:page], per_page: 16)
+    # @post_collection = @campaign.posts.order('created_at DESC').all
+    respond_to do |format|
+      format.html { render layout: 'content_review' }
+      format.js
     end
   end
 
   def practices_review_index
-    @user = current_user
-    if user_admin(@user)
-      @campaigns = Campaign.all.where("needs_review = 'true'")
-      @approved_campaigns = Campaign.all.where("approved = 'true'")
-      respond_to do |format|
-        format.html { render layout: 'content_review' }
-        format.js
-      end
-    else
-      not_found
+    @campaigns = Campaign.all.where("needs_review = 'true'")
+    authorize @campaigns
+    @approved_campaigns = Campaign.all.where("approved = 'true'")
+    respond_to do |format|
+      format.html { render layout: 'content_review' }
+      format.js
     end
   end
 
   def download_all_posts
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:campaign_id])
-      @campaign.remove_zip_file = true
-      @campaign.save!
-      @all_posts = @campaign.posts.map(&:id)
-      ZipCreator.delay.download_zip_of_all_posts(@all_posts, @campaign.id)
-      render :nothing => true, :status => 200, :content_type => 'text/html'
-    else
-      not_found
-    end
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    # authorize @campaign
+    @campaign.remove_zip_file = true
+    @campaign.save!
+    @all_posts = @campaign.posts.map(&:id)
+    ZipCreator.delay.download_zip_of_all_posts(@all_posts, @campaign.id)
+    render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 
   def download_selected_posts
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:campaign_id])
-      selected_posts = params[:selected_posts].split(',').map(&:to_i)
-      @campaign.remove_zip_file = true
-      @campaign.save!
-      ZipCreator.delay.download_zip_of_all_posts(selected_posts, @campaign.id)
-      render :nothing => true, :status => 200, :content_type => 'text/html'
-    else
-      not_found
-    end
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    # authorize @campaign
+    selected_posts = params[:selected_posts].split(',').map(&:to_i)
+    @campaign.remove_zip_file = true
+    @campaign.save!
+    ZipCreator.delay.download_zip_of_all_posts(selected_posts, @campaign.id)
+    render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 
   def posts_for_review
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:campaign_id])
-      selected_posts = params[:selected_posts_for_review].split(',').map(&:to_i)
-      @campaign.update_attributes({
-        :posts_for_review => selected_posts,
-        :needs_review => true,
-        :approved => false,
-        :approved_posts => []
-      })
-      @campaign.save!
-      redirect_to content_review_path
-      flash[:notice] = "The items you've selected are now marked for review."
-    else
-      not_found
-    end
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    authorize @campaign
+    selected_posts = params[:selected_posts_for_review].split(',').map(&:to_i)
+    @campaign.update_attributes({
+      :posts_for_review => selected_posts,
+      :needs_review => true,
+      :approved => false,
+      :approved_posts => []
+    })
+    @campaign.save!
+    redirect_to content_review_path
+    flash[:notice] = "The items you've selected are now marked for review."
   end
 
   def approve_posts
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:campaign_id])
-      selected_posts = params[:approved_posts].split(',').map(&:to_i)
-      @campaign.update_attributes({
-        :approved_posts => selected_posts,
-        :needs_review => false,
-        :approved => true,
-        :posts_for_review => []
-      })
-      @campaign.save!
-      redirect_to practices_review_index_path
-      flash[:notice] = "The items you've selected are now marked as approved."
-    else
-      not_found
-    end
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    authorize @campaign
+    selected_posts = params[:approved_posts].split(',').map(&:to_i)
+    @campaign.update_attributes({
+      :approved_posts => selected_posts,
+      :needs_review => false,
+      :approved => true,
+      :posts_for_review => []
+    })
+    @campaign.save!
+    redirect_to practices_review_index_path
+    flash[:notice] = "The items you've selected are now marked as approved."
   end
 
   def unmark_for_review
-    @user = current_user
-    if user_admin(@user)
-      @campaign = Campaign.friendly.find(params[:campaign_id])
-      @campaign.update_attributes({:needs_review => false})
-      @campaign.save!
-      redirect_to content_review_path
-      flash[:notice] = "This selection has been removed from review."
-    else
-      not_found
-    end
+    @campaign = Campaign.friendly.find(params[:campaign_id])
+    authorize @campaign
+    @campaign.update_attributes({:needs_review => false})
+    @campaign.save!
+    redirect_to content_review_path
+    flash[:notice] = "This selection has been removed from review."
   end
 
   private

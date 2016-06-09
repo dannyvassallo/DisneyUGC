@@ -3,10 +3,10 @@
     <div class="nav-wrapper">
       <a href="/" class="brand-logo"><img class="rdlogo" src="https://s3.amazonaws.com/rdugc/assets/rdlogo.png"></a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <% if !@campaign || user_admin(@user) %>
+      <% if !@campaign || current_user.admin? %>
       <ul class="right hide-on-med-and-down">
         <% if user_signed_in? %>
-          <li class="user-info">Hello, <%= link_to @user.email, edit_user_registration_path(@user) %>!</li>
+          <li class="user-info">Hello, <%= link_to current_user.email, edit_user_registration_path(current_user) %>!</li>
           <li>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
           </li>

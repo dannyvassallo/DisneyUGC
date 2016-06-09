@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   respond_to :html, :js
-  include ApplicationHelper
 
   def get_posts
     @user = current_user
@@ -83,18 +82,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @user = current_user
-    if user_admin(@user)
-      @post = Post.find(params[:id])
-      @campaign = @post.campaign
-      @post.destroy
-      respond_to do |format|
-        format.html { redirect_to campaign_path(@campaign) }
-        format.json { head :no_content }
-        format.js   { render :layout => false }
-      end
-    else
-      not_found
+    @post = Post.find(params[:id])
+    authorize @post
+    @campaign = @post.campaign
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to campaign_path(@campaign) }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
     end
   end
 
