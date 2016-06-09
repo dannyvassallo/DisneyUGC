@@ -2,8 +2,8 @@
     <thead>
       <tr>
         <th data-field="id">Email Address</th>
-        <th data-field="name">Is Admin?</th>
-        <th data-field="name">Change Status</th>
+        <th data-field="name">Role</th>
+        <th data-field="name">Change Role</th>
       </tr>
     </thead>
     <tbody>
@@ -12,20 +12,31 @@
           <tr>
             <td><%= user.email %></td>
             <% if user.role == 'admin' %>
-              <td>Yes</td>
+              <td>Admin</td>
+            <% elsif user.role == 'reviewer' %>
+              <td>Reviewer</td>
             <% else %>
-              <td>No</td>
+              <td>No Role</td>
             <% end %>
             <td>
               <% if user.role == 'admin' %>
-                <%= simple_form_for(user) do |f| %>
+                <%= simple_form_for user, html: { class: "inline-form" } do |f| %>
                   <%= f.input :role, :as => :hidden, :input_html => { :value => "" } %>
                   <%= f.submit 'Revoke Admin', :class => 'btn red darken-4' %>
                 <% end %>
+              <% elsif user.role == 'reviewer' %>
+                <%= simple_form_for user, html: { class: "inline-form" } do |f| %>
+                  <%= f.input :role, :as => :hidden, :input_html => { :value => "" } %>
+                  <%= f.submit 'Revoke Reviewer', :class => 'btn red darken-4' %>
+                <% end %>
               <% else %>
-                <%= simple_form_for(user) do |f| %>
+                <%= simple_form_for user, html: { class: "inline-form" } do |f| %>
                   <%= f.input :role, :as => :hidden, :input_html => { :value => "admin" } %>
                   <%= f.submit 'Make Admin', :class => 'btn green darken-4' %>
+                <% end %>
+                <%= simple_form_for user, html: { class: "inline-form" } do |f| %>
+                  <%= f.input :role, :as => :hidden, :input_html => { :value => "reviewer" } %>
+                  <%= f.submit 'Make Reviewer', :class => 'btn green darken-4' %>
                 <% end %>
               <% end %>
             </td>
