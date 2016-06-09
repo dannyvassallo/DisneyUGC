@@ -39,6 +39,7 @@
                   <%= f.submit 'Make Reviewer', :class => 'btn green darken-4' %>
                 <% end %>
               <% end %>
+              <%= link_to "<i class=\"fa fa-trash\"></i>".html_safe, { :controller => 'users', :action => 'destroy', :id => user.id }, data: { :confirm => 'Are you sure?', :method => :delete }, :class => 'btn red darken-4 inline-form' %>
             </td>
           </tr>
         <% end %>

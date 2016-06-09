@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def edit
-    @post = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
@@ -15,16 +15,24 @@ class UsersController < ApplicationController
     end
     if @user.update_attributes(user_params)
       if @user.role == 'admin'
-        flash[:notice] = "#{@user.email} was granted privileges!"
+        flash[:notice] = "#{@user.email}'s role was updated!"
         redirect_to admin_index_path
       else
-        flash[:notice] = "#{@user.email}'s privileges were revoked!"
+        flash[:notice] = "#{@user.email}'s role was revoked!"
         redirect_to admin_index_path
       end
     else
       flash[:error] = "There was an error updating the user. Please try again."
       redirect_to admin_index_path
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    authorize @user
+    @user.destroy
+    flash[:error] = "#{@user.email} was deleted."
+    redirect_to admin_index_path
   end
 
   private

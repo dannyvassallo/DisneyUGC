@@ -11,4 +11,8 @@ class UserPolicy < ApplicationPolicy
     create?
   end
 
+  def delete?
+    create?
+  end
+
 end
