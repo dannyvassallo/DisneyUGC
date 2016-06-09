@@ -65,3 +65,4 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'autoprefixer-rails'
 gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
 gem 'zip-zip' # will load compatibility for old rubyzip API.
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'

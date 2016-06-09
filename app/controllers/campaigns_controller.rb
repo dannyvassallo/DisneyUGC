@@ -3,12 +3,8 @@ class CampaignsController < ApplicationController
   include ApplicationHelper
 
   def index
-    @user = current_user
-    if user_admin(@user)
-      @campaigns = Campaign.all
-    else
-      not_found
-    end
+    @campaigns = Campaign.all
+    authorize @campaigns
   end
 
   def show

@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
     where("email LIKE ?", "%#{search}%")
   end
 
+  def admin?
+   role == 'admin'
+  end
+
+  def reviewer?
+   role == 'reviewer'
+  end
+
 end
