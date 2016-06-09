@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   post 'campaigns/posts_for_review/:campaign_id' => 'campaigns#posts_for_review', :as => 'posts_for_review'
   post 'campaigns/approve_posts/:campaign_id' => 'campaigns#approve_posts', :as => 'approve_posts'
   post 'campaigns/unmark_for_review/:campaign_id' => 'campaigns#unmark_for_review', :as => 'unmark_for_review'
-
+  get 'limbo' => 'limbo#index'
 
 
   resources :campaigns, only: [:index, :create]

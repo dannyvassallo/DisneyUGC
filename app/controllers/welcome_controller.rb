@@ -3,6 +3,9 @@ class WelcomeController < ApplicationController
 
 	def index
     @user = current_user
+    unless @user.admin?
+      redirect_to limbo_path
+    end
 	end
 
   private

@@ -9,7 +9,7 @@ describe "Sign in flow" do
   end
 
   describe "successful non-admin sign-in" do
-    it "redirects the user to the welcome index and doesnt show tools" do      
+    it "redirects the user to limbo" do
       user = @user
       visit root_path
 
@@ -30,7 +30,7 @@ describe "Sign in flow" do
   end
 
   describe "successful admin sign-in" do
-    
+
     before do
       @user.update_attributes(:role => 'admin')
       @user.save!

@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe "Campaign View Security Tests" do
 
-  include TestFactories  
-  
-  before do     
+  include TestFactories
+
+  before do
     @user = test_user
     @dead_campaign = dead_test_campaign
-    @live_campaign = live_test_campaign        
+    @live_campaign = live_test_campaign
     visit root_path
 
     within '.nav-wrapper .right' do
@@ -22,7 +22,7 @@ describe "Campaign View Security Tests" do
   end
 
   describe "Non-admin user tries to visit a dead campaign" do
-    it "shows the user the error page" do                
+    it "shows the user the error page" do
       visit campaign_path(@dead_campaign)
       expect(@dead_campaign).to render_template(:partial =>'campaigns/_error')
       print ("\nUser was not shown the dead campaign")
@@ -33,7 +33,7 @@ describe "Campaign View Security Tests" do
     before do
       logout(@user)
     end
-    it "shows Anon the error page" do                
+    it "shows Anon the error page" do
       visit campaign_path(@dead_campaign)
       expect(@dead_campaign).to render_template(:partial =>'campaigns/_error')
       print ("\nAnon was not shown the dead campaign")
@@ -41,7 +41,7 @@ describe "Campaign View Security Tests" do
   end
 
   describe "Admin user tries to visit a dead campaign" do
-    before do      
+    before do
       @user.update_attributes(:role => 'admin')
       @user.save!
     end
@@ -52,7 +52,7 @@ describe "Campaign View Security Tests" do
     end
   end
 
-  describe "Non-admin user visits live campaign" do  
+  describe "Non-admin user visits live campaign" do
     it "shows the user the campaign without admin tools" do
       visit campaign_path(@live_campaign)
       expect(page).to_not have_css('#admin-tools')
@@ -63,19 +63,19 @@ describe "Campaign View Security Tests" do
   describe "Anon visits live campaign" do
     before do
       logout(@user)
-    end  
+    end
     it "shows Anon the campaign without admin tools" do
       visit campaign_path(@live_campaign)
       expect(page).to_not have_css('#admin-tools')
       print ("\nAnon couldn't see admin tools on a live campaign")
     end
-  end  
+  end
 
   describe "Admin user visits live campaign" do
-    before do      
+    before do
       @user.update_attributes(:role => 'admin')
       @user.save!
-    end 
+    end
     it "Shows the admin the campaign with admin tools visible" do
       visit campaign_path(@live_campaign)
       expect(page).to have_css('#admin-tools')
@@ -84,7 +84,7 @@ describe "Campaign View Security Tests" do
   end
 
   describe "Non-admin user tries to visit campaign index" do
-    it "shows the user the error page" do                
+    it "shows the user the error page" do
       visit campaigns_path
       expect(campaigns_path).to render_template(:partial =>'campaigns/_error')
       print ("\nUser was not shown the campaign index")
@@ -95,7 +95,7 @@ describe "Campaign View Security Tests" do
     before do
       logout(@user)
     end
-    it "shows Anon the error page" do                
+    it "shows Anon the error page" do
       visit campaigns_path
       expect(campaigns_path).to render_template(:partial =>'campaigns/_error')
       print ("\nAnon was not shown the campaign index")
@@ -103,7 +103,7 @@ describe "Campaign View Security Tests" do
   end
 
   describe "Admin user tries to visit campaign index" do
-    before do      
+    before do
       @user.update_attributes(:role => 'admin')
       @user.save!
     end
@@ -116,7 +116,7 @@ describe "Campaign View Security Tests" do
   end
 
   describe "Non-admin user tries to visit new campaign path" do
-    it "shows the user the error page" do                
+    it "shows the user the error page" do
       visit new_campaign_path
       expect(new_campaign_path).to render_template(:partial =>'campaigns/_error')
       print ("\nUser was not shown the new campaign path")
@@ -127,7 +127,7 @@ describe "Campaign View Security Tests" do
     before do
       logout(@user)
     end
-    it "shows Anon the error page" do                
+    it "shows Anon the error page" do
       visit new_campaign_path
       expect(new_campaign_path).to render_template(:partial =>'campaigns/_error')
       print ("\nAnon was not shown the new campaign path")
@@ -135,19 +135,19 @@ describe "Campaign View Security Tests" do
   end
 
   describe "Admin user tries to visit new campaign path" do
-    before do      
+    before do
       @user.update_attributes(:role => 'admin')
       @user.save!
     end
     it "shows the admin the campaign new campaign path" do
       visit new_campaign_path
-      expect(new_campaign_path).to_not render_template(:partial =>'campaigns/_error')      
+      expect(new_campaign_path).to_not render_template(:partial =>'campaigns/_error')
       print ("\nAdmin was shown the new campaign path")
     end
   end
 
   describe "Non-admin user tries to visit edit campaign path" do
-    it "shows the user the error page" do                
+    it "shows the user the error page" do
       visit edit_campaign_path(@live_campaign)
       expect(edit_campaign_path(@live_campaign)).to render_template(:partial =>'campaigns/_error')
       print ("\nUser was not shown the edit campaign path")
@@ -158,7 +158,7 @@ describe "Campaign View Security Tests" do
     before do
       logout(@user)
     end
-    it "shows Anon the error page" do                
+    it "shows Anon the error page" do
       visit edit_campaign_path(@live_campaign)
       expect(edit_campaign_path(@live_campaign)).to render_template(:partial =>'campaigns/_error')
       print ("\nAnon was not shown the edit campaign path")
@@ -166,13 +166,13 @@ describe "Campaign View Security Tests" do
   end
 
   describe "Admin user tries to visit edit campaign path" do
-    before do      
+    before do
       @user.update_attributes(:role => 'admin')
       @user.save!
     end
     it "shows the admin the edit campaign path" do
       visit edit_campaign_path(@live_campaign)
-      expect(edit_campaign_path(@live_campaign)).to_not render_template(:partial =>'campaigns/_error')      
+      expect(edit_campaign_path(@live_campaign)).to_not render_template(:partial =>'campaigns/_error')
       print ("\nAdmin was shown the edit campaign path")
     end
   end

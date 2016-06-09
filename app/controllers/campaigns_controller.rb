@@ -120,7 +120,7 @@ class CampaignsController < ApplicationController
 
   def practices_review_index
     @campaigns = Campaign.all.where("needs_review = 'true'")
-    authorize @campaign
+    authorize @campaigns
     @approved_campaigns = Campaign.all.where("approved = 'true'")
     respond_to do |format|
       format.html { render layout: 'content_review' }
