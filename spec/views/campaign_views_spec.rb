@@ -49,11 +49,35 @@ describe "Campaign View Security Tests" do
     end
   end
 
+  describe "Reviewer user tries to visit a dead campaign" do
+    before do
+      @user.update_attributes(:role => 'reviewer')
+      @user.save!
+    end
+    it "does not show the dead campaign" do
+      visit campaign_path(@dead_campaign)
+      expect(@dead_campaign).to render_template(:partial =>'campaigns/_error')
+      print ("\nAdmin was shown the dead campaign")
+    end
+  end
+
   describe "Non-admin user visits live campaign" do
     it "shows the user the campaign without admin tools" do
       visit campaign_path(@live_campaign)
       expect(page).to_not have_css('#admin-tools')
       print ("\nNon-admin couldn't see admin tools on a live campaign")
+    end
+  end
+
+  describe "Reviewer visits live campaign" do
+    before do
+      @user.update_attributes(:role => 'reviewer')
+      @user.save!
+    end
+    it "shows the reviewer the campaign without admin tools" do
+      visit campaign_path(@live_campaign)
+      expect(page).to_not have_css('#admin-tools')
+      print ("\nReviewer couldn't see admin tools on a live campaign")
     end
   end
 
@@ -85,6 +109,18 @@ describe "Campaign View Security Tests" do
       visit campaigns_path
       expect(campaigns_path).to render_template(:partial =>'campaigns/_error')
       print ("\nUser was not shown the campaign index")
+    end
+  end
+
+  describe "Reviewer user tries to visit campaign index" do
+    before do
+      @user.update_attributes(:role => 'reviewer')
+      @user.save!
+    end
+    it "shows the user the error page" do
+      visit campaigns_path
+      expect(campaigns_path).to render_template(:partial =>'campaigns/_error')
+      print ("\nReviewer was not shown the campaign index")
     end
   end
 
@@ -143,6 +179,18 @@ describe "Campaign View Security Tests" do
     end
   end
 
+  describe "Reviewer user tries to visit new campaign path" do
+    before do
+      @user.update_attributes(:role => 'reviewer')
+      @user.save!
+    end
+    it "does not show the reviewer the campaign new campaign path" do
+      visit new_campaign_path
+      expect(new_campaign_path).to render_template(:partial =>'campaigns/_error')
+      print ("\nReviewer was not shown the new campaign path")
+    end
+  end
+
   describe "Non-admin user tries to visit edit campaign path" do
     it "shows the user the error page" do
       visit edit_campaign_path(@live_campaign)
@@ -171,6 +219,18 @@ describe "Campaign View Security Tests" do
       visit edit_campaign_path(@live_campaign)
       expect(edit_campaign_path(@live_campaign)).to_not render_template(:partial =>'campaigns/_error')
       print ("\nAdmin was shown the edit campaign path")
+    end
+  end
+
+  describe "Reviewer user tries to visit edit campaign path" do
+    before do
+      @user.update_attributes(:role => 'reviewer')
+      @user.save!
+    end
+    it "doesn't show the reviewer the edit campaign path" do
+      visit edit_campaign_path(@live_campaign)
+      expect(edit_campaign_path(@live_campaign)).to render_template(:partial =>'campaigns/_error')
+      print ("\nReviewer was not shown the edit campaign path")
     end
   end
 

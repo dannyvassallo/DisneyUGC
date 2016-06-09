@@ -50,4 +50,28 @@ describe "Sign in flow" do
     end
   end
 
+
+  describe "successful reviewer sign-in" do
+
+    before do
+      @user.update_attributes(:role => 'reviewer')
+      @user.save!
+    end
+
+    it "redirects the reviewer user to the review panel" do
+      user = @user
+      visit root_path
+
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+
+      within 'form' do
+        click_button 'Log in'
+      end
+
+      expect(current_path).to eq practices_review_index_path
+      print ("\nReviewer sign-in passed")
+    end
+  end
+
 end
