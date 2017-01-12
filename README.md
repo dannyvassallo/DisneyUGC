@@ -52,11 +52,20 @@ brew install mysql
 ```
 
 ###Production/Staging Video Processing
+Set the Buildpacks in Heroku's dashboard:
+```
+heroku/ruby
+https://github.com/a2ikm/heroku-buildpack-libjpeg62.git
+https://github.com/bruchu/heroku-buildpack-ffmpeg.git
+https://github.com/rocketmobile/heroku-buildpack-imagemagick.git
+```
 
-To set the buildpack:
+<!-- To set the buildpack:
 ```shell
 heroku buildpacks:set https://github.com/ddollar/heroku-buildpack-multi.git --app APPNAME
-```
+``` -->
+
+
 run the workers:
 ```
 heroku run rake jobs:work --app APPNAME
