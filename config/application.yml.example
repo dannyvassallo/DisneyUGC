@@ -10,7 +10,7 @@ development:
   FOG_DIRECTORY: *************************
 test:
   AWS_BUCKET: *************************
-  SENDGRID_USERNAME: *************************		
+  SENDGRID_USERNAME: *************************
   SENDGRID_PASSWORD: *************************
   MAIL_HOST: *************************
   EMAIL_URL: *************************
