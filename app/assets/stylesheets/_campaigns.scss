@@ -267,7 +267,15 @@ li.collection-item.avatar{
   }
   trix-toolbar{
     padding-top: 35px;
+		input {
+			color: black;
+		}
   }
+	trix-editor{
+		a{
+			text-decoration: underline;
+		}
+	}
 }
 
 
@@ -325,6 +333,9 @@ label[for="campaign_no_title"]{
       -webkit-flex-shrink: 0;
     }
   }
+	a{
+		text-decoration: underline;
+	}
 }
 @media (max-width: 320px) {
   .featured-image{
