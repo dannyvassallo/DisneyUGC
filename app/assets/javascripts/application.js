@@ -15,6 +15,7 @@
 //= require zeroclipboard
 //= require materialize-sprockets
 //= require video
+//= require trix
 //= require _pagination
 //= require _jquery.stepy
 //= require _wizard

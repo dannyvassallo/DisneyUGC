@@ -209,6 +209,10 @@ li.collection-item.avatar{
   label{
     color: $input-text-and-label;
   }
+	trix-editor{
+		color: $input-text-and-label;
+		border: 1px solid $input-text-and-label;
+	}
   input{
     border-bottom: 1px solid $input-text-and-label;
   }
@@ -261,7 +265,11 @@ li.collection-item.avatar{
   #campaign-feature{
     color: black;
   }
+  trix-toolbar{
+    padding-top: 35px;
+  }
 }
+
 
 .new-campaign, .admin-panel{
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#369a0f+0,82c03a+100 */

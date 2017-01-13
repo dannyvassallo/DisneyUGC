@@ -1,6 +1,7 @@
 /*
  *= require jquery.minicolors
- */
+ *= require trix
+*/
 @import "materialize/components/color";
 $primary-color: color("grey", "darken-4") !default;
 @import "materialize";

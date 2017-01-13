@@ -47,13 +47,13 @@
 	</div>
 	<div class="row">
 		<div class="input-field col s12">
-			<%= f.input :description, label: false, :class => "validate", :wrapper => false %>
+			<%= f.trix_editor :description, label: false, :class => "validate", :wrapper => false %>
 			<label for="campaign_description">Enter a Description</label>
 		</div>
 	</div>
 	<div class="row">
 		<div class="input-field col s12">
-			<%= f.input :call_to_action, label: false, :class => "validate", :wrapper => false %>
+			<%= f.trix_editor :call_to_action, label: false, :class => "validate", :wrapper => false %>
 			<label for="campaign_call_to_action">Enter a Call To Action</label>
 		</div>
 	</div>
