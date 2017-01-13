@@ -221,11 +221,11 @@ li.collection-item.avatar{
     color: $input-text-and-label;
   }
   /* label focus color */
-  .input-field input[type=text]:focus + label {
+  .input-field input[type=text]:focus + label, .input-field input[type=number]:focus + label {
     color: $input-text-and-label;
   }
   /* label underline focus color */
-  .input-field input[type=text]:focus {
+  .input-field input[type=text]:focus, .input-field input[type=number]:focus {
     border-bottom: 1px solid $input-text-and-label;
     box-shadow: 0 1px 0 0 $input-text-and-label;
   }
