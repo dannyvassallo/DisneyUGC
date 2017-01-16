@@ -35,4 +35,5 @@
 //= require _appearinit
 //= require _jquery.lazyload
 //= require _lazyloadinit
+//= require _DateTimePicker
 //= require_tree .
