@@ -1,3 +1,32 @@
+// Datepicker
+$(document).ready(function(){
+  $("#dtBox").DateTimePicker({
+    dateFormat: "mm-dd-yyyy"
+  });
+});
+
+// form fixer
+$('.datepicker').on('focus', function(){
+  if($('#dtBox').is(':visible')){
+    $('.datepicker').blur();
+    // enable touch events on datepicker
+    // $(".increment, .decrement").hammer({domEvents: true}).on("tap", function(event){
+    //     this.click();
+    //     event.stopPropagation();
+    //     event.preventDefault();
+    //     event.gesture.preventDefault();
+    //     event.gesture.stopDetect();
+    // });
+    $("#contest :input").prop("disabled", true);
+  } else {
+    $("#contest :input").prop("disabled", false);
+  }
+});
+
+$('.datepicker').on('blur', function(){
+  $("#contest :input").prop("disabled", false);
+});
+
 /* -----------------------------------------------------------------------------
 
   jQuery DateTimePicker - Responsive flat design jQuery DateTime Picker plugin for Web & Mobile
@@ -2578,4 +2607,3 @@ $.cf = {
 	};
 
 }));
-

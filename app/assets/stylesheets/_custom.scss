@@ -1,0 +1,68 @@
+/***
+  styling for custom date picker
+***/
+// birthday input pointer
+.form-control[readonly]{
+  cursor: pointer;
+  background-color: #fff;
+}
+// custom datepicker
+.dtpicker-content{
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px 7px rgba(0,0,0,0.2);
+  font-family: 'PlacardMT-Condensed';
+  background-color: #f3f3f3 !important;
+}
+.dtpicker-button{
+  border-radius: 5px;
+}
+.dtpicker-compOutline{
+  border: 1px solid #ccc;
+  border-radius: 11px;
+  margin-left: 1.65% !important;
+  margin-right: 1.65% !important;
+  overflow: hidden;
+  background: #d3d3d3 !important;
+  background: -moz-linear-gradient(top,  #d3d3d3 15%, #ffffff 50%, #d3d3d3 85%) !important;
+  background: -webkit-linear-gradient(top,  #d3d3d3 15%,#ffffff 50%,#d3d3d3 85%) !important;
+  background: linear-gradient(top,  #d3d3d3 15%,#ffffff 50%,#d3d3d3 85%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d3d3d3', endColorstr='#d3d3d3',GradientType=0 ) !important;
+}
+.dtpicker-comp3 {
+  width: 30% !important;
+}
+.increment, .decrement{
+  display: block;
+  text-decoration: none !important;
+  background-color: #E5E5E5 !important;
+  color: #333333 !important;
+  margin: 40px auto !important;
+  position: relative !important;
+  text-align: center !important;
+  text-shadow: 0 -1px 0 rgba(102, 102, 102, 0.5), 0 2px 1px rgba(255, 255, 255, 0.6) !important;
+  width: 110%;
+  margin-left: -5% !important;
+  text-decoration: none;
+}
+.increment{
+  margin-top: -5px !important;
+}
+.decrement{
+  margin-bottom: -4px !important;
+}
+.dtpicker-compValue{
+  color: black !important;
+  background-color: transparent !important;
+}
+.dtpicker-title, .dtpicker-close, .dtpicker-value{
+  color: black !important;
+}
+.dtpicker-buttonSet{
+  background-color: #3c9d3e !important;
+  text-transform: uppercase;
+}
+.dtpicker-buttonClear{
+  background-color: #c02133 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+}
