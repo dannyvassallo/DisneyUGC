@@ -66,3 +66,16 @@
   text-transform: uppercase;
   text-decoration: none;
 }
+
+
+.picker__select--month.browser-default {
+    display: inline;
+    background-color: #FFFFFF;
+    width: 25% !important;
+}
+
+
+// hide elements from materialize datepicker
+/*#post_dob_table.picker__table,*/ .picker__nav--prev, .picker__nav--next {
+  display: none !important;
+}
