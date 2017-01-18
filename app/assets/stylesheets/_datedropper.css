@@ -115,8 +115,8 @@ div.datedropper.picker-focus {
   margin-top: 8px;
 }
 div.datedropper.picker-modal {
-  top: 10%!important;
-  left: 50%!important;
+  top: 10% !important;
+  left: 50% !important;
   -webkit-transform: translate(-50%, -10%) !important;
   -moz-transform: translate(-50%, -10%) !important;
   -ms-transform: translate(-50%, -10%) !important;
@@ -517,12 +517,12 @@ div.datedropper.picker-lg .pick-btns .pick-btn.pick-btn-sz:after {
 @media only screen and (max-width: 480px) {
   div.datedropper.picker-lg {
     position: fixed;
-    top: 50%!important;
-    left: 50%!important;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
+    top: 0% !important;
+    left: 50% !important;
+    -webkit-transform: translate(-50%, 0%) !important;
+    -moz-transform: translate(-50%, 0%) !important;
+    -ms-transform: translate(-50%, 0%) !important;
+    -o-transform: translate(-50%, 0%) !important;
     margin: 0;
   }
   div.datedropper.picker-lg:before {
