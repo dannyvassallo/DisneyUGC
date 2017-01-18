@@ -13,7 +13,7 @@
       	<h5>Enter Your Birthday</h5>
       	<p class="wizard-desc">You must be 13 years or older to enter a submission!</p>
         <div class="input-field col s12">
-					<%= f.input :dob, input_html: { 'class': "datepicker", 'data-large-mode': "true", 'data-jump': "5", 'data-modal': "true" }, :label => 'Date of Birth' %>
+					<%= f.input :dob, input_html: { class: 'datepicker' }, :label => 'Date of Birth' %>
         </div>
       </fieldset>
 			<% if @campaign.campaign_type == "Both Media Types" %>
