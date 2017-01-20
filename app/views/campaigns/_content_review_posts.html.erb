@@ -7,8 +7,7 @@
         <% end %>
         <% if post.video_url? %>
           <a class="feed-modal-trigger" href="<%= "#post-#{post.id}" %>">
-            <!-- <img data-processing="<%= post.video_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.friendly_id %>" class="vid-thumb <%= "post-#{post.id}" %>" src="<%= post.video_url.thumb.url %>" data-position="top" data-delay="50" data-tooltip="View post from <%= post.full_name%>"> -->
-            <img data-processing="<%= post.video_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.friendly_id %>" class="vid-thumb <%= "post-#{post.id}" %>" src="http://placehold.it/150x150" data-position="top" data-delay="50" data-tooltip="View post from <%= post.full_name%>">
+            <img data-processing="<%= post.video_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.friendly_id %>" class="vid-thumb <%= "post-#{post.id}" %>" src="<%= post.video_url.thumb.url %>" data-position="top" data-delay="50" data-tooltip="View post from <%= post.full_name%>">
           </a>
         <% end %>
       </div>
