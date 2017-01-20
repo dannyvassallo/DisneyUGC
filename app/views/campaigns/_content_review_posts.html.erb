@@ -6,7 +6,10 @@
           <img onerror="$(this).attr('src', $(this).data('fallback'));" data-fallback="<%= post.image_url.thumb.url %>" src="<%= post.image_url.content_review_thumb.url %>">
         <% end %>
         <% if post.video_url? %>
-          <img class="video-link" data-video="<%= post.video_url %>" onerror="$(this).attr('src', $(this).data('fallback'));" data-fallback="<%= post.video_url.thumb.url %>" src="<%= post.video_url.content_review_thumb.url %>">
+          <a class="feed-modal-trigger" href="<%= "#post-#{post.id}" %>">
+            <!-- <img data-processing="<%= post.video_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.friendly_id %>" class="vid-thumb <%= "post-#{post.id}" %>" src="<%= post.video_url.thumb.url %>" data-position="top" data-delay="50" data-tooltip="View post from <%= post.full_name%>"> -->
+            <img data-processing="<%= post.video_url_processing %>" data-id="<%= post.id %>" data-campaign="<%= post.campaign.friendly_id %>" class="vid-thumb <%= "post-#{post.id}" %>" src="http://placehold.it/150x150" data-position="top" data-delay="50" data-tooltip="View post from <%= post.full_name%>">
+          </a>
         <% end %>
       </div>
       <div class="card-content black-text">
@@ -22,3 +25,18 @@
 <div class="col l12 m12 s12 xs12 center-align">
   <%= will_paginate @post_collection %>
 </div>
+
+<!-- Modal Structure -->
+<% @post_collection.each do |post| %>
+	<div id="<%= "post-#{post.id}" %>" class="modal">
+		<div class="modal-content center-align">
+			<% if post.image_url? %>
+				<img class="responsive-img" src="<%= post.image_url.url %>">
+			<% elsif post.video_url? %>
+				<video preload="auto" class="vjs-big-play-centered video-js vjs-default-skin vjs-paused vjs-controls-enabled vjs-user-inactive modal-video feed-vid" controls data-setup="{}">
+					<source src="<%= post.video_url.url %>" type='video/mp4'>
+				</video>
+			<% end %>
+		</div>
+	</div>
+<% end %>

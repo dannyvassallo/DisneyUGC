@@ -1,3 +1,8 @@
+$(function(){
+	$('.datepicker').dateDropper();
+});
+
+
 (function($) {
 	var
 		// CSS EVENT DETECT
@@ -1142,18 +1147,18 @@
 				}
 			}
 		},
-		
+
 		// MAIN VARS
-		
+
 		pickers = {},
 		picker = null,
 		picker_ctrl = false,
 		pick_dragged = null,
 		pick_drag_offset = null,
 		pick_drag_temp = null,
-		
+
 		// CHECK FUNCTIONS
-		
+
 		is_click = false,
 		is_ie = function() {
 			var
@@ -1178,7 +1183,7 @@
 			var
 				unix_current = get_unix(get_current_full()),
 				unix_today = get_unix(get_today_full());
-			
+
 			if(pickers[picker.id].lock) {
 				if(pickers[picker.id].lock=='from') {
 					if(unix_current<unix_today) {
@@ -1190,7 +1195,7 @@
 						picker.element.removeClass('picker-lkd');
 						return false;
 					}
-				}	
+				}
 				if(pickers[picker.id].lock=='to') {
 					if(unix_current>unix_today) {
 						picker_alrt();
@@ -1203,7 +1208,7 @@
 					}
 				}
 			}
-			
+
 			if(pickers[picker.id].disabledays) {
 				if(pickers[picker.id].disabledays.indexOf(unix_current) != -1) {
 					picker_alrt();
@@ -1214,7 +1219,7 @@
 					picker.element.removeClass('picker-lkd');
 					return false;
 				}
-			}		
+			}
 		},
 		is_int = function(n) {
 			return n % 1 === 0;
@@ -1232,7 +1237,7 @@
 		},
 
 		// REST FUNCTIONS
-		
+
 		get_current = function(k){
 			return parseInt(pickers[picker.id].key[k].current);
 		},
@@ -1289,16 +1294,16 @@
 			ul = get_ul(k);
 			var
 				o = [];
-	
+
 			ul.find('li').each(function(){
 				o.push($(this).attr('value'));
 			});
-			
+
 			if(d=='last')
 				return o[o.length-1];
 			else
 				return o[0];
-			
+
 		},
 		get_picker_els = function(el) {
 			if(picker)
@@ -1307,9 +1312,9 @@
 		get_unix = function(d) {
 			return Date.parse(d) / 1000;
 		},
-		
+
 		// RENDER FUNCTIONS
-		
+
 		picker_large_onoff = function() {
 			if(pickers[picker.id].large) {
 				picker.element.toggleClass('picker-lg');
@@ -1320,7 +1325,7 @@
 			get_picker_els('ul.pick.pick-l').toggleClass('visible');
 		},
 		picker_offset = function(){
-			if(!picker.element.hasClass('picker-modal')){ 
+			if(!picker.element.hasClass('picker-modal')){
 				var
 					input = picker.input,
 					left = input.offset().left + input.outerWidth()/2,
@@ -1362,28 +1367,28 @@
 			var
 				ul = get_ul(k),
 				key_values = pickers[picker.id].key[k];
-		
+
 			//CURRENT VALUE
 			pickers[picker.id].key[k].current = key_values.today < key_values.min && key_values.min || key_values.today;
-	
+
 			for (i = key_values.min; i <= key_values.max; i++) {
 				var
 					html = i;
-					
+
 				if(k=='m')
 					html = i18n[pickers[picker.id].lang].months.short[i-1];
 				if(k=='l')
 					html = i18n[Object.keys(i18n)[i]].name;
-					
+
 				html += k=='d' ? '<span></span>' : '';
-					
+
 				$('<li>', {
 					value: i,
 					html: html
 				})
 				.appendTo(ul)
 			}
-			
+
 			//PREV BUTTON
 			$('<div>', {
 				class: 'pick-arw pick-arw-s1 pick-arw-l',
@@ -1392,7 +1397,7 @@
 				})
 			})
 			.appendTo(ul);
-			
+
 			//NEXT BUTTON
 			$('<div>', {
 				class: 'pick-arw pick-arw-s1 pick-arw-r',
@@ -1401,9 +1406,9 @@
 				})
 			})
 			.appendTo(ul);
-			
+
 			if(k=='y') {
-				
+
 				//PREV BUTTON
 				$('<div>', {
 					class: 'pick-arw pick-arw-s2 pick-arw-l',
@@ -1412,7 +1417,7 @@
 					})
 				})
 				.appendTo(ul);
-				
+
 				//NEXT BUTTON
 				$('<div>', {
 					class: 'pick-arw pick-arw-s2 pick-arw-r',
@@ -1421,23 +1426,23 @@
 					})
 				})
 				.appendTo(ul);
-			
+
 			}
-		
+
 			picker_ul_transition(k,get_current(k));
-			
+
 		},
 		picker_render_calendar = function() {
-			
+
 			var
 				index = 0,
 				w = get_picker_els('.pick-lg-b');
-			
+
 			w.find('li')
 			.empty()
 			.removeClass('pick-n pick-b pick-a pick-v pick-lk pick-sl pick-h')
 			.attr('data-value','');
-		
+
 			var
 				_C = new Date(get_current_full()),
 				_S = new Date(get_current_full()),
@@ -1449,10 +1454,10 @@
 					var l = ((y % 4) == 0 && ((y % 100) != 0 || (y % 400) == 0));
 					return [31, (l ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m];
 				};
-				
+
 			_L.setMonth(_L.getMonth()-1);
 			_S.setDate(1);
-	
+
 			var
 				o = _S.getDay()-1;
 				if(o<0)
@@ -1462,7 +1467,7 @@
 					if(o<0)
 						o=6;
 				}
-			
+
 			//before
 			for(var i = _NUM(_L)-o ; i <= _NUM(_L) ; i++) {
 				w.find('li').eq(index)
@@ -1527,7 +1532,7 @@
 						}
 					}
 				}
-			}	
+			}
 			if(pickers[picker.id].disabledays) {
 				$.each(pickers[picker.id].disabledays, function( i, v ) {
 					if(v&&is_date(v)) {
@@ -1539,40 +1544,40 @@
 					}
 				});
 			}
-			
+
 			get_picker_els('.pick-lg-b li.pick-v[data-value='+get_current('d')+']').addClass('pick-sl');
-			
+
 		},
 		picker_fills = function() {
-			
+
 			var
 				m = get_current('m'),
 				y = get_current('y'),
 				l = ((y % 4) == 0 && ((y % 100) != 0 || (y % 400) == 0));
-				
+
 			pickers[picker.id].key['d'].max =  [31, (l ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m-1];
-			
+
 			if(get_current('d')>pickers[picker.id].key['d'].max) {
 				pickers[picker.id].key['d'].current = pickers[picker.id].key['d'].max;
 				picker_ul_transition('d',get_current('d'));
 			}
-				
+
 			get_picker_els('.pick-d li')
 			.removeClass('pick-wke')
 			.each(function() {
 				var
 					d = new Date(m+"/"+$(this).attr('value')+"/"+y).getDay();
-					
+
 				$(this)
 				.find('span')
 				.html(i18n[pickers[picker.id].lang].weekdays.full[d]);
-					
+
 				if(d==0||d==6)
 					$(this).addClass('pick-wke');
-					
+
 			});
-			
-			if(picker.element.hasClass('picker-lg')) {			
+
+			if(picker.element.hasClass('picker-lg')) {
 				get_picker_els('.pick-lg-b li').removeClass('pick-wke');
 				get_picker_els('.pick-lg-b li.pick-v')
 				.each(function() {
@@ -1580,27 +1585,27 @@
 						d = new Date(m+"/"+$(this).attr('data-value')+"/"+y).getDay();
 					if(d==0||d==6)
 						$(this).addClass('pick-wke');
-						
+
 				});
 			}
-				
+
 		},
 		picker_set = function() {
 			if(picker.element.hasClass('picker-lg'))
 				picker_render_calendar();
-			picker_fills();		
+			picker_fills();
 			input_change_value();
 		},
-		
+
 		// ACTION FUNCTIONS
-		
+
 		picker_ul_transition = function(k,i) {
-			
+
 			var
 				ul = get_ul(k);
-	
+
 			ul.find('li').removeClass('pick-sl pick-bfr pick-afr');
-			
+
 			if(i==get_eq(k,'last')) {
 				var li = ul.find('li[value="'+get_eq(k,'first')+'"]');
 				li.clone().insertAfter(ul.find('li[value='+i+']'));
@@ -1611,17 +1616,17 @@
 				li.clone().insertBefore(ul.find('li[value='+i+']'));
 				li.remove();
 			}
-			
+
 			ul.find('li[value='+i+']').addClass('pick-sl');
 			ul.find('li.pick-sl').nextAll('li').addClass('pick-afr');
 			ul.find('li.pick-sl').prevAll('li').addClass('pick-bfr');
-			
+
 		},
 		picker_values_increase = function(k,v) {
-			
+
 			var
 				key_values = pickers[picker.id].key[k];
-			
+
 			if(v>key_values.max) {
 				if(k=='d')
 					picker_ul_turn('m','right');
@@ -1638,7 +1643,7 @@
 			}
 			pickers[picker.id].key[k].current = v;
 			picker_ul_transition(k,v);
-			
+
 		},
 		picker_ul_turn = function(k,d) {
 			var
@@ -1653,9 +1658,9 @@
 			picker.element
 			.addClass('picker-rmbl');
 		}
-		
+
 		/* INPUT FUNCTIONS */
-		
+
 		input_fill = function(n) {
 			return n < 10 ? '0' + n : n
 		},
@@ -1666,15 +1671,15 @@
 			return n+(s[(v-20)%10]||s[v]||s[0]);
 		}
 		input_change_value = function() {
-			
+
 			if(!is_locked()&&picker_ctrl) {
-				
+
 				var
 					d = get_current('d'),
 					m = get_current('m'),
 					y = get_current('y'),
 					get_day = new Date(m+"/"+d+"/"+y).getDay(),
-					
+
 					str =
 					pickers[picker.id].format
 					.replace(/\b(d)\b/g, input_fill(d))
@@ -1688,20 +1693,20 @@
 					.replace(/\b(M)\b/g, i18n[pickers[picker.id].lang].months.short[m-1])
 					.replace(/\b(n)\b/g, m)
 					.replace(/\b(j)\b/g, d);
-				
+
 				picker
 				.input
 				.val(str)
 				.change();
-				
+
 				picker_ctrl = false;
-				
+
 			}
-			
+
 		};
-		
+
 	// GET UI EVENT
-	
+
 	if(is_touch())
 		var
 			ui_event = {
@@ -1716,14 +1721,14 @@
 				m	: 'mousemove',
 				e : 'mouseup'
 			}
-			
-	
+
+
 	var
 		picker_node_el = 'div.datedropper.picker-focus';
-	
+
 	$(document)
-	
-	
+
+
 	//CLOSE PICKER
 	.on('click',function(e) {
 		if(picker) {
@@ -1733,19 +1738,19 @@
 			}
 		}
 	})
-	
+
 	//LOCK ANIMATION
 	.on(csse.a,picker_node_el + '.picker-rmbl',function(){
 		if(picker.element.hasClass('picker-rmbl'))
 			$(this).removeClass('picker-rmbl');
 	})
-	
+
 	//HIDE MODAL OVERLAY
 	.on(csse.t,'.picker-modal-overlay',function(){
 		$(this).remove();
 	})
-	
-	
+
+
 	//LARGE-MODE DAY CLICK
 	.on(ui_event.i,picker_node_el+' .pick-lg li.pick-v',function(){
 		get_picker_els('.pick-lg-b li').removeClass('pick-sl');
@@ -1754,48 +1759,48 @@
 		picker_ul_transition('d',$(this).attr('data-value'));
 		picker_ctrl = true;
 	})
-	
+
 	//BUTTON LARGE-MODE
 	.on('click',picker_node_el+' .pick-btn-sz',function(){
 		picker_large_onoff();
 	})
-	
+
 	//BUTTON TRANSLATE-MODE
 	.on('click',picker_node_el+' .pick-btn-lng',function(){
 		picker_translate_onoff();
 	})
-	
+
 	//JUMP
 	.on(ui_event.i,picker_node_el+' .pick-arw.pick-arw-s2',function(e){
-		
+
 		e.preventDefault();
 		pick_dragged = null;
-		
+
 		var
 			i,
 			k = $(this).closest('ul').data('k'),
 			jump = pickers[picker.id].jump;
-			
+
 		if($(this).hasClass('pick-arw-r'))
 			i = get_current('y') + jump;
 		else
 			i = get_current('y') - jump;
-				
+
 		var
 			jumped_array = get_jumped('y',jump);
-	
+
 		if(i>jumped_array[jumped_array.length-1])
 			i = jumped_array[0];
 		if(i<jumped_array[0])
 			i = jumped_array[jumped_array.length-1];
-	
+
 		pickers[picker.id].key['y'].current = i;
 		picker_ul_transition('y',get_current('y'));
-		
+
 		picker_ctrl = true;
-		
+
 	})
-	
+
 	//DEFAULT ARROW
 	.on(ui_event.i,picker_node_el+' .pick-arw.pick-arw-s1',function(e){
 		e.preventDefault();
@@ -1806,11 +1811,11 @@
 			picker_ul_turn(k,'right');
 		else
 			picker_ul_turn(k,'left');
-			
+
 		picker_ctrl = true;
-		
+
 	})
-	
+
 	// JUMP
 	.on(ui_event.i,picker_node_el+' ul.pick.pick-y li',function(){
 		is_click = true;
@@ -1825,7 +1830,7 @@
 			is_click = false;
 		}
 	})
-	
+
 	//TOGGLE CALENDAR
 	.on(ui_event.i,picker_node_el+' ul.pick.pick-d li',function(){
 		is_click = true;
@@ -1836,7 +1841,7 @@
 			is_click = false;
 		}
 	})
-	
+
 	//TOGGLE TRANSLATE MODE
 	.on(ui_event.i,picker_node_el+' ul.pick.pick-l li',function(){
 		is_click = true;
@@ -1848,23 +1853,23 @@
 			is_click = false;
 		}
 	})
-	
+
 	//MOUSEDOWN ON UL
 	.on(ui_event.i,picker_node_el+' ul.pick',function(e){
 		pick_dragged = $(this);
 		if(pick_dragged) {
 			var
-				k = pick_dragged.data('k');	
+				k = pick_dragged.data('k');
 			pick_drag_offset = is_touch() ? e.originalEvent.touches[0].pageY : e.pageY;
 			pick_drag_temp = get_current(k);
 		}
 	})
-	
+
 	//MOUSEMOVE ON UL
 	.on(ui_event.m,function(e){
-		
+
 		is_click = false;
-		
+
 		if(pick_dragged) {
 			e.preventDefault();
 			var
@@ -1873,15 +1878,15 @@
 			o = pick_drag_offset - o;
 			o = Math.round(o * .026);
 			i = pick_drag_temp + o;
-			var 
+			var
 				int = get_clear(k,i);
 			if(int!=pickers[picker.id].key[k].current)
-				picker_values_increase(k,int);		
-			
+				picker_values_increase(k,int);
+
 			picker_ctrl = true;
 		}
 	})
-	
+
 	//MOUSEUP ON UL
 	.on(ui_event.e,function(e){
 		if( pick_dragged )
@@ -1891,27 +1896,27 @@
 		if(picker)
 			picker_set();
 	})
-	
+
 	//CLICK SUBMIT
 	.on(ui_event.i,picker_node_el+' .pick-submit',function(){
 		picker_hide();
 	});
-	
+
 	$(window).resize(function(){
 		if(picker) {
 			picker_offset();
 			is_fx_mobile();
 		}
-	});	
-		
+	});
+
 	$.fn.dateDropper = function(options) {
 		return $(this).each(function(){
 			if($(this).is('input')&&!$(this).hasClass('picker-input')) {
-					
+
 				var
 					input = $(this),
 					id = 'datedropper-' + Object.keys(pickers).length;
-					
+
 				input
 				.attr('data-id',id)
 				.addClass('picker-input')
@@ -1919,7 +1924,7 @@
 					'type':'text',
 					'readonly' : true
 				});
-				
+
 				var
 					picker_default_date = (input.data('default-date')&&is_date(input.data('default-date'))) ? input.data('default-date') : null,
 					picker_disabled_days = (input.data('disabled-days')) ? input.data('disabled-days').split(',') : null,
@@ -1935,19 +1940,19 @@
 					picker_jump = (input.data('jump')&&is_int(input.data('jump'))) ? input.data('jump') : 10,
 					picker_max_year = (input.data('max-year')&&is_int(input.data('max-year'))) ? input.data('max-year') : new Date().getFullYear(),
 					picker_min_year = (input.data('min-year')&&is_int(input.data('min-year'))) ? input.data('min-year') : 1970,
-					
+
 					picker_modal = (input.data('modal')===true) ? 'picker-modal' : '',
 					picker_theme = input.data('theme') || 'primary',
 					picker_translate_mode = (input.data('translate-mode')===true) ? true : false;
-				
-				
+
+
 				if(picker_disabled_days) {
 					$.each(picker_disabled_days, function( index, value ) {
 						if(value&&is_date(value))
 							picker_disabled_days[index] = get_unix(value);
 					});
 				}
-				
+
 				pickers[id] = {
 					disabledays : picker_disabled_days,
 					format : picker_format,
@@ -1985,28 +1990,28 @@
 					},
 					translate : picker_translate_mode
 				};
-				
+
 				if(picker_default_date) {
-					
+
 					var regex = /\d+/g;
 					var string = picker_default_date;
 					var matches = string.match(regex);
-					
+
 					$.each(matches, function( index, value ) {
 						matches[index] = parseInt(value);
 					});
-					
+
 					pickers[id].key.m.today = (matches[0]&&matches[0]<=12) ? matches[0] : pickers[id].key.m.today;
 					pickers[id].key.d.today = (matches[1]&&matches[1]<=31) ? matches[1] : pickers[id].key.d.today;
 					pickers[id].key.y.today = (matches[2]) ? matches[2] : pickers[id].key.y.today;
-					
+
 					if(pickers[id].key.y.today>pickers[id].key.y.max)
 						pickers[id].key.y.max = pickers[id].key.y.today;
 					if(pickers[id].key.y.today<pickers[id].key.y.min)
 						pickers[id].key.y.min = pickers[id].key.y.today;
-						
+
 				}
-					
+
 				$('<div>', {
 					class: 'datedropper ' + picker_modal + ' ' + picker_theme + ' ' + picker_fx_class + ' ' + picker_large_class,
 					id: id,
@@ -2015,13 +2020,13 @@
 					})
 				})
 				.appendTo('body');
-				
+
 				picker = {
 					id : id,
 					input : input,
 					element : $('#' + id)
 				};
-				
+
 				for( var k in pickers[id].key ) {
 					$('<ul>', {
 						class: 'pick pick-' + k,
@@ -2030,21 +2035,21 @@
 					.appendTo(get_picker_els('.picker'));
 					picker_render_ul(k);
 				}
-				
+
 				if(pickers[id].large) {
-					
+
 					//calendar
 					$('<div>', {
 						class: 'pick-lg'
 					})
 					.insertBefore(get_picker_els('.pick-d'));
-					
+
 					$('<ul class="pick-lg-h"></ul><ul class="pick-lg-b"></ul>')
 					.appendTo(get_picker_els('.pick-lg'));
-					
+
 					var
 						picker_day_offset = get_days_array();
-					
+
 					for(var i = 0; i < 7 ; i++) {
 						$('<li>', {
 							html: i18n[pickers[picker.id].lang].weekdays.short[picker_day_offset[i]]
@@ -2056,18 +2061,18 @@
 						.appendTo(get_picker_els('.pick-lg .pick-lg-b'))
 					}
 				}
-				
+
 				//buttons
 				$('<div>', {
 					class: 'pick-btns'
 				})
 				.appendTo(get_picker_els('.picker'));
-				
+
 				$('<div>', {
 					class: 'pick-submit'
 				})
 				.appendTo(get_picker_els('.pick-btns'));
-				
+
 				if(pickers[picker.id].translate) {
 					$('<div>', {
 						class: 'pick-btn pick-btn-lng'
@@ -2080,7 +2085,7 @@
 					})
 					.appendTo(get_picker_els('.pick-btns'));
 				}
-				
+
 				if(picker_format=='Y'||picker_format=='m') {
 					get_picker_els('.pick-d,.pick-btn-sz').hide();
 					picker.element.addClass('picker-tiny');
@@ -2089,39 +2094,39 @@
 					if(picker_format=='m')
 						get_picker_els('.pick-y').hide();
 				}
-				
+
 				if(picker_init_set) {
 					picker_ctrl = true;
 					input_change_value();
 				}
-				
-				picker = null;		
-			
+
+				picker = null;
+
 			}
-	
+
 		})
 		.focus(function(e){
-			
+
 			e.preventDefault();
 			$(this).blur();
-			
+
 			if(picker)
 				picker_hide();
-				
+
 			picker = {
 				id : $(this).data('id'),
 				input : $(this),
 				element : $('#'+$(this).data('id'))
 			};
-			
+
 			is_fx_mobile();
 			picker_offset();
 			picker_set();
 			picker_show();
-						
+
 			if(picker.element.hasClass('picker-modal'))
 				$('body').append('<div class="picker-modal-overlay"></div>')
-			
+
 		});
 	};
 }(jQuery));
