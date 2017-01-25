@@ -2,7 +2,7 @@ var contains = function(needle) {
     // Per spec, the way to identify NaN is that it is not equal to itself
     var findNaN = needle !== needle;
     var indexOf;
-
+    // 
     if(!findNaN && typeof Array.prototype.indexOf === 'function') {
         indexOf = Array.prototype.indexOf;
     } else {
@@ -33,10 +33,12 @@ function rememberClickedPosts(){
     selectedPosts.push($(this).html());
   });
   console.log(selectedPosts);
-  $('#masonry-grid').children().each(function(){
+  // each post in grid
+  $('#masonry-grid').children().each(function() {
     var cardAction = $(this).children().children()[2],
     btn = $(cardAction).children()[0],
     dataId = $(btn).attr('data-id');
+    console.log(cardAction.html());
     if(contains.call(selectedPosts, dataId)){
       $(btn).removeClass('red');
       $(btn).addClass('green');
@@ -74,4 +76,3 @@ $(function(){
     }
   }
 });
-
