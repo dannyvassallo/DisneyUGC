@@ -20,11 +20,14 @@ $(function(){
       $('.approve-posts').removeClass('hide');
       $('.fake-btn').addClass('hide');
     } else if ($(this).hasClass('green')){
+      // swap button color and text
       $(this).removeClass('green');
       $(this).addClass('red');
       $(this).html('NOT ADDED');
-      elsClass = '.post-' + $(this).attr('data-id');
-      $(elsClass).remove();
+      // define class using data attribute from button
+      elsClass = '.post-'+$(this).attr('data-id');
+      // removes the image with a specific data attribute
+      // $(elsClass).remove();
       $('#selected_posts').val('');
       $('#selected_posts_for_review').val('');
       $('#approved_posts').val('');
